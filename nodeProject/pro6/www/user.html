@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户：<input type="text" id="user"/><br />
+		密码：<input type="password" id="pass"/><br />
+		<input type="button" value="登录" id="login_btn"/>
+		<input type="button" id="reg_btn" value="注册" />
+	</body>
+	<script src="jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>		
+	<script type="text/javascript">
+		var user=document.getElementById('user');
+		var pass=document.getElementById('pass');
+		var loginbtn=document.getElementById('login_btn');
+		var regbtn=document.getElementById('reg_btn');
+		loginbtn.onclick=function(){
+			$.ajax({
+				type:"get",
+				url:"/user",
+				async:true,
+				data:{act:'login',user:user.value,pass:pass.value},
+				success:function(data){
+					console.log(JSON.parse(data));
+				},
+				error:function(){
+					alert('error')
+				}
+			});
+		}
+		regbtn.onclick=function(){
+			$.ajax({
+				type:"get",
+				url:"/user",
+				async:true,
+				data:{act:'reg',user:user.value,pass:pass.value},
+				success:function(data){
+					console.log(data);
+				},
+				error:function(){
+					alert('error')
+				}
+			});
+		}
+	</script>
+</html>
