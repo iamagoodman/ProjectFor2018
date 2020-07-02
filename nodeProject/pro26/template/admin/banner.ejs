@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border: 1px solid #ddd;
+            border-collapse:collapse;
+        }
+        table td{
+            border: 1px solid #ddd;
+            border-collapse:collapse;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <%- include('components/top.inc.ejs') %>
+        <div class="right-wrap">
+            <div>
+                <form action="/admin/banner?" method="post">
+                    标题：<input type="text" name="title"><br>
+                    描述：<input type="text" name="description"><br>
+                    链接：<input type="text" name="href"><br>
+                    <input type="submit" value="添加">
+                </form>
+            </div>
+            <table >
+                <theader>
+                    <tr>
+                        <th>ID</th>
+                        <th>title</th>
+                        <th>description</th>
+                        <th>href</th>
+                        <th>操作</th>
+                    </tr>
+                </theader>
+                <tbody>
+                    <% for(var i=0;i<banners.length;i++){ %>
+                    <tr>
+                        <td><%= banners[i].ID %></td>
+                        <td><%= banners[i].title %></td>
+                        <td><%= banners[i].description %></td>
+                        <td><%= banners[i].href %></td>
+                        <td>
+                            <a href="?act=mod&id=<%= banners[i].ID %>">修改</a>
+                            <a href="?act=del&id=<%= banners[i].ID %>" onclick="return confirm('是否要删除？')">删除</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+
+            <% if(typeof modify_data!='undefined'){ %>
+                <div style="position: fixed;top: 0;left: 0;bottom: 0;right: 0;background: #4caf50;opacity: 0.5"></div>
+                <div style="position: fixed;z-index: 10;top: 20%;left: 20%;right: 20%">
+                    <form action="?act=mod&id=<%= modify_data.ID %>" method="post">
+                        <input type="text" name="title" value="<%= modify_data.title %>">
+                        <input type="text" name="href" value="<%= modify_data.href %>">
+                        <textarea name="description" cols="30" rows="10"><%= modify_data.description %></textarea>
+                        <input type="hidden" name="mod_id" value="<%= modify_data.ID %>">
+                        <input type="submit" value="提交">
+                        <a href="./banner">取消</a>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
