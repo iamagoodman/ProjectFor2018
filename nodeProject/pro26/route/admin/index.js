@@ -1,7 +1,8 @@
 const express = require('express');
 const common = require('../../libs/common');
-const bannerRouter = require('./banner');
-const loginRouter = require('./login')
+const bannerRouter = require('./banner');  // banner页面
+const loginRouter = require('./login');    // 登陆页面
+const custom_evaluationRouter = require('./custom_evaluation');  // 客户评价页面
 var mysql = require('mysql');
 var db = mysql.createPool({host:'localhost',user:'root',password:'',database:'blog0629'})
 module.exports = function () {
@@ -17,7 +18,7 @@ module.exports = function () {
 
     router.use('/login',loginRouter());
     router.use('/banner',bannerRouter());
-
+    router.use('/custom_evaluation',custom_evaluationRouter())
     router.get('/',function (req,res) {
         res.render('./admin/index.ejs',{});
     })
