@@ -87,7 +87,6 @@ module.exports = function () {
                             if(err){
                                 res.send('file opration err')
                             }else{
-                                console.log('删除成功')
                                 var src = file.filename + path.parse(file.originalname).ext
                                 fs.rename(oldname,newname,function (err,data) {
                                     if(err){
@@ -98,7 +97,6 @@ module.exports = function () {
                                             if(err){
                                                 res.status(500).send('database err').end()
                                             }else{
-                                                console.log('数据设置成功')
                                                 res.redirect('/admin/custom_evaluation')
                                             }
                                         })
