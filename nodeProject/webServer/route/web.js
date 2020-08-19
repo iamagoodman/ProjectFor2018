@@ -4,6 +4,7 @@ module.exports = function () {
     const router = express.Router();
     router.get('/',function (req,res) {
         //console.log(req)
+        console.log('fdsafsadfsdfsa');
         console.log('get')
 
         let data = {
