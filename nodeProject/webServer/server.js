@@ -12,7 +12,7 @@ const adminroute = require('./route/admin/index')
 const webroute = require('./route/web')
 
 var server = express();
-
+// test abc
 server.listen(3389);
 // server.all('*', function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*");
