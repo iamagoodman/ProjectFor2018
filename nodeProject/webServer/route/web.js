@@ -3,28 +3,26 @@ const express = require('express');
 module.exports = function () {
     const router = express.Router();
     router.get('/',function (req,res) {
-        // console.log(req)
+        //console.log(req)
         console.log('get')
 
         let data = {
-            name:'frank',
-            sex:'f'
+            success:'Y',
+            message:'data save success'
         }
-        setTimeout(()=>{
-            res.send(data).end()
-        },3000)
+        res.send(data).end()
+    
     })
     router.post('/',function (req,res) {
         console.log('post')
         let data = {
-            name:'frank',
-            sex:'f'
+            success:'Y',
+            message:'data save success'
         }
-
+        console.log(req.host)
+        console.log(req.body)
         // console.log(req)
-        setTimeout(()=>{
-            res.send(data).end()
-        },3000)
+        res.send(data).end()
     })
     return router
 }
