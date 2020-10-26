@@ -1,4 +1,5 @@
 import xlwings as xw
+import sys
 # wb = xw.Book('./test.xlsx')
 #
 # sht = wb.sheets['Sheet1']
@@ -32,3 +33,18 @@ test1 = 1
 test1 += 1
 print(test1)
 
+a = 'abc'
+b = a
+print(a,b)
+
+a = 'xyz'
+print(a,b)
+
+c = {'name':'frank','sex':'男'}
+d = c
+print(c,d)
+# c = {'name':'jack','sex':'女'}
+c['name'] = 'jack'
+print(c,d)
+
+print(sys.path)
