@@ -3,8 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        p[data-kaka=fuck] {
+            background: red;
+        }
+        p::first-letter {
+            background: green;
+        }
+        p::selection {
+            background: yellow;
+            color: white;
+        }
+        #ka:before, #ka:after {
+            content: '*';
+            color: red;
+            position: relative;
+            top: 2px;
+        }
+        #qw::before, #qw::after {
+            content: '*';
+            color: red;
+            position: relative;
+            top: 2px;
+        }
+       #box1 {
+           display: flex;
+       }
+        #box1 div{
+            flex: 1;
+            background: #4caf50;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
+    <p style="letter-spacing: 1em">fdsakljfklsajlkfjsdlkajlkfjsaklfjdklsajklfsafdsafsa</p>
+    <p style="text-indent: 1em">fdksajfsja;klfjsdlajfklsajlkfjslakjflsjlfjsaklfjslkajklfaskljfsadkl</p>
+    <p style="word-spacing: 1em">hello world you mother fucker</p>
+    <p data-kaka="fuck">fdsakljflksdajl;kfjslkalkfjslkjfkdslakjfdhkfios378784432534543</p>
+    <p style="text-shadow: 1px 1px 1px #000,-1px -1px 1px #fff">翻看了三大纪律开发建设路口反对撒立刻就分开了圣诞节阿奎罗富商大贾克里斯朵夫反对撒开了飞机上来看</p>
+    <p style="text-shadow: 1px 1px 1px #fff,-1px -1px 1px #000">翻看了三大纪律开发建设路口反对撒立刻就分开了圣诞节阿奎罗富商大贾克里斯朵夫反对撒开了飞机上来看</p>
+    <div style="width: 100px;height:100px;background: #4caf50;float: left;cursor: pointer;outline-width: 2px;outline-color: rebeccapurple"></div>
+    <p>fdsaklfj翻看了电视剧啊看来福建省打开老骥伏枥；撒娇反对是咖啡喝的可乐肌肤快速拉近付款历史反对撒开了就分开了仨就分开了手机付款历史的反对撒开了就分款历史反对撒开了就分开了仨就分开了手机付款历史的反对撒开了款历史反对撒开了就分开了仨就分开了手机付款历史的反对撒开了款历史反对撒开了就分开了仨就分开了手机付款历史的反对撒开了款历史反对撒开了就分开了仨就分开了手机付款历史的反对撒开了开了三大</p>
+    <div>
+        <img width="100" height="100" style="vertical-align: middle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603946518169&di=b1af67712d485853a2a3ca5522d40683&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn19%2F0%2Fw400h400%2F20180910%2F3391-hiycyfw5413589.jpg" alt="">
+        <span style="vertical-align: middle">hello you name</span>
+        <span>kakakakakka quntta frank</span>
+    </div>
+    <div style="height: 100px;width: 200px;text-overflow: ellipsis;overflow: hidden">
+        <span>fdsakljfksajlkfsjalkfsafdsakljfksajlkfsjalkfsafdsakljfksajlkfsjalkfsafdsakljfksajlkfsjalkfsafdsakljfksajlkfsjalkfsa</span>
+        <p>翻看了电视剧啊看来福建省打开老骥伏枥；撒娇反对是咖啡翻看了电视剧啊看来福建省打开老骥伏枥；撒娇反对是咖啡翻看了电视剧啊看来福建省打开老骥伏枥；撒娇反对是咖啡翻看了电视剧啊看来福建省打开老骥伏枥；撒娇反对是咖啡</p>
+    </div>
+    <span id="ka">kakakakakaka</span>
+    <span id="qw">翻看了电视剧啊看来福建省打开老骥伏枥</span>
+    <input type="file" id="fileupload">
+    <div id="box1">
+        <div>
+            <img width="100" height="100" style="vertical-align: middle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603946518169&di=b1af67712d485853a2a3ca5522d40683&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn19%2F0%2Fw400h400%2F20180910%2F3391-hiycyfw5413589.jpg" alt="">
+        </div>
+        <div>
+            <img width="100" height="100" style="vertical-align: middle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603946518169&di=b1af67712d485853a2a3ca5522d40683&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn19%2F0%2Fw400h400%2F20180910%2F3391-hiycyfw5413589.jpg" alt="">
+        </div>
+        <div>
+            <img width="100" height="100" style="vertical-align: middle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603946518169&di=b1af67712d485853a2a3ca5522d40683&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn19%2F0%2Fw400h400%2F20180910%2F3391-hiycyfw5413589.jpg" alt="">
+        </div>
+    </div>
+    <div id="root">
 
+    </div>
+<script>
+    list1 = ['fds','yty',32,78,'hgg']
+    for (const item of list1) {
+      console.log(item)
+    }
+    const map1 = new Map([['1','2'],['3','4']])
+    console.log(map1)
+    function Father() {
+        this.name = 'baba';
+        this.sex = 'man';
+        this.age = '40';
+        this.speak = function (cry) {
+            console.log(`i am ${this.name} i am ${this.age} years old & i am a ${this.sex} i am ${cry}`)
+        }
+    }
+    var fa = new Father()
+    fa.speak('哭')
+    var maobj = {
+      name:'mama',
+      sex:'woman',
+      age:'30'
+    }
+    fa.speak.call(maobj,'哭')
+    fa.speak.apply(maobj,['哭'])
+    fa.speak.bind(maobj)('哭')
+    arr1 = [1,2,3,4,5,6,7,8,9]
+    // arr1.splice(0,3,'qwe','ret','yty')
+    // arr1.splice(5)
+    console.log(arr1.slice(3))
+    console.log(arr1);
+    console.log(arr1.toString())
+    console.log(arr1.join(''))
+    console.log(arr1.toLocaleString())
+    console.log(arr1.indexOf(3))
+    console.log(arr1.lastIndexOf(9))
+    console.log(arr1.lastIndexOf(100))
+    var result = arr1.every((item)=>{
+      return item>-1
+    })
+    console.log(result)
+    var result1 = arr1.some(item => item>8)
+    console.log(result1)
+    var result2 = arr1.filter(item => item>7)
+    console.log(result2)
+    var arr2 = arr1.forEach(item => {
+      return item=item+1
+    })
+    console.log(arr2)     // undefined
+    var arr3 = arr1.map(item => item+=1)
+    console.log(arr3)     // 有return 每一项都处理
+    console.log(arr1)
+    var result3 = arr1.reduce((a,b)=>{
+      return a+b
+    })
+    var result4 = arr1.reduce((a,b)=>{
+      return a-b
+    })
+    var result5 = arr1.reduceRight((a,b)=>{
+      return a-b
+    })
+    console.log(result3)
+    console.log(result4)
+    console.log(result5)
+    var reg = new RegExp('mother');
+    var str = 'fuckyoumother'
+    var result6 = str.match(reg);
+    console.log(result6);
+    var reg1 = /you/i
+    var result7 = str.match(reg1)
+    console.log(result7)
+    var str1 = 'abcfuckfdsoai';
+    var reg2 = /^ab/g;
+    console.log(str1.replace(reg2,'good'))
+    var str2 = 'abcdefg'
+    var reg3 = /[a-z]/g
+    console.log(str2.replace(reg3,'good'))
+    document.getElementById('fileupload').addEventListener('change',function () {
+        var file = this.files[0]
+        var reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+        reader.addEventListener('load',function (e) {
+            console.log(e)
+            var buff = new Uint8Array(e.target.result)
+            var size = 1*1024*1024; // 以多少为单位切分
+            var step = Math.ceil(buff.length/size);
+            for(var i=0;i<step;i++){
+              var stepbuff = buff.slice(i*size,(i+1)*size)
+            }
+        })
+    })
+
+    // 一下可以验证切分的准确性
+    var arrbuff = [1,2,3,4,5,6,7,8,9,10]
+    var len = 4
+    var step = Math.ceil(arrbuff.length/len)
+    for(var i=0;i<step;i++){
+      console.log(arrbuff.slice(i*len,(i+1)*len))
+    }
+    // 以上验证 结束
+    var img1 = document.createElement('img');
+    img1.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603946518169&di=b1af67712d485853a2a3ca5522d40683&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn19%2F0%2Fw400h400%2F20180910%2F3391-hiycyfw5413589.jpg'
+    img1.width = 100;
+    var root = document.getElementById('root');
+    root.appendChild(img1);
+</script>
 </body>
 </html>
