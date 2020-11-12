@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue3</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="root">
+  <input type="text" v-model="user" ref="testref">
+  <p>{{str}}</p>
+  <test-component>
+    <p>slot content {{data}}</p>
+    <template v-slot:header>
+      <p>i am header</p>
+    </template>
+  </test-component>
+  <todo-list>
+    <template v-slot:default="data">
+      <span>{{ data.data }}</span>
+    </template>
+  </todo-list>
+  <todo-list v-slot="data">
+    <span>{{data.data}}</span>
+  </todo-list>
+  <todo-list v-slot="{ data:item }">
+    <span>{{item}}</span>
+  </todo-list>
+  <p ref="refp">{{message}}</p>
+  <button @click="shownexttick">click me to next tick</button>
+  <div v-pin="200" style="width: 200px;height: 200px;background: #4caf50"></div>
+  <p>{{testdata}}</p>
+  <button @click="copytest">click me to copy</button>
+  <textarea name="" id="" cols="30" rows="10"></textarea>
+</div>
+<script>
+  window.testdata = 'i am testdata'
+</script>
+<script>
+  var arr = []
+  const count = Vue.ref(0)
+  const state = Vue.reactive({count})
+  const copy = Vue.readonly(state)
+  console.log('copy',copy.count)
+  copy.count = 2
+  state.count = 3
+  console.log(state.count)
+  arr[0] = count
+  console.log(arr[0]) // 不展开值，需要 .value 访问
+  console.log(state)
+  console.log(state.count)  //  自动展开
+  const book = Vue.reactive({
+    name:'hello every',
+    author:'Frank',
+    time:'2020-11-11'
+  })
+  const { name, author } = book
+  console.log(name,author)
+  console.log(book)
+  let app = Vue.createApp({
+    data(){
+      return {
+        user:'wo shi user',
+        str:'qwer',
+        data: 'i am data',
+        message:'hello 啊',
+        testdata
+      }
+    },
+    provide(){
+      return {
+        user: this.user
+      }
+    },
+    created(){
+      console.log('created')
+      console.log(this)
+    },
+    mounted(){
+      console.log(this.$refs)
+      this.$refs.testref.focus()
+    },
+    methods:{
+      shownexttick(){
+        this.message = '树先生'
+        console.log(this.$refs.refp.innerText)
+        this.$nextTick(()=>{
+          console.log(this.$refs.refp.innerText)
+        })
+      },
+      copytest(){
+        var text = '我是复制的内容，我是复制的内容'
+        var input = document.createElement('input');
+        input.setAttribute('readonly', 'readonly'); // 防止手机上弹出软键盘
+        input.setAttribute('value', text);
+        document.body.appendChild(input);
+        // input.setSelectionRange(0, 9999);
+        input.select();
+        var res = document.execCommand('copy');
+        document.body.removeChild(input);
+        return res;
+      }
+    }
+  })
+  app.component('test-component',{
+    inject:['user'],
+    template:`
+      <div>
+        <p>test</p>
+        <p>{{user}}</p>
+        <slot name="header"></slot>
+        <slot></slot>
+      </div>
+    `
+  })
+  app.component('todo-list',{
+    data(){
+      return {
+        list: ['frank','jock']
+      }
+    },
+    template:`
+      <ul>
+        <li v-for="item in list">
+          <slot :data="item"></slot>
+        </li>
+      </ul>
+    `
+  })
+  app.directive('pin',{
+    mounted(el,binding){
+      el.style.position = 'fixed'
+      el.style.top = binding.value + 'px'
+    }
+  })
+  app.mount('#root')
+</script>
+</body>
+</html>

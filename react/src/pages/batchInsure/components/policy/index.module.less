@@ -1,0 +1,102 @@
+.table {
+  border: 1px solid @border-color;
+  border-right: none;
+  border-bottom: none;
+  line-height: 40px;
+  border-radius: 4px 4px 0 0;
+}
+.thead {
+  background-color: #fafafa;
+  border-radius: 4px 4px 0 0;
+}
+.tbody .tr:hover {
+  background-color: #e6f7ff;
+}
+.th,
+.td {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1px solid @border-color;
+  border-bottom: 1px solid @border-color;
+  text-align: center;
+  height: 40px;
+}
+.th {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+
+.title {
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+.policy {
+  // padding: 10px;
+  border: 1px solid @border-color;
+  margin-bottom: 20px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.wrapper {
+  padding: 20px 0;
+}
+
+.left {
+  float: left;
+  span {
+    margin-right: 10px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+.right {
+  float: right;
+  span {
+    margin-right: 10px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+.topic {
+  border-bottom: 1px solid @border-color;
+  line-height: 40px;
+  padding: 0 10px;
+}
+.content {
+  padding: 0 10px;
+}
+
+.insured {
+  padding-bottom: 10px;
+}
+
+.pagination {
+  text-align: right;
+  padding: 10px 0;
+}
+
+.iTable {
+  :global {
+    .ant-table {
+      &-thead {
+        th {
+          text-align: center;
+        }
+      }
+      &-tbody {
+        td {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

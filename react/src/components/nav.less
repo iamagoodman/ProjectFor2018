@@ -1,0 +1,39 @@
+.nav {
+  border-bottom: 1px solid #aaa;
+  padding-top: 24px;
+  padding-left: 25px;
+  overflow: hidden;
+  background-color: #fff;
+  &-item {
+    float: left;
+    margin-right: 10px;
+    list-style: none;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    a {
+      display: block;
+      line-height: 40px;
+      padding: 0 22px;
+      border-radius: 4px 4px 0 0;
+      background-color: #ebeef2;
+      color: #8795b5;
+      font-size: 12px;
+      &:hover {
+        background-color: #2ea3ff;
+        color: #fff;
+      }
+      &.active {
+        background-color: #2ea3ff;
+        color: #fff;
+      }
+      &:focus {
+        text-decoration: none;
+      }
+    }
+    &.active a {
+      background-color: #2ea3ff;
+      color: #fff;
+    }
+  }
+}

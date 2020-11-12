@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  var vm = new Vue({
+    el:'#root',
+    data:{
+      site: "菜鸟教程",
+      url: "www.runoob.com",
+      alexa: "10000"
+    },
+    methods:{
+      speak(){
+        console.log('hello')
+      }
+    }
+  })
+</script>
+</body>
+</html>

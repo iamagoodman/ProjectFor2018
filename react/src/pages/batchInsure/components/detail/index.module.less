@@ -1,0 +1,40 @@
+.wrapper {
+  line-height: 40px;
+  border: 1px solid @border-color;
+  border-bottom: none;
+  border-right: none;
+}
+
+.label {
+  background-color: #fafafa;
+  text-align: right;
+  padding: 0 10px;
+  border-right: 1px solid @border-color;
+}
+.value {
+  flex: 1;
+  padding: 0 10px;
+  border-right: 1px solid @border-color;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 40px;
+}
+
+.col {
+  border-bottom: 1px solid @border-color;
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  text-align: center;
+  :global {
+    .ant-btn {
+      margin-right: 15px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+}

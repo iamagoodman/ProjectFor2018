@@ -1,0 +1,202 @@
+p {
+  margin: 0;
+}
+// html, body {
+//     height: 100%;
+//     overflow: hidden;
+// }
+td {
+  word-break: break-all;
+}
+#app,
+.wrapper {
+  height: 100%;
+}
+.loading-wrapper {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+
+  > .ant-spin-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px -10px -10px;
+  }
+  > .ant-spin-text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+}
+
+.tl {
+  text-align: left;
+}
+.tr {
+  text-align: right;
+}
+.tc {
+  text-align: center;
+}
+
+.content-wrapper {
+  padding: @padding;
+}
+
+.wrapperTable {
+  padding: @padding;
+  background-color: @bg;
+}
+
+.form-wrapper.ant-form {
+  padding: 24px @padding 0;
+  margin-bottom: 20px;
+  .form-action-wrapper {
+    .ant-btn {
+      margin-right: 15px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.table-action-wrapper {
+  .anticon {
+    cursor: pointer;
+    color: @primary-color;
+    font-size: 16px;
+    margin-right: 10px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+.ant-form {
+  .form-action-wrapper {
+    .ant-btn {
+      margin-right: 15px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.ant-layout-has-sider {
+  height: 100%;
+}
+
+.operate-wrapper.ant-form {
+  padding: 24px 15px;
+}
+
+.detail-wrapper {
+  background-color: #fff;
+  padding: 15px;
+}
+.detail-form-wrapper {
+  .detail-item-wrapper {
+    margin-bottom: 15px;
+  }
+}
+
+.detail-item-wrapper {
+  line-height: 36px;
+  font-size: 15px;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  word-break: break-all;
+  padding-right: 5px;
+  .tr {
+    padding-left: 10px;
+    font-weight: bold;
+  }
+}
+
+.editor-item {
+  .ant-form-item-control {
+    line-height: 1;
+  }
+}
+
+.edui-default .edui-editor-iframeholder {
+  height: 500px !important;
+  overflow: hidden;
+}
+
+.wrapperTable {
+  background-color: #fff;
+  padding: 20px;
+}
+
+.action-wrapper {
+  padding: 15px;
+}
+
+.upload-wrapper {
+  position: relative;
+  .upload-download {
+    position: absolute;
+    top: 4px;
+    left: 120px;
+  }
+}
+
+.datax {
+  &-file-wrapper {
+    padding: 0;
+    margin: 0;
+  }
+  &-file-item {
+    list-style: none;
+    color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 8px;
+    position: relative;
+    padding-right: 20px;
+    line-height: 28px;
+    cursor: pointer;
+    .anticon {
+      color: #aaa;
+      &-paper-clip {
+        margin-right: 8px;
+      }
+    }
+    &:first-of-type {
+      margin-top: 8px;
+    }
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    &:hover {
+      background-color: @light-color;
+      .close {
+        opacity: 1;
+      }
+    }
+    .close {
+      cursor: pointer;
+      opacity: 0;
+      position: absolute;
+      line-height: 28px;
+      top: 0;
+      right: 5px;
+    }
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
