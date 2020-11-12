@@ -86,6 +86,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@ant-design/codemod-v4": "^1.1.0",
     "@antv/g2": "^3.5.3",
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "antd": "^3.16.1",
