@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function test1() {
+    function test2(msg) {
+      console.log(msg)
+    }
+    return test2
+  }
+  test1()('hello')
+</script>
+</body>
+</html>
