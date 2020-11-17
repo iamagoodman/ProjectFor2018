@@ -1,0 +1,99 @@
+.banner {
+    &-bg {
+        // background-image: url('../../assets/manage.png');
+    }
+}
+
+.business {
+    // &-content {
+    //     padding: 60px;
+    // }
+    &-item {
+        font-size: 18px;
+        line-height: 28px;
+        padding-left: 40px;
+        background: url('/img/business.png') left 1px no-repeat;
+        margin-bottom: 20px;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.aptitude {
+    &-content {
+        text-align: center;
+    }
+    &-info {
+        font-size: 14px;
+        line-height: 28px;
+        text-align: center;
+    }
+    &-prove {
+        // overflow: hidden;
+        text-align: center;
+        padding-top: 80px;
+        font-size: 0;
+        .clearfix();
+        &-box {
+            // float: left;
+            display: inline-block;
+            // width: 360px;
+            // height: 300px;
+            box-shadow: 0 2px 20px 0 rgba(0,0,0,0.10);
+            border-radius: 2px;
+            background-color: #fff;
+            // margin-right: 140px;
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+            width: 35%;
+            &:first-of-type {
+                margin-right: 15%;
+            }
+            &:after {
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+                content: '';
+            }
+            img {
+                // vertical-align: middle;
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+@media (max-width: @screen-md) {
+    .business {
+        &-wrapper {
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+        &-item {
+            font-size: 14px;
+        }
+    }
+    .aptitude {
+       
+        &-content {
+            text-align: left;
+        }
+        // &-info {
+        //     font-size: 16px;
+        // }
+        &-prove {
+            &-box {
+                width: 75%;
+                &:first-of-type {
+                    margin-right: 0;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+    
+}

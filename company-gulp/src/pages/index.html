@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include("../include/head.html", { "title": "同保呗"})
+    <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
+</head>
+<body>
+    <div class="app">
+        @@include("../include/header.html", {"name": "index"})
+        <div class="index-container">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide banner-item">
+                        <img class="banner-bimg" src="/img/banner1.png"/>
+                        <div class="banner-text banner-text1">
+                            <h3 class="banner-title">同保呗</h3>
+                            <h4 class="banner-info">与用户同心，以科技助力<br/>让保险触手可及</h4>
+                        </div>
+                    </div>
+                    <div class="swiper-slide banner-item">
+                        <img class="banner-bimg" src="/img/banner2.jpg"/>
+                        <div class="banner-text banner-text2">
+
+                            投入点滴 无限保障
+                        </div>
+                    </div>
+                    <div class="swiper-slide banner-item">
+                        <img class="banner-bimg" src="/img/banner3.png"/>
+                        <div class="banner-text banner-text3">
+                            简单保险 快乐生活
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="feature-wrapper">
+                <ul class="feature">
+                    <li class="feature-item col-8 col-md-24">
+                        <img src="/img/major.png" class="feature-img"/>
+                        <div class="feature-info">
+                            <strong class="feature-trait">专业</strong>
+                            <p class="feature-trait-info">专业团队提供专业化的保险经纪服务，严选优质产品</p>
+                        </div>
+
+                    </li>
+                    <li class="feature-item col-8 col-md-24">
+                        <img src="/img/easy.png" class="feature-img" />
+                        <div class="feature-info">
+                            <strong class="feature-trait">便捷</strong>
+                            <p class="feature-trait-info">互联网化的流畅投保体验，便捷服务一键触达</p>
+                        </div>
+
+                    </li>
+                    <li class="feature-item col-8 col-md-24">
+                        <img src="/img/idea.png" class="feature-img"/>
+                        <div class="feature-info">
+                            <strong class="feature-trait">创新</strong>
+                            <p class="feature-trait-info">以大数据能力为核心，深入互联网场景，创造保险服务体验新模式</p>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @@include("../include/footer.html")
+    </div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/swiper.min.js"></script>
+
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 2000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true,
+        },
+        loop: true
+    });
+</script>
+</html>

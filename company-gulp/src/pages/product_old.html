@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include("../include/head.html", { "title": "同保呗"})
+</head>
+<body>
+    <div class="app">
+        @@include("../include/header.html", {"name": "product"})
+        <div class="container">
+            <div class="page-banner-wrapper">
+                    <div class="page-banner">
+                        <div class="page-banner-bg banner-product-bg">
+                            <img class="page-banner-img banner-product-img" src="/img/product.png" alt="">
+                        </div>
+                        <div class="page-banner-info banner-product-info">
+                            <!-- <span class={style.shadow}></span> -->
+                            <div class="text">严选优质产品，创新服务模式</div>
+                        </div>
+                    </div>
+                    
+            </div>
+            <div class="product-wrapper">
+                <div class="product">
+                    <h3 class="title product-title">产品矩阵</h3>
+                    <div class="product-content">
+                        <ul class="introduce-wrapper">
+                            <li class="introduce-item introduce-item-serve">
+                                <div class="introduce-illustration">
+                                    <img src="/img/product1.png" alt="专业化的经纪服务"/>
+                                </div>
+                                
+                                <div class="introduce-text">
+                                    <h4 class="introduce-title">专业化的经纪服务</h4>
+                                    <p class="introduce-info">为需求提供保险方案设计、项目招标、风控咨询、营销推动等多种解决方案，设计与客户所面临的需求相适应的最佳解决方案。</p>
+                                </div>
+                                
+                            </li>
+                            <li class="introduce-item introduce-item-resource">
+                                <div class="introduce-illustration">
+                                    <img src="/img/product2.png" alt="多样化的产品资源"/>
+                                </div>
+                                
+                                <div class="introduce-text">
+                                    <h4 class="introduce-title">多样化的产品资源</h4>
+                                    <p class="introduce-info">类型丰富的产品库，包含财产险、意外险、健康险、寿险等多款成熟产品，充分满足客户的风险保障需求，为用户提供多样化的解决方案。</p>
+                                </div>
+                                
+                            </li>
+                            <li class="introduce-item introduce-item-experience">
+                                <div class="introduce-illustration">
+                                    <img src="/img/product3.png" alt="定制化的产品体验"/>
+                                </div>
+                                <div class="introduce-text">
+                                    <h4 class="introduce-title">定制化的产品体验</h4>
+                                    <p class="introduce-info">为渠道及特定场景的风险提供定制化产品服务，运用大数据、人工智能等科技深度定制，充分契合渠道需求与客户需求，打造更加个性化、贴心化的产品体验。</p>
+                                </div>
+                               
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @@include("../include/footer.html")
+    </div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+
+</html>

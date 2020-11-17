@@ -1,0 +1,285 @@
+.productn {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 18px;
+    padding-top: 20px;
+    &-all {
+        padding: 0 20px;
+    }
+    &-padding {
+        padding: 0 20px;
+        background-color: transparent;
+    }
+    &-title {
+        .clearfix();
+        line-height: 50px;
+    }
+    &-logo {
+        float: right;
+        img {
+            vertical-align: middle;
+        }
+    }
+    &-name {
+        font-size: 32px;
+        float: left;
+        color: rgba(0,0,0,0.65);
+        letter-spacing: 1.6px;
+    }
+    &-item {
+        background-color: #fff;
+        padding: 20px 20px 0;
+        box-shadow: 0 12px 17px 0 rgba(0,0,0,0.06);
+        margin-bottom: 20px;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+    &-tag {
+        .clearfix();
+        padding-bottom: 10px;
+        &-item {
+            float: left;
+            font-family: 'PingFangSC-Medium';
+            font-size: 12px;
+            color: #13C2C2;
+            text-align: left;
+            line-height: 20px;
+            background: #E6FFFB;
+            border: 1px solid #87E8DE;
+            border-radius: 4px;
+            border-radius: 4px;
+            margin: 10px 10px 0 0;
+            padding: 0 8px;
+        }
+    }
+    &-detail {
+        position: relative;
+        padding-right: 300px;
+        min-height: 135px;
+    }
+    &-guard {
+        font-family: 'PingFangSC-Medium';
+        font-size: 14px;
+        color: rgba(0,0,0,0.65);
+        letter-spacing: 0.7px;
+        padding-bottom: 10px;
+        padding-right: 50px;
+        &-item {
+            .clearfix();
+            line-height: 40px;
+        }
+        &-name {
+            float: left;
+            position: relative;
+            padding-left: 15px;
+            &:after {
+                content: '';
+                position: absolute;
+                width: 8px;
+                height: 8px;
+                border-radius: 4px;
+                background-color: #F4B73D;
+                left: 0;
+                top: 50%;
+                margin-top: -4px;
+            }
+        }
+        &-claim {
+            float: right;
+        }
+    }
+    &-price {
+        width: 300px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+    }
+    &-pay {
+        width: 225px;
+        display: inline-block;
+        &-btn {
+            display: block;
+            width: 100%;
+            height: 52px;
+            line-height: 52px;
+            text-align: center;
+            font-family: 'PingFangSC-Medium';
+            font-size: 20px;
+            color: #F13842;
+            letter-spacing: 1px;
+            border: 1px solid #F13842;
+            border-radius: 4px;
+            border-radius: 4px;
+            &:hover {
+                background-color: #F13842;
+                color: #fff;
+            }
+        }
+    }
+    &-cost {
+        font-family: 'PingFangSC-Medium';
+        font-size: 24px;
+        color: #F13842;
+        letter-spacing: 1.2px;
+        // line-height: 36px;
+        span {
+            font-size: 32px;
+        }
+        i {
+            font-style: normal;
+            font-size: 24px;
+        }
+    }
+    &-fee {
+        padding-bottom: 20px;
+    }
+    &-sale {
+        font-family: 'PingFangSC-Medium';
+        font-size: 16px;
+        color: #F13842;
+        letter-spacing: 0.8px;
+        // line-height: 24px;
+    }
+    &-nav {
+        width: 200px;
+        transition: all 0.2s;
+        position: relative;
+        .clearfix();
+        &-line {
+            width: 70px;
+            height: 2px;
+            background-color: #297CF4;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transition: all 0.2s;
+            display: none;
+        }
+        &-wrapper {
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        &-item {
+            float: left;
+            font-family: 'PingFangSC-Regular';
+            font-size: 16px;
+            color: #344055;
+            width: 100px;
+            line-height: 32px;
+            padding: 10px 0;
+            cursor: pointer;
+            &:last-of-type {
+                margin-right: 0;
+            }
+            &.active {
+                color: #297CF4;
+            }
+        }
+    }
+}
+
+
+@media (max-width: @screen-md) {
+    .productn {
+        padding-top: 0;
+        &-item {
+            padding-top: 0;
+            border-radius: 4px;
+            box-shadow: none;
+        }
+        &-name {
+            font-size: 16px;
+            color: #333;
+            font-family: 'PingFangSC-Semibold';
+        }
+        &-logo {
+            line-height: 50px;
+            width: 100%;
+            border-bottom: 1px solid #eee;
+        }
+        &-title {
+            line-height: 40px;
+        }
+        &-guard {
+            padding-right: 0;
+        }
+        &-detail {
+            padding-right: 0;
+        }
+        &-padding {
+            background-color: #fff;
+        }
+        &-price {
+            width: 100%;
+            position: relative;
+            top: 0;
+            margin-top: 0;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            transform: translate(0, 0);
+            padding-bottom: 20px;
+            .clearfix();
+        }
+        &-fee {
+            float: left;
+            padding-bottom: 0;
+            text-align: left;
+            margin-top: -10px;
+        }
+        &-cost {
+            // line-height: 26px;
+            span {
+                font-size: 20px;
+            }
+            i {
+                font-size: 14px;
+            }
+        }
+        &-pay {
+            float: right;
+            width: 150px;
+            cursor: pointer;
+            &-btn {
+                height: 44px;
+                line-height: 44px;
+            }
+        }
+        &-sale {
+            // line-height: 18px;
+            font-size: 12px;
+            font-family: 'PingFangSC-Regular';
+        }
+        &-nav {
+            &-line {
+                display: block;
+            }
+        }
+        
+    }
+    .banner{
+        &-productn{
+            &-bg {
+                width: calc(~"110% + 50px");
+                margin-right: -62%;
+            }
+            &-img {
+                width: 80%;
+                padding: 5% 0;
+            }
+        //     &-info {
+        //         padding-top: 110px;
+        //         padding-left: 60px;
+        //         .text {
+        //             width: 250px;
+        //         }
+        //     }
+        // }
+        
+        }
+    }
+    
+}

@@ -1,0 +1,32 @@
+{
+  "name": "web_seo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production gulp build",
+    "dev": "cross-env NODE_ENV=development gulp dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "cross-env": "^5.2.0",
+    "gulp": "^4.0.2",
+    "gulp-changed": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-file-include": "^2.0.1",
+    "gulp-if-else": "^1.0.3",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-less": "^4.0.1",
+    "gulp-load-plugins": "^1.6.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "less-plugin-autoprefix": "^2.0.0",
+    "node-sass": "^5.0.0",
+    "uglify-js": "^3.6.0"
+  }
+}

@@ -1,0 +1,37 @@
+@grid-columns: 24;
+
+.grid-columns(@index, @class) when (@index > 0) {
+    .col@{class}-@{index} {
+        float: left;
+        width: @index / @grid-columns * 100%;
+        box-sizing: border-box;
+    }
+    .grid-columns((@index - 1), @class);
+}
+
+.make-grid(@class: ~'') {
+    .grid-columns(@grid-columns, @class);
+}
+
+.make-grid();
+
+// @media (min-width: @screen-xs) {
+//     .make-grid(-xs);
+// }
+
+// @media (min-width: @screen-sm) {
+//     .make-grid(-sm);
+// }
+
+// @media (min-width: @screen-md) {
+//     .make-grid(-md);
+// }
+
+// @media (min-width: @screen-lg) {
+//     .make-grid(-lg);
+// }
+
+
+@media (max-width: @screen-md) {
+    .make-grid(-md);
+}

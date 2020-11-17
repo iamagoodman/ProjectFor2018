@@ -1,0 +1,27 @@
+// 单行文字超出隐藏
+.text-overflow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 圆角
+// .border-radius($tl, $tr, $bl, $br) {
+//     border-top-left-radius: $tl; 
+//     border-top-right-radius: $tr; 
+//     border-bottom-right-radius: $br; 
+//     border-bottom-left-radius: $bl; 
+// }
+
+// 清除浮动
+.clearfix() {
+    zoom: 1;
+    &::before,
+    &::after {
+      display: table;
+      content: '';
+    }
+    &::after {
+      clear: both;
+    }
+}
