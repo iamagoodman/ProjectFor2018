@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <script src="http://cdn.bootcss.com/less.js/2.5.3/less.min.js"></script>
   <style>
     *{
       padding: 0;margin: 0;
@@ -11,16 +12,96 @@
       height: 100%;overflow: hidden;
     }
     .container{
-      height: 100%;
+      height: 100%;background: #7b7c7c;
+    }
+    .wapper{
+      height: 100%;padding-bottom: 100px;
+      box-sizing: border-box;
+      background: #2ea3ff;
+    }
+    .content{
+      /*height: 100%;*/
+      /*如果有header 根据calc 减去header高度, 如果没header 就是100%*/
+      height: calc(100% - 100px);
+      padding-bottom: 20px;
+      box-sizing: border-box;
+      background: #4caf50;
+      overflow: auto;
+    }
+    .footer{
+      height: 100px;
+      background: #F4B73D;
+      font-size: 50px;line-height: 100px;
+      text-align: center;
+    }
+    .header{
+      height: 100px;background: #ff4d4f;line-height: 100px;
+      font-size: 50px;text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="container">
-
+    <div class="wapper">
+      <div class="header">i am header</div>
+      <div class="content">
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+        <h1>fdsklajfklsdajklfjsakl</h1>
+      </div>
+      <div class="footer">i am footer</div>
+    </div>
   </div>
-  <script>
-    console.log(window.screenTop)
-  </script>
 </body>
 </html>
