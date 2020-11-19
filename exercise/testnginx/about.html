@@ -7,21 +7,29 @@
 </head>
 <body>
 <h1>about page</h1>
-<a href="/index.html">home page</a>
+<a href="/">home page</a>
 <button onclick="send('login/logout')">logout</button>
 <button onclick="send('partner/list')">partner/list</button>
 <button onclick="send('partner/detail')">partner/detail</button>
 <button onclick="send('partner/add')">partner/add</button>
-<button onclick="send('pay/list')">pay/list</button>
-<button onclick="send('pay/detail')">pay/detail</button>
-<button onclick="send('pay/add')">pay/add</button>
+<button onclick="send('pay/list','post')">pay/list</button>
+<button onclick="send('pay/detail','post')">pay/detail</button>
+<button onclick="send('pay/add','post')">pay/add</button>
+<img src="./static/pic3.jpg" alt="">
+<img src="./static/pic4.jpg" alt="">
 <script>
-  function send(url) {
-    var baseurl = 'http://localhost:3389/';
-    var param = {test:'Y'}
-    axios.get(baseurl+url,param).then((res)=>{
-      console.log(res);
-    })
+  function send(url,method) {
+    var baseurl = '/';
+    var params = {test:'Y'}
+    if (method) {
+      axios[method](baseurl+url,params).then((res)=>{
+        console.log(res);
+      })
+    } else {
+      axios.get(baseurl+url, {params}).then((res)=>{
+        console.log(res);
+      })
+    }
   }
 </script>
 </body>

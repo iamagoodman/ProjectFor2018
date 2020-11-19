@@ -55,5 +55,26 @@ module.exports = function () {
     }
     res.send(data2).end()
   })
+  router.post('/detail',function (req,res) {
+    let data = {
+      success:'Y',
+      message:'pay detail success'
+    }
+    res.send(data).end()
+  })
+  router.post('/list',function (req,res) {
+    let data = {
+      success:'Y',
+      message:'pay list success'
+    }
+    res.send(data).end()
+  })
+  router.post('/add',function (req,res) {
+    let data = {
+      success:'Y',
+      message:'pay add success'
+    }
+    res.send(data).end()
+  })
   return router
 }
