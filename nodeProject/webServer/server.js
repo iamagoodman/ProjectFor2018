@@ -10,19 +10,24 @@ const consolidate = require('consolidate')
 const expressRoute = require('express-route')
 const adminroute = require('./route/admin/index')
 const webroute = require('./route/web')
+const loginroute = require('./route/login/index')
+const policyroute = require('./route/policy/index')
+const insureroute = require('./route/insure/index')
+const partnerroute = require('./route/partner/index')
+const payroute = require('./route/pay/index')
 
 var server = express();
 // test abc
 server.listen(3389);
-// server.all('*', function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-//     res.header("Access-Control-Allow-Headers", "content-type");
-//     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-//     res.header("X-Powered-By",'3.2.1')
-//     res.header("Content-Type", "application/json;charset=utf-8");
-//     next();
-// });
+server.all('*', function(req, res, next) {
+    // res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Headers", "content-type");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",'3.2.1')
+    res.header("Content-Type", "application/json;charset=utf-8");
+    next();
+});
 // 获取请求
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded())
@@ -49,6 +54,18 @@ server.set('view engine','html');
 server.use('/web',webroute());
 
 server.use('/admin',adminroute());
+
+server.use('/login',loginroute());
+
+server.use('/policy',policyroute());
+
+server.use('/insure',insureroute());
+
+server.use('/partner',partnerroute());
+
+server.use('/pay',payroute());
+
+
 
 
 // 默认 static
