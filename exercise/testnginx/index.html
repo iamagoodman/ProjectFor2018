@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+</head>
+<body>
+<h1>home page</h1>
+<a href="/about.html">about page</a>
+<button onclick="send('login')">login</button>
+<button onclick="send('policy/list')">policy/list</button>
+<button onclick="send('policy/detail')">policy/detail</button>
+<button onclick="send('policy/add')">policy/add</button>
+<button onclick="send('insure/list')">insure/list</button>
+<button onclick="send('insure/detail')">insure/detail</button>
+<button onclick="send('insure/add')">insure/add</button>
+<script>
+  function send(url) {
+    var baseurl = 'http://localhost:3389/';
+    var params = {test:'Y'}
+    axios.get(baseurl+url, {params}).then((res)=>{
+      console.log(res);
+    })
+  }
+</script>
+</body>
+</html>
