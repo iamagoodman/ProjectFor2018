@@ -1,14 +1,19 @@
 from docx import Document
 
-doc = Document('title.docx')
+doc = Document('newdocx.docx')
 
-print(doc.paragraphs)
-print(doc.tables)
-for paragraph in doc.paragraphs:
-		print(paragraph.text)
-# 	print(paragraph.paragraph_format.left_indent)
-		runs = paragraph.runs
-# 		for run in runs:
-# 				print(len(run.text))
-# 				print(run.font.color.rgb)
-# 				print(run.font.highlight_color)
+paragraphs = doc.paragraphs
+
+tables = doc.tables
+
+inline_shapes = doc.inline_shapes
+
+for paragraph in paragraphs:
+    for run in paragraph.runs:
+        print(run.text)
+
+print(tables)
+
+print(inline_shapes)
+
+print(doc.part)
