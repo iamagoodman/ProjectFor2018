@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #container{ overflow: hidden }
+    #target,#result { float: left; width: 50%; height: 500px; overflow: auto }
+    #btn{ padding: 5px 20px; outline: none; border: none; background: #007aff; color: #fff; border-radius: 5px  }
+  </style>
+  <script src="jquery-1.7.2.js"></script>
+</head>
+<body>
+<div id="container">
+  <div id="target" contenteditable="true"></div>
+  <div id="result"></div>
+</div>
+<p style="text-align: center">
+  <button id="btn">运行</button>
+</p>
+  <script>
+    var VdomList = [];
+    var RdomList = [];
+    $('#btn').on('click',function () {
+      // removeEmptyNode('#target');
+      var children = $('#target').children();
+      var result = [];
+      for (var i=0;i<children.length;i++) {
+        var child = children[i];
+        var tagName = $(child)[0].tagName;
+        if (tagName!='STYLE') { // 不是style 标签
+          var vdom = createVdom(child);
+          var rdom = renderDom(vdom);
+          VdomList.push(vdom);
+          RdomList.push(rdom);
+          result.push(child);
+          // $('#result').append(rdom);
+          document.getElementById('result').appendChild(rdom);
+        }
+      }
+    });
+    function removeEmptyNode(target) {
+      // $(target).find(':empty').remove();
+      // $(target).find(":contains(' ')").remove();
+      $(target).find(':empty').css('background','red');
+      $(target).find(":contains(' ')").css('background','blue');
+      // if ($(target).find(':empty')) {
+      //   removeEmptyNode(target);
+      // }
+    }
+    function isEmptyNode(child) {
+      $(child).find(':empty').remove();
+    }
+    function createVdom(dom) {
+      // console.log(dom[0].tagName);
+      // console.log(dom[0].children);
+      var result = {};
+      result.tag = dom.tagName.toLowerCase();
+      result.props = {};
+      console.log(dom.attributes);
+      if (dom.attributes.length>0) {
+        Array.prototype.forEach.call(dom.attributes,function (item) {
+          result.props[transformKey(item.nodeName)] = item.value
+        })
+      }
+      if ($(dom).children() && $(dom).children().length>0) {
+        result.children = Array.prototype.map.call($(dom).children(),function (child) {
+          return createVdom(child)
+        })
+      } else if (dom.innerText) {
+        result.children = [dom.innerText]
+      } else {
+        result.children = []
+      }
+      return result;
+    }
+    function transformKey(key) {
+      var keyObj = {
+        class: 'className',
+        rowspan: 'rowSpan',
+        colspan: 'colSpan'
+      }
+      if (keyObj[key]) {
+        return keyObj[key]
+      } else {
+        return key
+      }
+    }
+    function renderDom(vdom) { // props tag children
+      var dom = document.createElement(vdom.tag);
+      Object.keys(vdom.props).forEach(function (key) {
+        dom[key] = vdom.props[key]
+      })
+      if (vdom.children.length == 0) {
+        return null
+      } else if (typeof vdom.children[0] == "string") {
+        dom.innerText = vdom.children[0]
+      } else {
+        vdom.children.forEach(function (child) {
+          if (child.children.length!=0) {
+            dom.appendChild(renderDom(child))
+          }
+        })
+      }
+      return dom;
+    }
+    function mergeChildren() {
+
+    }
+  </script>
+</body>
+</html>
