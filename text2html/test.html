@@ -5,8 +5,27 @@
   <title>Title</title>
   <style>
     #container{ overflow: hidden }
-    #target,#result { float: left; width: 50%; height: 500px; overflow: auto }
+    #target,#result { float: left; width: 50%; height: 500px; overflow: auto; padding: 10px; box-sizing: border-box }
     #btn{ padding: 5px 20px; outline: none; border: none; background: #007aff; color: #fff; border-radius: 5px  }
+    table {
+      border-collapse: collapse;
+      border: 1px solid black;
+      width: 100%;
+    }
+    table td {
+      border: 1px solid black;
+    }
+    .pnode {
+      margin: 10px 0;
+    }
+    .title1 {
+      text-align: center;
+      font-size: 24px;
+    }
+    .title2 {
+      text-align: center;
+      font-size: 22px;
+    }
   </style>
   <script src="jquery-1.7.2.js"></script>
 </head>
@@ -21,15 +40,22 @@
   <script>
     var VdomList = [];
     var RdomList = [];
+    var ImgCount = 0;
     $('#btn').on('click',function () {
       var children = $('#target').children();
       var result = [];
       for (var i=0;i<children.length;i++) {
         var child = children[i];
         var tagName = child.tagName;
+        var reg1 = /^\s{2,}$/;
         if (tagName && tagName!='STYLE') { // 不是style 标签
           try {
-            var vdom = createVdom(child);
+            if (reg1.test(child.innerText)) {
+              continue;
+              console.log('空行')
+            } else {
+              var vdom = createVdom(child);
+            }
           }catch (e) {
             console.log(e)
           }
@@ -48,27 +74,27 @@
       }
     });
     function removeEmptyNode(target) {
-      $(target).find(':empty').css('background','red');
-      $(target).find(":contains(' ')").css('background','blue');
+      // $(target).find(':empty').css('background','red');
+      // $(target).find(':empty').remove();
+      // $(target).find(":contains(' ')").css('background','blue');
     }
     function isEmptyNode(child) {
       $(child).find(':empty').remove();
     }
     function createVdom(dom) {
       var result = {};
-      var reg1 = /^\s$/;
-      console.log()
-      if (reg1.test(dom.innerText) || (!dom.innerText && dom.tagName!='BR')) {
+      var reg1 = /^\s{2,}$/;
+      if (reg1.test(dom.innerText) || (!dom.innerText && dom.tagName!='BR' && dom.innerHTML.indexOf('br')==-1 && dom.innerHTML.indexOf('img')==-1 && dom.tagName!='IMG')) {
         result.clear = true;
       }
       result.tag = dom.tagName.toLowerCase() == 'font'?'span':dom.tagName.toLocaleLowerCase();
-      result.props = {};
+      var props = {};
       if (dom.attributes.length>0) {
         Array.prototype.forEach.call(dom.attributes,function (item) {
-          result.props[transformKey(item.nodeName)] = item.value
+          props[transformKey(item.nodeName)] = item.value
         })
       }
-      result.props = filterProps(result.tag,result.props);
+      result.props = filterProps(result.tag,props);
       if (dom.childNodes && dom.childNodes.length>0) {
         var filterNodes = Array.prototype.filter.call(dom.childNodes,function (child) {
           return child.nodeName != '#comment'
@@ -84,15 +110,20 @@
         result.children = [dom.innerText]
       } else {
         result.children = [];
-        // result.clear = true;
       }
       return result;
     }
     function createVnode(node) {
+      var reg1 = /^\s{2,}$/;
       var result = {};
       result.tag = 'textnode';
       result.props = {};
-      result.children = [node.textContent || node.nodeValue]
+      if (reg1.test(node.textContent)) {
+        result.children = [];
+        result.clear = true;
+      } else {
+        result.children = [node.textContent || node.nodeValue]
+      }
       return result;
     }
     function transformKey(key) {
@@ -109,6 +140,15 @@
     }
     function renderDom(vdom) { // props tag children
       if (!vdom) return null;
+      if (vdom.clear) return null;
+      var domstr = JSON.stringify(vdom);
+      var className;
+      if (domstr.indexOf('font18')>-1) {
+        className = 'title1'
+      }
+      if (domstr.indexOf('font16')>-1) {
+        className = 'title2'
+      }
       if (vdom.tag == 'textnode') {
         var dom = document.createTextNode(vdom.children[0]);
         return dom;
@@ -117,14 +157,27 @@
       Object.keys(vdom.props).forEach(function (key) {
         dom[key] = vdom.props[key]
       })
-      if (vdom.children.length == 0 && vdom.tag != 'br') {
+      if (domstr.indexOf('img')>-1 && vdom.tag == 'p') {
+        dom.className = 'title2'
+      }
+      if (vdom.tag == 'img') {
+        ImgCount++;
+        console.log(ImgCount);
+      }
+      if (vdom.tag == 'p' && className) {
+        dom.className = className
+      }
+      if (vdom.children.length == 0 && vdom.tag != 'br' && vdom.tag != 'img') {
         return null
       } else if (typeof vdom.children[0] == "string") {
         dom.innerText = vdom.children[0]
       } else {
         vdom.children.forEach(function (child) {
-          if (child.children.length!=0 || child.tag=='br') {
-            dom.appendChild(renderDom(child))
+          if (child.children.length!=0 || child.tag=='br' || child.tag=='img') {
+            var childDom = renderDom(child);
+            if (childDom) {
+              dom.appendChild(childDom);
+            }
           }
         })
       }
@@ -134,28 +187,35 @@
 
     }
     function filterProps(tagName,props) {
-      var filterstyleReg = /(color|background|font-weight)/ig;
+      var filterstyleReg = /^(color|background|font-weight)/ig;
       var filterclassReg = /(p|table)/ig;
       var result = {}
       Object.keys(props).forEach(function (key) {
-        if (key=='style') {
-          var styleList = props[key].split(';');
-          var filterList = styleList.filter(function (style) {
-            return filterstyleReg.test(style) && style!=''
-          });
-          for (var i=0;i<filterList.length;i++) {
-            filterList[i] = filterList[i].trim()
-          }
-          if (filterList.length!=0) {
-            result[key] = filterList.join(';');
-          }
-        } else if (key == 'className') {
+       if (key == 'className') {
           if (filterclassReg.test(tagName)){
             result[key] = tagName+'node'
           }
-        } else if (key != 'face') {
+       } else if (key=='style') {
+          if (props[key].indexOf('font-size')>-1) {
+            var pt = props[key].split('font-size:')[1].split('pt')[0];
+            if (pt==18) {
+              result.className = 'font18'
+            } else if (pt==16) {
+              result.className = 'font16'
+            }
+          }
+          var styleList = props[key].split(';').map(function (item) {
+            return item.trim()
+          });
+          var filterList = styleList.filter(function (style) {
+            return filterstyleReg.test(style) && style!=''
+          });
+          if (filterList.length!=0) {
+            result[key] = filterList.join(';');
+          }
+       }else if (key != 'face') {
           result[key] = props[key]
-        }
+       }
       })
       return result
     }
