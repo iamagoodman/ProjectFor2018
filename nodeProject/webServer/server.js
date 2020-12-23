@@ -15,22 +15,25 @@ const policyroute = require('./route/policy/index')
 const insureroute = require('./route/insure/index')
 const partnerroute = require('./route/partner/index')
 const payroute = require('./route/pay/index')
+const toolsroute = require('./route/tools/index')
 
 var server = express();
-// test abc
-server.listen(3389);
+
+server.listen(8090);
 server.all('*', function(req, res, next) {
     // res.header("Access-Control-Allow-Origin", "*");
+    if (req.url.indexOf('favicon.ico')!=-1) return;
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Headers", "content-type");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("X-Powered-By",'3.2.1')
     res.header("Content-Type", "application/json;charset=utf-8");
+    res.header("allowCredentials",true);
     next();
 });
 // 获取请求
-server.use(bodyParser.json())
-server.use(bodyParser.urlencoded())
+server.use(bodyParser.json({limit:'100mb'}))
+server.use(bodyParser.urlencoded({ limit:'100mb', extended: true }))
 server.use(multerObj.any())
 
 // cookie session
@@ -65,6 +68,7 @@ server.use('/partner',partnerroute());
 
 server.use('/pay',payroute());
 
+server.use('/tools', toolsroute());
 
 
 

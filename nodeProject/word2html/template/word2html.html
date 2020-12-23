@@ -75,8 +75,10 @@
     // var reg = /.\/imgs\/[0-9].jpg/ig;  // 使用服务器imgs文件夹下的图片
     var reg = /src="\S+"/ig
     var regList = resultstr.match(reg);
-    for (var i=0;i<regList.length;i++) {
-      resultstr = resultstr.replace(regList[i],base64List[i]);
+    if (regList && regList.length) {
+      for (var i=0;i<regList.length;i++) {
+        resultstr = resultstr.replace(regList[i],base64List[i]);
+      }
     }
     $.ajax({
       url: '/tools/save',
@@ -87,7 +89,7 @@
         htmlstr: resultstr
       },
       success: function (res) {
-        console.log(res);
+        if (res && res.code == 200) alert('生成成功');
       }
     })
   })
