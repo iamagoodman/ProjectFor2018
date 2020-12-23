@@ -4,7 +4,7 @@ module.exports = function () {
     const router = express.Router();
     router.get('/word2html',function (req,res) {
         res.type('html');
-        res.render('word2html.html',{});
+        res.render('../static/tools/word2html.html',{});
     })
     router.post('/save',function (req,res) {
         var modalName = req.body.modalName;

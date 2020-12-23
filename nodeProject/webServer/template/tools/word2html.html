@@ -75,19 +75,25 @@
     // var reg = /.\/imgs\/[0-9].jpg/ig;  // 使用服务器imgs文件夹下的图片
     var reg = /src="\S+"/ig
     var regList = resultstr.match(reg);
-    for (var i=0;i<regList.length;i++) {
-      resultstr = resultstr.replace(regList[i],base64List[i]);
+    if (regList && regList.length) {
+      for (var i=0;i<regList.length;i++) {
+        resultstr = resultstr.replace(regList[i],base64List[i]);
+      }
     }
+    var data = {
+      modalName: modalName,
+      fileName: fileName,
+      htmlstr: resultstr
+    };
     $.ajax({
       url: '/tools/save',
       type: 'post',
-      data: {
-        modalName: modalName,
-        fileName: fileName,
-        htmlstr: resultstr
+      headers: {
+        'content-type':'application/json;charset=UTF-8'
       },
+      data: JSON.stringify(data),
       success: function (res) {
-        console.log(res);
+        if (res && res.code == 200) alert('生成成功');
       }
     })
   })

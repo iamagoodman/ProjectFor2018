@@ -80,14 +80,18 @@
         resultstr = resultstr.replace(regList[i],base64List[i]);
       }
     }
+    var data = {
+      modalName: modalName,
+      fileName: fileName,
+      htmlstr: resultstr
+    };
     $.ajax({
       url: '/tools/save',
       type: 'post',
-      data: {
-        modalName: modalName,
-        fileName: fileName,
-        htmlstr: resultstr
+      headers: {
+        'content-type':'application/json;charset=UTF-8'
       },
+      data: JSON.stringify(data),
       success: function (res) {
         if (res && res.code == 200) alert('生成成功');
       }
