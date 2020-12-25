@@ -39,7 +39,7 @@
           },3000)
         },3000)
     }
-    main();
+    // main();
     // 纯settimeout
 
 
@@ -50,12 +50,10 @@
         setTimeout(resolve,duration)
       })
     }
-
     async function changeColor(color){
         light.className = color;
         await sleep(2000)
     }
-
     async function main() {
         while (true) {
             await changeColor('red');
@@ -63,7 +61,7 @@
             await changeColor('green');
         }
     }
-    main()
+    // main()
     // async + await + promise
 
 
@@ -91,11 +89,8 @@
             })
         })
     }
-    main()
+    // main()
     //  promise
-
-
-
 
     //  class + async + await + promise
     class CLight{
@@ -120,6 +115,18 @@
     clight.run()
     //  class + async + await + promise
 
+    new Promise((resolve) => {
+      console.log(1)
+      resolve(2)
+    }).then((res)=>{
+      console.log(res)
+      new Promise((resolve) => {
+        console.log(3)
+        resolve(4)
+      }).then((res) => {
+        console.log(res)
+      })
+    })
 </script>
 </body>
 </html>
