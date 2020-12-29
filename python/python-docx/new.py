@@ -70,11 +70,11 @@ def read_shape():
 			print(shape.height.inches)
 			print(shape._inline.graphic.graphicData.uri)
 
-# read_shape()
+read_shape()
 
 if __name__ == '__main__':
     ROOT_DIR_P = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  # 项目根目录
 #     word_path = os.path.join(ROOT_DIR_P, "data/test_to_word.docx")  # pdf文件路径及文件名
     word_path = "title1.docx"  # pdf文件路径及文件名
     # word_path = os.path.join(ROOT_DIR_P, "data/test_to_word2.docx")  # pdf文件路径及文件名
-    read_word(word_path)
+#     read_word(word_path)
