@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './home.dart';
+import 'showPage/index.dart';
 import './routes.dart';
 
 void main() => runApp(new MyApp());
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: routeTable,
       // initialRoute: '/',
-      home: MyHomePage(title: 'kaka'),
+      // home: MyHomePage(title: 'kaka'),
+      home: ShowRoute(),
     );
   }
 }

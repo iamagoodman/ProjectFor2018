@@ -5,8 +5,12 @@ module.exports = function () {
     const router = express.Router();
     router.get('/word2html',function (req,res) {
         res.type('html');
-        res.render('./tools/word2html1.html',{});
-    })
+        res.render('./tools/word2html.html',{});
+    });
+  router.get('/luzhi',function (req,res) {
+    res.type('html');
+    res.render('./tools/rrwebtest2.html',{});
+  });
     router.post('/save',function (req,res) {
         var modalName = req.body.modalName;
         var fileName = req.body.fileName;

@@ -40,12 +40,18 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 //导航到一个新的路由页面
                 Navigator.of(context)
-                    .pushNamed("second_page", arguments: "参数测试777");
+                    .pushNamed("eleven_page", arguments: "参数测试777");
                 // print(routeTable);
               },
             ),
             Center(
               child: Image.asset('assets/images/background.jpg'),
+            ),
+            Center(
+              child: Image.network(
+                'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=155468531,1129895523&fm=26&gp=0.jpg',
+                width: 100,
+              ),
             )
           ],
         ),

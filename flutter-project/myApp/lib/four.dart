@@ -22,7 +22,13 @@ class FourRoute extends StatelessWidget {
                 child: IconButton(
               icon: new Icon(Icons.access_alarm),
               onPressed: () => Navigator.pushNamed(context, 'third_page'),
-            ))
+            )),
+            Center(
+              child: Image.network(
+                'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=155468531,1129895523&fm=26&gp=0.jpg',
+                width: double.infinity,
+              ),
+            )
           ],
         ));
   }

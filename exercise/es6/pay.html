@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="theme-color" content="#000000" />
     <title>支付测试页面</title>
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <!-- <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script> -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <style>
         .btn {
             padding: 10px 25px;
@@ -20,9 +21,9 @@
 </head>
 
 <body>
-    <h3 style="text-align: center;">支付测试页面</h3>
+    <h3 style="text-align: center;">签约／支付测试页面</h3>
     <h3 style="text-align: center;">
-        <button id="pay" class="btn">支付</button>
+        <button id="pay" class="btn">签约</button>
     </h3>
     <h3 style="text-align: center;">
         <button id="refund" class="btn">退款</button>
@@ -35,24 +36,26 @@
             refund();
         });
         function pay() {
-            // $.get('/url',function(res){
-            //     console.log(res);
-            // })
             $.ajax({
                 type: 'get',
-                url: 'http://localhost:8090/pay/detail',
+                url: '/test/pay',
                 async: false,
-                dataType: 'jsonp',
-                jsonp: 'callback',
-                jsonpCallback: 'jsonhandle',
                 success: function(res) {
-                    console.log(res);
+                    if (res.success) {
+                        console.log(res.data.redirectUrl);
+                        location.href = res.data.redirectUrl;
+                    }
                 }
             })
         }
         function refund() {
             console.log('refund');
         }
+        const name = 'frank';
+        const sex = 'F';
+        const age = 18;
+        const data = {name,sex,age};
+        console.log(data);
     </script>
 </body>
 </html>

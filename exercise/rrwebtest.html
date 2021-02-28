@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://portal-static.tongdun.cn/static-public/tonginsur/sdk/1.0.1/memory.css"/>
+  <script src="https://portal-static.tongdun.cn/static-public/tonginsur/sdk/1.0.1/memory.js"></script>
+  <style>
+    html,body {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+<!--<img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4206477586,1692040340&fm=26&gp=0.jpg" alt="" />-->
+<!--<br>-->
+<!--<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.wxcha.com%2Ffile%2F201903%2F19%2F137b88b25c.jpg%3Fdown&refer=http%3A%2F%2Fimg.wxcha.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613742219&t=fb82890f54de5f51f486c719e97074a6" alt="" />-->
+<!--<br>-->
+<!--<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2839761197,1037895538&fm=26&gp=0.jpg" alt="" />-->
+<!--<br>-->
+<!--<input type="text"><br>-->
+<!--<input type="text"><br>-->
+<!--<input type="text"><br>-->
+<!--<input type="text"><br>-->
+
+<!--<button onclick="luzhi()">录制</button>-->
+<button onclick="bofang()">播放</button>
+<script>
+function luzhi() {
+  window.memoryArray = [];
+  memory.record({
+    emit(event) {
+      // 用任意方式存储event
+      window.memoryArray.push(event);
+    }
+  })
+}
+function bofang() {
+  var memoryArray = JSON.parse(sessionStorage.memoryArray);
+  new memory.Player({
+    target: document.body, // 可以自定义dom元素
+    events: memoryArray
+  })
+}
+</script>
+</body>
+</html>

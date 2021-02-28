@@ -7,7 +7,10 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     final age = 8;
-    print('second.dart $age');
+    String icons = '';
+    icons += '\uE914';
+    icons += '\uE000';
+    icons += '\uE90D';
     var args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
         appBar: AppBar(
@@ -32,9 +35,117 @@ class SecondRoute extends StatelessWidget {
             ),
             Center(
               child: new Counter(),
+            ),
+            Text(
+              'Hello World! I am Frank!' * 4,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: Colors.blueAccent),
+            ),
+            Text.rich(TextSpan(children: [
+              TextSpan(text: 'gagag'),
+              TextSpan(
+                  text: 'http://localhost:8088',
+                  style: TextStyle(color: Colors.blueGrey))
+            ])),
+            DefaultTextStyle(
+                style: TextStyle(color: Colors.red, fontSize: 20.0),
+                child: Column(
+                  children: <Widget>[
+                    Text('hello mother fucker'),
+                    Text('i am your father'),
+                    Text(
+                      'i am jack',
+                      style: TextStyle(inherit: false, color: Colors.grey),
+                    )
+                  ],
+                )),
+            Text(
+              icons,
+              style: TextStyle(
+                  fontFamily: 'MaterialIcons',
+                  fontSize: 24.0,
+                  color: Colors.green),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.accessible,
+                  color: Colors.green,
+                ),
+                Icon(
+                  Icons.error,
+                  color: Colors.green,
+                ),
+                Icon(
+                  Icons.fingerprint,
+                  color: Colors.green,
+                ),
+                new SwitchAndCheckBoxTestRoute(),
+                // Row(
+                //   children: <Widget>[
+                //     Column(
+                //       children: <Widget>[
+                //         TextField(
+                //           // autofocus: true,
+                //           decoration: InputDecoration(
+                //               labelText: '用户名',
+                //               hintText: '用户名或邮箱',
+                //               prefixIcon: Icon(Icons.person)),
+                //         ),
+                //         TextField(
+                //           decoration: InputDecoration(
+                //               labelText: '密码',
+                //               hintText: '您的登陆密码',
+                //               prefixIcon: Icon(Icons.lock)),
+                //           obscureText: true,
+                //         )
+                //       ],
+                //     )
+                //   ],
+                // ),
+              ],
             )
           ],
         ));
+  }
+}
+
+class SwitchAndCheckBoxTestRoute extends StatefulWidget {
+  @override
+  _SwitchAndCheckBoxTestRouteState createState() =>
+      new _SwitchAndCheckBoxTestRouteState();
+}
+
+class _SwitchAndCheckBoxTestRouteState
+    extends State<SwitchAndCheckBoxTestRoute> {
+  bool _switchSelected = true;
+  bool _checkboxSelected = true;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Switch(
+          value: _switchSelected,
+          activeColor: Colors.amber,
+          onChanged: (value) {
+            setState(() {
+              _switchSelected = value;
+            });
+          },
+        ),
+        Checkbox(
+          value: _checkboxSelected,
+          activeColor: Colors.red,
+          onChanged: (value) {
+            setState(() {
+              _checkboxSelected = value;
+            });
+          },
+        )
+      ],
+    );
   }
 }
 
