@@ -2,4 +2,4 @@
 # -*- coding: UTF-8 -*-
 
 def run2():
-	print 'i am jack'
+	print('i am jack')

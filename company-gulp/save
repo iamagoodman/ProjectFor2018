@@ -1,0 +1,28 @@
+{
+  "hash":false,
+  "mini":false,
+  "del":"dist",
+  "style":{
+    "type":"less",
+    "src":"src/**/*.less",
+    "dest":"dist/static/"
+  },
+  "js":{
+    "src":"src/js/**/*",
+    "dest":"dist/static/js/"
+  },
+  "img":{
+    "src":"src/img/*",
+    "dest":"dist/static/img"
+  },
+  "html":{
+    "src":"src/pages/*.html",
+    "dest":"dist/templates"
+  },
+  "server":{
+    "baseDir":"./dist",
+    "directory":true,
+    "files":"./dist/**/*",
+    "port":8088
+  }
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #container{ overflow: hidden }
+    #target,#result { float: left; width: 50%; height: 500px; overflow: auto; padding: 10px; box-sizing: border-box }
+    .btnstyle { padding: 5px 20px; outline: none; border: none; background: #007aff; color: #fff; border-radius: 5px  }
+    table {
+      border-collapse: collapse;
+      border: 1px solid black;
+      width: 100%;
+    }
+    table td {
+      border: 1px solid black;
+    }
+    .pnode {
+      margin: 10px 0;
+    }
+    .title1 {
+      text-align: center;
+      font-size: 24px;
+    }
+    .title2 {
+      text-align: center;
+      font-size: 22px;
+    }
+  </style>
+  <script src="./jquery-1.7.2.js"></script>
+</head>
+<body>
+<p style="text-align: center">
+  <button class="btnstyle" id="create">运行</button>
+  <button class="btnstyle" id="produce">生成</button>
+  <button class="btnstyle" id="clear">清空</button>
+</p>
+<p style="text-align: center">
+  模块名称：<input type="text" id="modalName" placeholder="请输入"> &nbsp;&nbsp;&nbsp;&nbsp;文件名称：<input type="text" id="fileName" placeholder="请输入">
+</p>
+<div id="container">
+  <div id="target" contenteditable="true"></div>
+  <div id="result"></div>
+</div>
+<script>
+  var VdomList = [];
+  var RdomList = [];
+  var pasteStrList = [];
+  var ImgCount = 0;
+  function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+    var dataURL = canvas.toDataURL("image/png");
+    // return dataURL;
+    return `src="${dataURL}"`;
+  }
+  $('#clear').on('click',function () {
+    $('#result').html('');
+  })
+  $('#produce').on('click',function () {
+    var modalName = $('#modalName').val();
+    var fileName = $('#fileName').val();
+    if (!modalName || !fileName) {
+      alert('请输入模块名称，文件名称')
+      return
+    }
+    var ImgList = $('#result img');
+    var base64List = Array.prototype.map.call(ImgList,function (img) {
+      return getBase64Image(img);
+    });
+    var resultstr = document.getElementById('result').innerHTML;
+    // var reg = /.\/imgs\/[0-9].jpg/ig;  // 使用服务器imgs文件夹下的图片
+    var reg = /src="\S+"/ig
+    var regList = resultstr.match(reg);
+    if (regList && regList.length) {
+      for (var i=0;i<regList.length;i++) {
+        resultstr = resultstr.replace(regList[i],base64List[i]);
+      }
+    }
+    var data = {
+      modalName: modalName,
+      fileName: fileName,
+      htmlstr: resultstr
+    };
+    $.ajax({
+      url: '/tools/save',
+      type: 'post',
+      headers: {
+        'content-type':'application/json;charset=UTF-8'
+      },
+      data: JSON.stringify(data),
+      success: function (res) {
+        if (res && res.code == 200) alert('生成成功');
+      }
+    })
+  })
+  $('#create').on('click',function () {
+    var children = $('#target').children();
+    var result = [];
+    for (var i=0;i<children.length;i++) {
+      var child = children[i];
+      var tagName = child.tagName;
+      var reg1 = /^\s{2,}$/;
+      if (tagName && tagName!='STYLE') { // 不是style 标签
+        try {
+          if (reg1.test(child.innerText)) {
+            continue;
+            console.log('空行')
+          } else {
+            var vdom = createVdom(child);
+          }
+        }catch (e) {
+          console.log(e)
+        }
+        try {
+          var rdom = renderDom(vdom);
+        }catch (e) {
+          console.log(e)
+        }
+        VdomList.push(vdom);
+        RdomList.push(rdom);
+        result.push(child);
+        if (rdom) {
+          document.getElementById('result').appendChild(rdom);
+        }
+      }
+    }
+  });
+  function ableMergeChildren(dom) {
+    var stylereg = /color|background|<b>/ig;
+    var result = pasteStrList.some(function (str) {
+      return str == dom.innerText
+    });
+    if (!result) return result;
+    if (stylereg.test(dom.innerHTML)) return true;
+  }
+  function createVdom(dom) {
+    var result = {};
+    var reg1 = /^\s{2,}$/;
+    if (reg1.test(dom.innerText) || (!dom.innerText && dom.tagName!='BR' && dom.tagName!='TD' && dom.innerHTML.indexOf('br')==-1 && dom.innerHTML.indexOf('img')==-1 && dom.tagName!='IMG')) {
+      result.clear = true;
+    }
+    result.tag = dom.tagName.toLowerCase() == 'font'?'span':dom.tagName.toLocaleLowerCase();
+    var props = {};
+    if (dom.attributes.length>0) {
+      Array.prototype.forEach.call(dom.attributes,function (item) {
+        props[transformKey(item.nodeName)] = item.value
+      })
+    }
+    result.props = filterProps(result.tag,props);
+    // if (dom.tagName == 'P' && ableMergeChildren(dom)) {
+    //   result.children = [dom.innerText];
+    //   return result;
+    // }
+    if (dom.childNodes && dom.childNodes.length>0) {
+      var filterNodes = Array.prototype.filter.call(dom.childNodes,function (child) {
+        return child.nodeName != '#comment'
+      })
+      result.children = filterNodes.map(function (child) {
+        if (child.nodeName == '#text') {
+          return createVnode(child)
+        } else {
+          return createVdom(child)
+        }
+      })
+    } else if (dom.innerText) {
+      result.children = [dom.innerText]
+    } else {
+      result.children = [];
+    }
+    return result;
+  }
+  function createVnode(node) {
+    var reg1 = /^\s{2,}$/;
+    var result = {};
+    result.tag = 'textnode';
+    result.props = {};
+    if (reg1.test(node.textContent)) {
+      result.children = [];
+      result.clear = true;
+    } else {
+      result.children = [node.textContent || node.nodeValue]
+    }
+    return result;
+  }
+  function transformKey(key) {
+    var keyObj = {
+      class: 'className',
+      rowspan: 'rowSpan',
+      colspan: 'colSpan'
+    }
+    if (keyObj[key]) {
+      return keyObj[key]
+    } else {
+      return key
+    }
+  }
+  function renderDom(vdom) { // props tag children
+    if (!vdom) return null;
+    if (vdom.clear) return null;
+    var domstr = JSON.stringify(vdom);
+    var className;
+    if (domstr.indexOf('font18')>-1) {
+      className = 'title1'
+    }
+    if (domstr.indexOf('font16')>-1) {
+      className = 'title2'
+    }
+    if (vdom.tag == 'textnode') {
+      var dom = document.createTextNode(vdom.children[0]);
+      return dom;
+    }
+    var dom = document.createElement(vdom.tag);
+    Object.keys(vdom.props).forEach(function (key) {
+      dom[key] = vdom.props[key]
+    })
+    if (domstr.indexOf('img')>-1 && vdom.tag == 'p') {
+      dom.className = 'title2';
+      dom.style.textAlign = 'center';
+    }
+    if (vdom.tag == 'img') {
+      ImgCount++;
+      if (dom.src.indexOf('http')==-1) {
+        dom.src = `./imgs/${ImgCount}.jpg`
+      }
+    }
+    if (vdom.tag == 'p' && className) {
+      dom.className = className
+    }
+    if (vdom.children.length == 0 && vdom.tag != 'br' && vdom.tag != 'img' && vdom.tag !='td') {
+      return null
+    } else if (typeof vdom.children[0] == "string") {
+      dom.innerText = vdom.children[0]
+    } else {
+      vdom.children.forEach(function (child) {
+        if (child.children.length!=0 || child.tag=='br' || child.tag=='img' || child.tag=='td') {
+          var childDom = renderDom(child);
+          if (childDom) {
+            dom.appendChild(childDom);
+          }
+        }
+      })
+    }
+    return dom;
+  }
+  function filterProps(tagName,props) {
+    var filterstyleReg = /^(color|background|font-weight)/ig;
+    var filterclassReg = /(p|table)/ig;
+    var result = {}
+    Object.keys(props).forEach(function (key) {
+      if (key == 'className') {
+        if (filterclassReg.test(tagName)){
+          result[key] = tagName+'node'
+        }
+      } else if (key=='style') {
+        if (props[key].indexOf('font-size')>-1) {
+          var pt = props[key].split('font-size:')[1].split('pt')[0];
+          if (pt==18) {
+            result.className = 'font18'
+          } else if (pt==16) {
+            result.className = 'font16'
+          }
+        }
+        var styleList = props[key].split(';').map(function (item) {
+          return item.trim()
+        });
+        var filterList = styleList.filter(function (style) {
+          return filterstyleReg.test(style) && style!='' && style.indexOf('rgb(255, 255, 255)')==-1
+        });
+        if (filterList.length!=0) {
+          result[key] = filterList.join(';');
+        }
+      }else if (key != 'face') {
+        result[key] = props[key]
+      }
+    })
+    return result
+  }
+  window.onload=function() {
+    function paste_img(e) {
+      var reg1 = /\n/;
+      var anchorNode;
+      if (document.selection) {
+        anchorNode = document.selection.createRange().parentElement();
+      } else if (document.getSelection) {
+        anchorNode = window.getSelection().anchorNode;
+      }
+      pasteStrList = e.clipboardData.getData('text').split(reg1)
+      if ( e.clipboardData.items ) {
+        ele = e.clipboardData.items
+        for (var i = 0; i < ele.length; ++i) {
+          if ( ele[i].kind == 'file' && ele[i].type.indexOf('image/') !== -1 ) {
+            var blob = ele[i].getAsFile();
+            window.URL = window.URL || window.webkitURL;
+            var blobUrl = window.URL.createObjectURL(blob);
+            var new_img= document.createElement('img');
+            new_img.setAttribute('src', blobUrl);
+            anchorNode.innerHTML = '';
+            anchorNode.appendChild(new_img);
+          }
+        }
+      } else {
+        alert('non-chrome');
+      }
+    }
+    document.getElementById('target').onpaste=function(e){paste_img(e)};
+  }
+</script>
+</body>
+</html>

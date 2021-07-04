@@ -12,11 +12,14 @@ module.exports = function () {
     res.send(data).end()
   })
   router.get('/detail',function (req,res) {
-    let data = {
+    console.log(req.query.callback);
+    let data = `${req.query.callback}({
       success:'Y',
       message:'pay detail success'
-    }
-    res.send(data).end()
+    })`
+    setTimeout(() => {
+    res.send(data).end()      
+    }, 2000);
   })
   router.get('/list',function (req,res) {
     let data = {
