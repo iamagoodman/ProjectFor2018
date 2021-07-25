@@ -16,7 +16,9 @@ module.exports = function () {
       success:'Y',
       message:'policy detail success'
     }
-    res.send(data).end()
+    setTimeout(() => {
+      res.send(data).end()
+    }, 3000)
   })
   router.get('/list',function (req,res) {
     let data = {
@@ -53,7 +55,9 @@ module.exports = function () {
       success: true,
       totalCount: null
     }
-    res.send(data2).end()
+    setTimeout(() => {
+      res.send(data2).end()
+    }, 3000)
   })
   return router
 }

@@ -10,6 +10,8 @@ const consolidate = require('consolidate')
 const expressRoute = require('express-route')
 const adminroute = require('./route/admin/index')
 const webroute = require('./route/web')
+const freegiveroute = require('./route/freegive')
+const zhxhroute = require('./route/zhxh')
 const loginroute = require('./route/login/index')
 const policyroute = require('./route/policy/index')
 const insureroute = require('./route/insure/index')
@@ -21,7 +23,7 @@ var server = express();
 
 server.listen(8090);
 server.all('*', function(req, res, next) {
-    // res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     if (req.url.indexOf('favicon.ico')!=-1) return;
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Headers", "content-type");
@@ -56,6 +58,10 @@ server.set('view engine','html');
 // route
 server.use('/web',webroute());
 
+server.use('/freegive',freegiveroute());
+
+server.use('/zhxh',zhxhroute());
+
 server.use('/admin',adminroute());
 
 server.use('/login',loginroute());
@@ -69,6 +75,7 @@ server.use('/partner',partnerroute());
 server.use('/pay',payroute());
 
 server.use('/tools', toolsroute());
+
 
 
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+</head>
+<body>
+<audio src="" id="audio_" controls></audio>
+<script>
+    axios.get('http://localhost:8090/tools/music', { responseType: 'arraybuffer' })
+    .then(res => {
+      console.log(res);
+      const { data, headers } = res;
+      const fileName = 'iAmYou.mp3';
+      console.log('data',data);
+      const blob = new Blob([data], { type: headers['content-type'] }); // 将二进制流转为blob
+      if (typeof window.navigator.msSaveBlob !== 'undefined') {
+        // // 兼容IE，window.navigator.msSaveBlob：以本地方式保存文件
+        window.navigator.msSaveBlob(blob, decodeURI(fileName));
+      } else {
+        const blobURL = window.URL.createObjectURL(blob); // 创建新的URL并指向File对象或者Blob对象的地址
+        // const audio_ = document.createElement('audio');
+        // const mp3 = new Audio(blobURL);
+        // mp3.play();
+        document.getElementById('audio_').src = blobURL;
+        // window.URL.revokeObjectURL(blobURL);
+        // const link = document.createElement('a'); // 创建a标签，用于跳转至下载链接
+        // link.setAttribute('href', blobURL);
+        // link.setAttribute('download', decodeURI(fileName));
+        // link.style.display = 'node';
+        // if (typeof link.download === 'undefined') {
+        //   // 兼容：某些浏览器不支持HTML5的download属性
+        //   link.setAttribute('target', '_blank');
+        // }
+        // document.body.appendChild(link);
+        // link.click();
+        // document.body.removeChild(link);
+        // window.URL.revokeObjectURL(blobURL); // 释放blob URL地址
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
+</script>
+</body>
+</html>
