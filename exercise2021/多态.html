@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 弱类型语言本身就是多态的
+  var a = 5;
+  console.log(a + 1);
+  console.log(a + '1');
+  // 重写， 重载 ， 接口
+  // 重写
+  function a1() {
+    this.name = 'frank';
+    this.say = function () {
+      console.log('my name is' + this.name);
+    }
+  }
+  var a = new a1();
+  a.say();
+  a1.prototype.say = function () {
+    console.log('hello');
+  }
+  var b = new a1();
+  b.say();
+  b.say = function () {
+    console.log('i am rewrite');
+  }
+  b.say();
+  console.log('********************************************************');
+  br1 = function (a) { console.log(a) };
+  br12 = function (a, b) { console.log(a + b) };
+  foo = function () {
+    // if (arguments.length === 1) {
+    //   br1(...arguments)
+    // } else {
+    //   br12(...arguments)
+    // }
+    if (arguments.length === 1) {
+      br1.bind(null, ...arguments)()
+    } else {
+      br12.bind(null, ...arguments)()
+    }
+  }
+  foo(3);
+  foo(3, 6);
+</script>
+</body>
+</html>

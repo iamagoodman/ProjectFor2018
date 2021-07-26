@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button onclick="fn1()">+1</button>
+<button onclick="fn2()()">+1</button>
+<!--<button onclick="fn3()">+1</button>-->
+<script>
+  function fn1() {
+    var a = 1;
+    console.log(a + 1);
+  }
+  function fn2() {
+    var b = 1;
+    return function () {
+      console.log(++b);
+    }
+  }
+  var fn3 = fn2();
+  fn3();
+  fn3();
+  console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
+  for (var i = 1; i <= 10; i++) {
+    // console.log(i);   输出全是10
+    (function (i) {
+      setTimeout(() => {
+        console.log(i);
+      }, 100)
+    })(i);
+    // 100ms后同时输出12345678910 , for 循环中有10个自调函数执行，速度很快，几乎同时执行，相当于每个函数里的一个定时器也都是同时在100ms后执行
+    (function (i) {
+      setTimeout(() => {
+        console.log(i);
+      }, i * 100)
+    })(i);
+    // 每隔100ms输出一个数字12345678910
+  }
+  console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+  var num = 100;
+  function fn4(x) {
+    if (x < num) {
+      console.log(x);
+    }
+  }
+  (function (fn) {
+    var num = 10;
+    fn(20);
+  })(fn4)
+  console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+</script>
+</body>
+</html>
