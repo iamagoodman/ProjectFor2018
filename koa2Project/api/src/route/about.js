@@ -1,9 +1,8 @@
 const Router = require('koa-router')
+const { detail } = require('../controller/about.controller')
 
 const router = new Router({ prefix: '/about' })
 
-router.get('/', (ctx, next) => {
-    ctx.body = 'about page'
-})
+router.get('/detail', detail)
 
 module.exports = router
