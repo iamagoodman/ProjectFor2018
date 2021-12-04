@@ -1,11 +1,11 @@
 const Router = require('koa-router')
 const { register, login } = require('../controller/user.controller')
-
+const { userValidDator, verifyUser } = require('../middleware/user.middleware')
 const router = new Router({ prefix: '/user' })
 
 // 注册接口
-router.post('/register', register)
+router.post('/register', userValidDator, verifyUser, register)
 
 // 登陆接口
 router.post('/login', login) 
-module.exports = router
+module.exports = router 

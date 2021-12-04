@@ -10,8 +10,9 @@ class UserService {
     }
     async getUserInfo(user) {
         const Opt = { ...user }
-        const res = User.findOne({
-            attributes: Object.keys(user).map(key => (key)),
+        const keys = Object.keys(user).map(key => (key))
+        const res = await User.findOne({
+            attributes: keys,
             where: user
         })
         return res ? res.dataValues : null
