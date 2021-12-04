@@ -13,6 +13,12 @@ const seq = new Sequelize(MYSQL_DB, MYSQL_USER, MYSQL_PWD, {
     dialect: 'mysql'
 })
 
+// const seq = new Sequelize('koaProject', 'root', 'Quntta1234!', {
+//     host: '127.0.0.1',
+//     port: 3306,
+//     dialect: 'mysql'
+// })
+
 // seq.authenticate()
 //     .then(() => {
 //         console.log('链接成功')
