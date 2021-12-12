@@ -4,12 +4,6 @@ const userValidDator = async(ctx, next) => {
     const { user_name, password } = ctx.request.body
     if (!user_name || !password) {
         console.error('用户名或密码为空', ctx.request.body)
-        // ctx.status = 400
-        // ctx.body = {
-        //     code: '10001',
-        //     message: '用户名或密码为空',
-        //     result: ''
-        // }
         ctx.app.emit('error', userErr.userFormateError, ctx) 
         return
     }
@@ -18,16 +12,16 @@ const userValidDator = async(ctx, next) => {
 
 const verifyUser = async(ctx, next) => {
     const { user_name } = ctx.request.body
-
-    if (await getUserInfo({ user_name })) {
-        // ctx.status = 409
-        // ctx.body = {
-        //     code: '10009',
-        //     message: '用户已存在',
-        //     result: ''
-        // }
-        ctx.app.emit('error', userErr.userExited, ctx)
-        return 
+    try{
+        const res = await getUserInfo({ user_name })
+        if (res) {
+            ctx.app.emit('error', userErr.userExited, ctx)
+            return 
+        }
+    }catch(e) {
+        console.error('err 21')
+        ctx.app.emit('error', userErr.userRegisterError, ctx)
+        return
     }
     await next()
 }

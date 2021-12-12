@@ -5,7 +5,6 @@ class UserService {
         // todo 写入数据库
         // const req = { user_name, password }
         const res = await User.create({ user_name, password })
-        console.log(res)
         return res.dataValues
     }
     async getUserInfo(user) {

@@ -14,5 +14,13 @@ module.exports = {
             message: '用户已存在',
             result: ''
         }
+    },
+    userRegisterError: {
+        status: 409,
+        body: {
+            code: '10003',
+            message: '注册出错',
+            result: ''
+        }
     }
 }
