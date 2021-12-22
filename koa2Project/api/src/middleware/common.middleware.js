@@ -9,7 +9,6 @@ const renderHtml = async(ctx, next) => {
             return 
         }
     }catch(e) {
-        console.error('err 21')
         ctx.app.emit('error', userErr.userRegisterError, ctx)
         return
     }

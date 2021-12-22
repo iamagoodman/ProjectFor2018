@@ -8,7 +8,6 @@ const { PRO_SECRET } = require('../config/config.default')
 class UserController {
     async register(ctx, next) {
         // 1.获取数据
-        // console.log(ctx.request.body)
         // 2.操作数据库
         const { user_name, password, email } = ctx.request.body;
         // 验证数据 合法性
@@ -54,7 +53,6 @@ class UserController {
         // 获取数据， 操作数据库， 返回结果
         const { id } = ctx.state.user
         const user = ctx.request.body
-        console.log('id', id, 'user', user)
         if (await updateById({ id, ...user })) {
             ctx.body = {
                 code: '10200',

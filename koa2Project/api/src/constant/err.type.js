@@ -70,5 +70,45 @@ module.exports = {
             message: '无效token',
             result: ''
         }
+    },
+    isNotAdmin: {
+       status: 200,
+       body: {
+           code: '10008',
+           message: '不是管理员',
+           result: ''
+       }
+    },
+    fileUploadError: {
+        status: 200,
+        body: {
+            code: '10201',
+            message: '商品图片上传失败',
+            result: '',
+        }
+    },
+    unSupportedFileType: {
+        status: 200,
+        body: {
+            code: '10202',
+            message: '不支持的文件格式',
+            result: '',
+        }
+    },
+    isNotLogin: {
+        status: 200,
+        body: {
+            code: '10100',
+            message: '用户未登录',
+            result: ''
+        }
+    },
+    paramsValid: {
+        status: 200,
+        body: {
+            code: '10008',
+            message: '字段校验不通过',
+            result: ''
+        }
     }
 }

@@ -2,13 +2,21 @@ const bcrypt = require('bcryptjs')
 
 const { getUserInfo } = require('../service/user.service')
 const userErr = require('../constant/err.type')
+const { createValidMessage } = require('../utils')
+const { userValid } = require('../constant/paramsValid')
 const userValidDator = async(ctx, next) => {
-    const { user_name, password } = ctx.request.body
-    if (!user_name || !password) {
-        console.error('用户名或密码为空', ctx.request.body)
-        ctx.app.emit('error', userErr.userFormateError, ctx) 
-        return
+    try {
+        ctx.verifyParams(userValid)
+    }catch (e) {
+        console.error('e', e)
+        return ctx.app.emit('error', createValidMessage(e.errors), ctx)
     }
+    // const { user_name, password } = ctx.request.body
+    // if (!user_name || !password) {
+    //     console.error('用户名或密码为空', ctx.request.body)
+    //     ctx.app.emit('error', userErr.userFormateError, ctx)
+    //     return
+    // }
     await next()
 }
 
@@ -21,7 +29,6 @@ const verifyUser = async(ctx, next) => {
             return 
         }
     }catch(e) {
-        console.error('err 21')
         ctx.app.emit('error', userErr.userRegisterError, ctx)
         return
     }
@@ -32,8 +39,6 @@ const crpyPassword = async (ctx, next) => {
     const { password } = ctx.request.body
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(password, salt)
-    console.log('password', password)
-    console.log('hash', hash)
     ctx.request.body.password = hash
     await next()
 }
