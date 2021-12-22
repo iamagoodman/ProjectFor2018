@@ -3,13 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #app {
+      height: 600px;
+    }
+    #c1 {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
     <canvas id="c1"></canvas>
   </div>
   <script>
-
+    var c1 = document.getElementById('c1');
+    var c2d = c1.getContext('2d');
+    console.log(c2d);
   </script>
 </body>
 </html>

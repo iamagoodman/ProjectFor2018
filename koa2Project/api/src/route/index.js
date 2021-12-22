@@ -1,11 +1,10 @@
-const rootRouter = require('./root')
+const fs = require('fs')
 
-const userRouter = require('./user')
+let routers = []
+fs.readdirSync(__dirname).forEach(file => {
+    if (file !== 'index.js') {
+        routers.push(require('./' + file))
+    }
+})
 
-const aboutRouter = require('./about')
-
-module.exports = [
-    rootRouter,
-    userRouter,
-    aboutRouter
-]
+module.exports = routers

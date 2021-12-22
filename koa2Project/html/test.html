@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <meta charset="UTF-8">
+    </header>
+    <body>
+<!--    <form action="http://localhost:8000/user/login" method="post">-->
+<!--        <input type="text" name="user_name">-->
+<!--        <input type="text" name="password">-->
+<!--        <button type="submit">提交</button>-->
+<!--    </form>-->
+用户名：<input type="text" id="user_name">
+密码：<input type="text" id="password">
+<button onclick="submit()">提交</button>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+        function submit() {
+            var user_name = document.getElementById('user_name').value;
+            var password = document.getElementById('password').value;
+            $.ajax({
+                url: 'http://localhost:8000/user/login',
+                method: 'post',
+                data: { user_name, password }
+            })
+        }
+    </script>
+    </body>
+</html>

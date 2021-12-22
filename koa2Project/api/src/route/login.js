@@ -1,10 +1,10 @@
 const Router = require('koa-router')
+const router = new Router({ prefix: '/login' })
 
-const router = new Router({ prefix: '/' })
 
+// login页面
 router.get('/', (ctx, next) => {
-    ctx.body = 'index page'
+  return ctx.render('login')
 })
-
 
 module.exports = router

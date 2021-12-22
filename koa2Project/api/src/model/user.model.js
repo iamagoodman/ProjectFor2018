@@ -21,6 +21,11 @@ const User = seq.define('koa_user', {
         defaultValue: 'F',
         comment: '性别'
     },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        comment: '邮箱'
+    },
     is_admin: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
@@ -28,7 +33,7 @@ const User = seq.define('koa_user', {
         comment: '是否为管理员，0不是，1是'
     }
 })
-// 强制同步数据库
+// 强制同步数据库 没有表就创建表
 // User.sync({ force: true })
 
 module.exports = User
