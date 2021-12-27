@@ -11,12 +11,6 @@ const userValidDator = async(ctx, next) => {
         console.error('e', e)
         return ctx.app.emit('error', createValidMessage(e.errors), ctx)
     }
-    // const { user_name, password } = ctx.request.body
-    // if (!user_name || !password) {
-    //     console.error('用户名或密码为空', ctx.request.body)
-    //     ctx.app.emit('error', userErr.userFormateError, ctx)
-    //     return
-    // }
     await next()
 }
 

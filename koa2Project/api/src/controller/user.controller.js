@@ -5,24 +5,26 @@ const { createUser, getUserInfo, updateById } = require('../service/user.service
 const { userRegisterError } = require('../constant/err.type')
 
 const { PRO_SECRET } = require('../config/config.default')
+
+const createToken = (data) => {
+    return jwt.sign(data, PRO_SECRET, { expiresIn: '1h' })
+}
 class UserController {
     async register(ctx, next) {
         // 1.获取数据
         // 2.操作数据库
-        const { user_name, password, email } = ctx.request.body;
         // 验证数据 合法性
         // 验证数据 合理性
         try {
-            const res = await createUser({
-                user_name,
-                password,
-                email
-            })
+            const { password, ...res } = await createUser({ ...ctx.request.body })
             // 3.返回结果
             ctx.body = {
                 code: '10200',
                 message: 'success',
-                data: res
+                result: {
+                    token: createToken(res),
+                    ...res
+                }
             }
         }catch (e) {
             console.error(e)
@@ -37,10 +39,10 @@ class UserController {
             // 剔除password
             const { password, ...res } = await getUserInfo({ user_name })
             ctx.body = {
-                code: 10200,
+                code: '10200',
                 message: '用户登录成功',
                 result: {
-                    token: jwt.sign(res, PRO_SECRET, { expiresIn: '1h' })
+                    token: createToken(res)
                 }
 
             }

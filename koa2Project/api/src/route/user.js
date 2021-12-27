@@ -8,7 +8,7 @@ const router = new Router({ prefix: '/user' })
 router.post('/register',crpyPassword,  userValidDator, verifyUser, register)
 
 // 登陆接口
-router.post('/login', verifyLogin, login)
+router.post('/login', userValidDator, verifyLogin, login)
 
 // 修改密码
 router.post('/modify', userAuth, crpyPassword, modifyUser)
