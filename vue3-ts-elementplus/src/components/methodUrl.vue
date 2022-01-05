@@ -51,8 +51,11 @@ export default defineComponent({
     },
   },
   watch: {
-    modelValue(newVal: any, oldVal: any) {
-      this.methodUrl = newVal;
+    modelValue: {
+      immediate: true, // 很重要！！！
+      handler(val) {
+        this.methodUrl = !val ? {} : val;
+      },
     },
   },
 });

@@ -49,6 +49,17 @@ export default {
                     value: '1234556'
                   },
                 ],
+                params: [
+                  {
+                    key: 'user_name',
+                    value: 'gaga',
+                    type: 'string',
+                    required: true,
+                    checked: true,
+                  }
+                ],
+                body: { name: 'jack' },
+                bodyType: 'json',
                 response: {
                   user_name: 'gagaga',
                   sex: 1,
@@ -162,7 +173,8 @@ export default {
       return state.projectList[0].children.filter(item => item.level === 3);
     },
     detail: state => {
-      return state.projectDetail || state.emptyProject;
+      return state.projectDetail || state.projectList;
+      // return state.projectList;
     }
   },
   mutations: {

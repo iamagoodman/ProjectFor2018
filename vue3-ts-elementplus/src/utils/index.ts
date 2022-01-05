@@ -68,3 +68,29 @@ export function createEmpty(type: string) {
   return emptyRequest;
 
 }
+
+export function findByUuid(list: any[], target: any) {
+  const current = list.filter(item => JSON.stringify(item).indexOf(target.uuid))[0];
+  if (current.uuid === target.uuid) {
+    return current;
+  } else {
+    return findByUuid(current.children, target);
+  }
+}
+
+export function findParentByUuid(list: any[], target: any) {
+  const current = list.filter(item => JSON.stringify(item).indexOf(target.uuid))[0];
+  let parent = undefined;
+  let index = undefined;
+  current.children.forEach((item, index_) => {
+    if (item.uuid === target.uuid) {
+      parent = current;
+      index = index_;
+    }
+  });
+  if (parent) {
+    return { parent, index };
+  } else {
+    return findParentByUuid(current.children, target);
+  }
+}

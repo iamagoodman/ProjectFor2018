@@ -5,9 +5,8 @@
       <div class="project-menu">
         <el-tree :data="treeData"
                  :props="defaultProps"
-                 @node-click="handleNodeClick"
                  node-key="uuid"
-                 :default-expanded-keys="defaultOpenKey">
+                 default-expand-all>
           <template #default="scope">
             <div class="custom-node">
               <el-icon>
@@ -45,8 +44,12 @@
         </el-tree>
       </div>
       <div class="project-content">
-        <base-form v-if="showBaseForm" />
-        <request-form v-else />
+        <base-form v-if="showBaseForm"
+                   v-model="editorData"
+                   :key="editorData.uuid" />
+        <request-form v-else
+                      v-model="editorData"
+                      :key="editorData.uuid" />
       </div>
     </div>
   </div>
@@ -66,7 +69,7 @@ import {
   Edit,
 } from '@element-plus/icons-vue';
 import { cloneDeep } from 'lodash';
-import { uuid, createEmpty } from '@/utils';
+import { createEmpty, findByUuid, findParentByUuid } from '@/utils';
 export default defineComponent({
   name: 'MockEdit',
   components: {
@@ -99,9 +102,6 @@ export default defineComponent({
   },
   computed: {
     ...mapGetters('mock', { treeData: 'detail' }),
-    defaultOpenKey() {
-      return [this.treeData[0].uuid];
-    },
     actionList() {
       let list: any[] = [
         {
@@ -136,7 +136,7 @@ export default defineComponent({
     },
   },
   methods: {
-    ...mapMutations(['setDetail']),
+    ...mapMutations({ setDetail: 'mock/setDetail' }),
     handleAction(data: any, action: any) {
       switch (action.label) {
         case 'edit':
@@ -154,22 +154,28 @@ export default defineComponent({
       }
     },
     handleDelete(data: any) {
-      console.log('delete', data);
+      const cloneData = cloneDeep(this.treeData);
+      const { parent, index } = findParentByUuid(cloneData, data);
+      parent.children.splice(index, 1);
+      this.setDetail(cloneData);
     },
     handleAdd(data: any, type: string) {
       const item = createEmpty(type);
       const cloneData = cloneDeep(this.treeData);
-      cloneData.children.forEach(child => {
-        if(type === 'request')
-      });
-      console.log('add', data);
+      const current = findByUuid(cloneData, data);
+      current.children = current.children
+        ? [...current.children, item]
+        : [item];
+      console.log('cloneData', cloneData);
+      this.setDetail(cloneData);
     },
     handleHover(data: any) {
       this.activeData = data;
     },
-    handleNodeClick(data: any) {
-      console.log(data);
-      // this.activeData = data;
+  },
+  watch: {
+    editorData(newVal: any) {
+      console.log('newVal', newVal);
     },
   },
 });

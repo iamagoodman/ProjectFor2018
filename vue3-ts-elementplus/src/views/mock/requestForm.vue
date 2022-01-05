@@ -32,7 +32,7 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, defineComponent } from 'vue';
+import { reactive, ref, defineComponent, toRef } from 'vue';
 import type { ElForm } from 'element-plus';
 import MethodUrl from '@/components/methodUrl.vue';
 import RequestData from '@/components/requestData.vue';
@@ -44,7 +44,15 @@ export default defineComponent({
     RequestData,
     ResponseData,
   },
-  setup() {
+  props: {
+    modelValue: {
+      type: Object,
+      default: () => {
+        return {};
+      },
+    },
+  },
+  setup(props: any) {
     const resetForm = (node: any) => {
       console.log(node);
     };
@@ -57,20 +65,25 @@ export default defineComponent({
     };
     const formSize = ref('small');
     const ruleFormRef = ref<InstanceType<typeof ElForm>>();
-    const ruleForm = reactive({
-      name: '',
+
+    const modelValue = toRef(props, 'modelValue');
+    const defaultForm = {
+      name: modelValue.value.name || '',
       methodUrl: {
-        method: '',
-        url: '',
+        method: modelValue.value.method || '',
+        url: modelValue.value.url || '',
       },
       request: {
-        params: [],
-        headers: [],
-        body: {},
+        params: modelValue.value.params || [],
+        headers: modelValue.value.headers || [],
+        body: modelValue.value.body || {},
+        bodyType: modelValue.value.bodyType,
       },
       response: {},
-    });
-
+    };
+    console.log('defaultForm', defaultForm);
+    const ruleForm = reactive(defaultForm);
+    console.log(ruleForm);
     const rules = reactive({
       name: [
         {

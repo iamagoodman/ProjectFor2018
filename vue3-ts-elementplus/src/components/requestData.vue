@@ -68,6 +68,7 @@ export default defineComponent({
         params: this.params,
         headers: this.headers,
         body: this.bodyData,
+        bodyType: this.bodyType,
       });
     },
   },
@@ -101,10 +102,20 @@ export default defineComponent({
     body() {
       this.handleEmit();
     },
-    modelValue(newVal: any) {
-      this.params = newVal.params;
-      this.headers = newVal.headers;
-      this.body = newVal.body;
+    modelValue: {
+      immediate: true, // 很重要！！！
+      handler(val) {
+        this.params = val.params;
+        this.headers = val.headers;
+        // let body = { json: {}, list: [] };
+        this.bodyType = val.bodyType;
+        // if (val.bodyType === 'json') {
+        //   body.json = val.body;
+        // } else {
+        //   body.list = val.body;
+        // }
+        // this.body = body;
+      },
     },
   },
 });
