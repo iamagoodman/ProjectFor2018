@@ -7,7 +7,7 @@
 
 <script>
 import LayOut from '@/layout';
-import Login from '@/views/Login';
+import Login from '@/views/auth/Login';
 export default {
   name: 'App',
   data () {

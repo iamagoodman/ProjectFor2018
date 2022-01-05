@@ -1,0 +1,53 @@
+.l-header-container{
+  position: fixed;
+  top:0;width: 100%;
+  height: 40px;
+  overflow: hidden;
+  background: #fff;
+  /* color: #000; */
+}
+.l-header-container div{
+  float: left;font-size: 14px;
+  width: 25%;height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  color: #000;
+}
+.l-header-container .l-header-title{
+  width: 50%;
+  text-align: center;
+  color:#000;
+}
+.l-header-container .header-back:before{
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #000;
+  border-width: 1px 0 0 1px;
+  transform: rotate(315deg);
+  top: 14px;
+  left: 13px;
+}
+.l-header-left a{
+  color: transparent;opacity: .7;
+}
+.l-header-right{
+  text-align: right;
+  padding-right: 13px;
+}
+.l-header-right a{
+  color: #000;opacity: .8;
+}
+.fix-bottom{
+  z-index: 10;
+  height: 30px;line-height: 30px;
+  width: 100%;
+  position:fixed;
+  bottom: 0;
+  background:#c08f00;
+  color: #fff;
+  font-size: 13px;
+  border: none;
+  outline: none
+}

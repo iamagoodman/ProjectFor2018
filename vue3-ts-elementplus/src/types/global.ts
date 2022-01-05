@@ -8,3 +8,8 @@ export interface ServerItem {
   method: string;
   renderData?: (data: any) => any;
 }
+
+export interface OptionItem {
+  label: string;
+  value: string | number | boolean;
+}

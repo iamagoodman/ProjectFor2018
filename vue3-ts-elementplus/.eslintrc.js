@@ -19,13 +19,14 @@ module.exports = {
     'no-unused-expressions': 2,//禁止无用的表达式
     'no-var': 0,//禁用var，用let和const代替
     'eqeqeq': 2,//必须使用全等
-    'indent': ["error", 2],//缩进风格
+    'indent': ["error", 2, { "SwitchCase": 1 }],//缩进风格
     'quotes': [2, 'single'],//引号类型 `` "" ''
     'no-multiple-empty-lines': [1, { 'max': 2 }],//空行最多不能超过2行
     'curly': [2, 'all'],//必须使用 if(){} 中的{}
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-var-requires': 0,
+    "@typescript-eslint/no-this-alias": ["off"],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
   }

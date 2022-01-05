@@ -1,0 +1,156 @@
+[
+  {
+    "proType": "WENJIABAO",
+    "base64": "./assets/img/product/img_wjb.png",
+    "page_title":"稳驾保•心系安全",
+    "page_title_des":"投保年龄：18周岁（含）到60周岁（含）之间",
+    "pro_is_sex": "1",
+    "pro_is_continue":"0",
+    "pro_start_time": 60,
+    "pro_en_time": 18,
+    "pro_is_year": "1",
+    "pro_year":[
+      {"tab":"30年","value":"30"}
+    ],
+    "pro_continue":[{}],
+    "pro_is_money_year": "1",
+    "pro_money_year":[
+      {"tab":"3年交","value":"3"},
+      {"tab":"5年交","value":"5"},
+      {"tab":"10年交","value":"10"},
+      {"tab":"20年交","value":"20"}
+    ],
+    "pro_pay_method":[
+      {"tab":"年交","value":"12"}
+    ],
+    "img_details":"./assets/img/product/img_wjb_special_new.jpg",
+    "img_notify":"./assets/img/product/img_wjb_notify.jpg",
+    "img_example":"./assets/img/product/img_wjb_example.jpg",
+    "pro_word": "《瑞泰稳驾保两全保险》条款"
+  },
+  {
+    "proType": "HEALTHGD",
+    "base64": "./assets/img/product/img_czws.png",
+    "page_title":"成长卫士•补齐爱的短板",
+    "page_title_des":"投保年龄：30天到18周岁    保险期间：1年",
+    "pro_is_sex": "0",
+    "pro_is_continue":"1",
+    "pro_start_time": 18,
+    "pro_en_time":30,
+    "pro_is_year": "0",
+    "pro_continue":[
+      {"tab":"续保","value":"1"},
+      {"tab":"不续保","value":"0"}
+    ],
+    "pro_year":[
+      {"tab":"1年","value":"1"}
+    ],
+    "pro_is_money_year": "0",
+    "pro_money_year":[
+      {"tab":"1年","value":"1"}
+    ],
+    "pro_pay_method":[
+      {"tab":"趸交","value":"1"}
+    ],
+    "img_details":"./assets/img/product/img_czws_special.png",
+    "img_notify":"./assets/img/product/img_czws_notify.png",
+    "img_example":"./assets/img/product/img_czws_example.png",
+    "pro_word": "《瑞泰成长卫士少儿重大疾病保险》条款"
+  },
+  {
+    "proType": "RUIXANKANG",
+    "base64": "./assets/img/product/img_rxak.png",
+    "page_title":"瑞享安康•重大疾病保险",
+    "page_title_des":"投保年龄：30天到70周岁(含)之间    保险期间：终身",
+    "pro_is_sex": "1",
+    "pro_is_continue":"0",
+    "pro_start_time": 70,
+    "pro_en_time": 30,
+    "pro_is_year": "0",
+    "pro_year":[
+      {"tab":"至75周岁","value":"75"},
+      {"tab":"30年","value":"30"}
+    ],
+    "pro_continue":[{}],
+    "pro_is_money_year": "1",
+    "pro_money_year":[
+      {"tab":"趸交","value":"0"},
+      {"tab":"3年交","value":"3"},
+      {"tab":"5年交","value":"5"},
+      {"tab":"10年交","value":"10"},
+      {"tab":"20年交","value":"20"}
+    ],
+    "pro_pay_method":[
+      {"tab":"趸交","value":"1"}
+    ],
+    "img_details":"./assets/img/product/img_rxak_special.jpg",
+    "img_notify":"./assets/img/product/img_rxak_notify.jpg",
+    "img_example":"./assets/img/product/img_rxak_example.jpg",
+    "pro_word": "《瑞泰瑞享安康重大疾病保险》条款"
+  },
+  {
+    "proType": "RUIXIANGJS",
+    "base64": "./assets/img/product/img_rxjs.png",
+    "page_title":"瑞享金生•一生呵护",
+    "page_title_des":"投保年龄：30天到70周岁(含)之间   保险期间：终身",
+    "pro_is_sex": "1",
+    "pro_is_continue":"0",
+    "pro_start_time": 70,
+    "pro_en_time": 30,
+    "pro_is_year": "0",
+    "pro_continue":[{}],
+    "pro_year":[
+      {"tab":"至75周岁","value":"75"},
+      {"tab":"30年","value":"30"}
+    ],
+    "pro_is_money_year": "1",
+    "pro_money_year":[
+      {"tab":"趸交","value":"0"},
+      {"tab":"3年交","value":"3"},
+      {"tab":"5年交","value":"5"},
+      {"tab":"10年交","value":"10"},
+      {"tab":"20年交","value":"20"}
+    ],
+    "pro_pay_method":[
+      {"tab":"趸交","value":"1"}
+    ],
+    "img_details":"./assets/img/product/img_rxjs_special.png",
+    "img_notify":"./assets/img/product/img_rxjs_notify.png",
+    "img_example":"./assets/img/product/img_rxjs_example.png",
+    "pro_word": "《瑞泰瑞享金生终身寿险》条款"
+  },
+  {
+    "proType": "WENAIBAO",
+    "base64": "./assets/img/product/img_wab.png",
+    "page_title":"稳爱保•稳爱一生",
+    "page_title_des":"投保年龄：18周岁（含）到65周岁（含）之间",
+    "pro_is_sex": "1",
+    "pro_is_continue":"0",
+    "pro_start_time": 65,
+    "pro_en_time": 18,
+    "pro_is_year": "1",
+    "pro_continue":[{}],
+    "pro_year":[
+      {"tab":"至60周岁","value":"60"},
+      {"tab":"至65周岁","value":"65"},
+      {"tab":"至70周岁","value":"70"},
+      {"tab":"至75周岁","value":"75"},
+      {"tab":"至80周岁","value":"80"},
+      {"tab":"至100周岁","value":"100"}
+    ],
+    "pro_is_money_year": "1",
+    "pro_money_year":[
+      {"tab":"趸交","value":"0"},
+      {"tab":"3年交","value":"3"},
+      {"tab":"5年交","value":"5"},
+      {"tab":"10年交","value":"10"}
+    ],
+    "pro_pay_method":[
+      {"tab":"趸交","value":"1"}
+    ],
+    "img_details":"./assets/img/product/img_wab_special.png",
+    "img_notify":"./assets/img/product/img_wab_notify.png",
+    "img_example":"./assets/img/product/img_wab_example.png",
+    "pro_word": "《瑞泰稳爱保定期寿险》条款"
+  }
+]

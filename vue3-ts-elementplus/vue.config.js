@@ -25,7 +25,7 @@ module.exports = {
         ]
       },
       scss: {
-        additionalData: '@import "./src/styles/global.scss";'
+        additionalData: '@import "./src/styles/reset.scss";@import "./src/styles/global.scss";'
       }
     }
   },

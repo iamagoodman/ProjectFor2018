@@ -1,4 +1,29 @@
+// --light-bg: #f7f8fa;
+// --light-shadow: #ebeced;
 :root {
-    --base-bg: #1a1b1c;
+    --base-white: #ffffff;
+    --base-bg: #2e2f33;
+    --base-shadow: #1a1b1c;
+    --base-header-height: 60px;
   }
+  $baseWhite: var(--base-white);
   $baseBg: var(--base-bg);
+  $baseShadow: var(--base-shadow);
+  $baseHeaderHeight: var(--base-header-height);
+
+.wrapper {
+  height: 100%;
+  padding: 20px;
+  overflow: auto;
+  box-sizing: border-box;
+  font-size: 13px;
+}
+.center-img-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my-pointer {
+  cursor: pointer;
+}

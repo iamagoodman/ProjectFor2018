@@ -1,0 +1,14 @@
+{
+  "name": "testkunda",
+  "version": "0.0.1",
+  "description": "这是个测试包，不要下载",
+  "main": "index.js",
+  "scripts": {
+    "test": "run test"
+  },
+  "keywords": [
+    "kunda"
+  ],
+  "author": "quntta",
+  "license": "ISC"
+}

@@ -1,12 +1,7 @@
 import { createStore } from 'vuex';
-
+import mock from './mock';
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
+    mock
   }
 });

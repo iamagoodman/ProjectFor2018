@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Home from '@/views/Home.vue';
+import Home from '@/views/auth/Home.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -8,14 +8,38 @@ const routes: Array<RouteRecordRaw> = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('@/views/About.vue')
-  },
-  {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/Login.vue')
+    component: () => import('@/views/auth/Login.vue')
+  },
+  {
+    path: '/mock',
+    name: 'Mock',
+    component: () => import('@/views/mock/Index.vue')
+  },
+  {
+    path: '/mock/detail',
+    name: 'MockDetail',
+    component: () => import('@/views/mock/Detail.vue')
+  },
+  {
+    path: '/mock/edit',
+    name: 'MockEdit',
+    component: () => import('@/views/mock/Edit.vue')
+  },
+  {
+    path: '/403',
+    name: '403',
+    component: () => import('@/views/auth/403.vue')
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/auth/404.vue')
+  },
+  {
+    path: '/:pathMatch(.*)',
+    redirect: '/404'
   }
 ];
 

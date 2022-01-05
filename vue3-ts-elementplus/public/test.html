@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .test-span:first-child {
+      background: red;
+    }
+
+    .test-span:last-child {
+      background: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <span class="test-span">111</span>
+    <span class="test-span">222</span>
+    <span class="test-span">333</span>
+    <span class="test-span">444</span>
+  </div>
+  <script>
+    const projectList = [
+      {
+        level: 1,
+        id: 1,
+        projectName: 'testProject1',
+        updateAt: '2021/12/20 09:30:40',
+        remarks: '这是备注，这是备注11111',
+        author: 'quntta',
+        baseUrl: 'http://localhost:8000/',
+        folders: [
+          {
+            level: 2,
+            folderName: '用户模块',
+            requests: [
+              {
+                level: 3,
+                requestName: '登陸',
+                url: '/user/login',
+                method: 'post',
+                headers: [
+                  {
+                    key: 'content-type',
+                    value: 'application/json'
+                  }
+                ],
+                paramsValid: [
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'user_name',
+                    value: 'zhangsan'
+                  },
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'password',
+                    value: '1234556'
+                  },
+                ],
+                response: {
+                  user_name: 'gagaga',
+                  sex: 1,
+                },
+              },
+              {
+                level: 3,
+                requestName: '注册',
+                url: '/user/register',
+                method: 'post',
+                headers: [
+                  {
+                    key: 'content-type',
+                    value: 'application/json'
+                  }
+                ],
+                paramsValid: [
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'user_name',
+                    value: 'gaga'
+                  },
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'password',
+                    value: '33333'
+                  },
+                ],
+                response: {
+                  user_name: 'gagaga',
+                  sex: 1,
+                },
+              },
+            ],
+          },
+        ],
+        requests: [
+          {
+            level: 3,
+            requestName: '登陆',
+            url: '/user/login',
+            method: 'post',
+            headers: [
+              {
+                key: 'content-type',
+                value: 'application/json'
+              }
+            ],
+            paramsValid: [
+              {
+                type: 'string',
+                required: true,
+                name: 'user_name',
+                value: 'dsds'
+              },
+              {
+                type: 'string',
+                required: true,
+                name: 'password',
+                value: '0000'
+              },
+            ],
+            response: {
+              user_name: 'gagaga',
+              sex: 1,
+            },
+          },
+          {
+            level: 3,
+            requestName: '注册',
+            url: '/user/login',
+            method: 'post',
+            headers: [
+              {
+                key: 'content-type',
+                value: 'application/json'
+              }
+            ],
+            paramsValid: [
+              {
+                type: 'string',
+                required: true,
+                name: 'user_name',
+                value: 'erer'
+              },
+              {
+                type: 'string',
+                required: true,
+                name: 'password',
+                value: 'kkldd'
+              },
+            ],
+            response: {
+              user_name: 'gagaga',
+              sex: 1,
+            },
+          },
+        ],
+      },
+      {
+        level: 1,
+        id: 2,
+        projectName: 'testProject22222222',
+        updateAt: '2021/12/20 09:30:40',
+        remarks: '这是备注，这是备注222222',
+        author: 'quntta',
+        baseUrl: 'http://localhost:8000/',
+        folders: [
+          {
+            level: 2,
+            folderName: '用户模块',
+            requests: [
+              {
+                level: 3,
+                requestName: '登陆',
+                url: '/user/login',
+                method: 'post',
+                paramsValid: [
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'user_name',
+                    value: 'errere'
+                  },
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'password',
+                    value: '78898'
+                  },
+                ],
+                response: {
+                  user_name: 'gagaga',
+                  sex: 1,
+                },
+              },
+              {
+                level: 3,
+                requestName: '注册',
+                url: '/user/register',
+                method: 'post',
+                paramsValid: [
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'user_name',
+                    value: 'qwqw'
+                  },
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'password',
+                    value: '787878'
+                  },
+                ],
+                response: {
+                  user_name: 'gagaga',
+                  sex: 1,
+                },
+              },
+            ],
+          },
+        ]
+      },
+    ]
+    const newprojectList = [
+      {
+        name: 'testproject',
+        level: 1,
+        updateAt: '2021/12/20 09:30:40',
+        remarks: '这是备注，这是备注11111',
+        author: 'quntta',
+        baseUrl: 'http://localhost:8000/',
+        uuid: 'fdas',
+        children: [
+          {
+            name: '用户模块',
+            level: 2,
+            uuid: 'fdsjj',
+            children: [
+              {
+                name: '登陆',
+                level: 3,
+                uuid: 'iofdsssel',
+                url: '/user/login',
+                method: 'post',
+                headers: [
+                  {
+                    key: 'content-type',
+                    value: 'application/json'
+                  }
+                ],
+                paramsValid: [
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'user_name',
+                    value: 'zhangsan'
+                  },
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'password',
+                    value: '1234556'
+                  },
+                ],
+                response: {
+                  user_name: 'gagaga',
+                  sex: 1,
+                }
+              },
+              {
+                name: '注册',
+                level: 3,
+                uuid: 'iolpoopfd',
+                url: '/user/register',
+                method: 'post',
+                headers: [
+                  {
+                    key: 'content-type',
+                    value: 'application/json'
+                  }
+                ],
+                paramsValid: [
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'user_name',
+                    value: 'zhangsan'
+                  },
+                  {
+                    type: 'string',
+                    required: true,
+                    name: 'password',
+                    value: '1234556'
+                  },
+                ],
+                response: {
+                  user_name: 'gagaga',
+                  sex: 1,
+                }
+              }
+            ]
+          },
+          {
+            name: '登陆',
+            level: 3,
+            uuid: 'iol',
+            url: '/user/login',
+            method: 'post',
+            headers: [
+              {
+                key: 'content-type',
+                value: 'application/json'
+              }
+            ],
+            paramsValid: [
+              {
+                type: 'string',
+                required: true,
+                name: 'user_name',
+                value: 'zhangsan'
+              },
+              {
+                type: 'string',
+                required: true,
+                name: 'password',
+                value: '1234556'
+              },
+            ],
+            response: {
+              user_name: 'gagaga',
+              sex: 1,
+            }
+          },
+          {
+            name: '注册',
+            level: 3,
+            uuid: 'iolfd',
+            url: '/user/register',
+            method: 'post',
+            headers: [
+              {
+                key: 'content-type',
+                value: 'application/json'
+              }
+            ],
+            paramsValid: [
+              {
+                type: 'string',
+                required: true,
+                name: 'user_name',
+                value: 'zhangsan'
+              },
+              {
+                type: 'string',
+                required: true,
+                name: 'password',
+                value: '1234556'
+              },
+            ],
+            response: {
+              user_name: 'gagaga',
+              sex: 1,
+            }
+          }
+        ]
+      }
+    ]
+    function p2t(params) {
+      const currentTree = params.map(item => {
+        const current = {
+          level: item.level,
+          label: item.level === 1
+            ? item.projectName : item.level === 2
+              ? item.folderName : item.requestName
+        }
+        if (item.level === 1) {
+          current.children = [...p2t(item.folders), ...item.requests]
+        }
+        if (item.level === 2) {
+          current.children = p2t(item.requests)
+        }
+        if (item.level === 3) {
+          for (var key in item) {
+            current[key] = item[key]
+          }
+        }
+        return current
+      });
+      return currentTree
+    }
+    const tree = p2t(projectList);
+    console.log(tree)
+  </script>
+</body>
+
+</html>

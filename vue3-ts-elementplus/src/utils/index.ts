@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 export function setTheme(color: string) {
   const el = document.documentElement;
   const base_color = '#ffffff';
@@ -33,4 +34,37 @@ export function gotoLogin() {
 
 export function isNotEmpty(str?: string | number): boolean {
   return str !== undefined && str !== null && !/^[\s\n]*$/g.test(String(str));
+}
+
+export function uuid() {
+  return uuidv4();
+}
+
+export function createEmpty(type: string) {
+  const emptyFolder = {
+    name: '',
+    baseUrl: '',
+    uuid: uuid(),
+    level: 2
+  };
+  const emptyRequest = {
+    name: '',
+    level: 3,
+    uuid: uuid(),
+    methodUrl: {
+      method: '',
+      url: '',
+    },
+    request: {
+      params: [],
+      headers: [],
+      body: {},
+    },
+    response: {}
+  };
+  if (type === 'folder') {
+    return emptyFolder;
+  }
+  return emptyRequest;
+
 }
