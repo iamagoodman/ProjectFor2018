@@ -1,9 +1,5 @@
 <template>
   <div class="key-value">
-    <!-- <div class="title">
-      <span class="key">Key</span>
-      <span class="value">Value</span>
-    </div> -->
     <div class="data"
          v-for="(item, index) in list"
          :key="item.renderKey">
@@ -24,7 +20,8 @@
       <el-select v-model="item.type"
                  class="middle-input"
                  placeholder="params type"
-                 size="small">
+                 size="small"
+                 @change="handleEmit">
         <el-option v-for="item in PARAMS_TYPE"
                    :key="item.value"
                    :label="item.label"
@@ -34,7 +31,8 @@
       <el-select v-model="item.required"
                  placeholder="is required"
                  class="last-input"
-                 size="small">
+                 size="small"
+                 @change="handleEmit">
         <el-option v-for="item in TRUEFALSE"
                    :key="item.value"
                    :label="item.label"
@@ -46,10 +44,14 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+// import { Plus } from '@element-plus/icons-vue';
 import { uuid } from '@/utils/index';
 import { PARAMS_TYPE, TRUEFALSE } from '@/constant';
 export default defineComponent({
   name: 'keyValue',
+  components: {
+    // Plus,
+  },
   data() {
     return {
       PARAMS_TYPE,
@@ -85,7 +87,17 @@ export default defineComponent({
     modelValue: {
       immediate: true, // 很重要！！！
       handler(val) {
-        this.list = val;
+        let list = val;
+        if (val && val.length && val[val.length - 1].key) {
+          list.push({
+            key: '',
+            value: '',
+            checked: false,
+            type: '',
+            renderKey: uuid(),
+          });
+        }
+        this.list = list;
       },
     },
   },
@@ -102,8 +114,8 @@ export default defineComponent({
       }
     },
     handleEmit() {
-      console.log('emit');
       this.$emit('update:modelValue', this.list);
+      this.$emit('change');
     },
   },
 });

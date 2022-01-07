@@ -49,7 +49,8 @@
                    :key="editorData.uuid" />
         <request-form v-else
                       v-model="editorData"
-                      :key="editorData.uuid" />
+                      :key="editorData.uuid"
+                      @request-event="handleRequestEvent" />
       </div>
     </div>
   </div>
@@ -166,11 +167,25 @@ export default defineComponent({
       current.children = current.children
         ? [...current.children, item]
         : [item];
-      console.log('cloneData', cloneData);
+      this.editorData = item;
       this.setDetail(cloneData);
     },
     handleHover(data: any) {
       this.activeData = data;
+    },
+    handleRequestEvent(data: any, eventType: string) {
+      const current = {
+        ...this.editorData,
+        ...data,
+        method: data.methodUrl.method,
+        url: data.methodUrl.url,
+      };
+      const cloneData = cloneDeep(this.treeData);
+      const { parent, index } = findParentByUuid(cloneData, current);
+      parent.children.splice(index, 1, current);
+      this.setDetail(cloneData);
+      console.log('cloneData', cloneData);
+      console.log('eventType', eventType);
     },
   },
   watch: {

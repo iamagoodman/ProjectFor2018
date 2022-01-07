@@ -56,9 +56,10 @@ export function createEmpty(type: string) {
       url: '',
     },
     request: {
-      params: [],
-      headers: [],
-      body: {},
+      params: undefined,
+      headers: undefined,
+      body: { json: {} },
+      bodyType: 'none',
     },
     response: {}
   };

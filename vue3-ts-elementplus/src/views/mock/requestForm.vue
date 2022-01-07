@@ -25,14 +25,14 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary"
-                   @click="submitForm(ruleFormRef)">Create</el-button>
-        <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+                   @click="submitForm(ruleFormRef, 'save')">Save</el-button>
+        <el-button @click="submitForm(ruleFormRef, 'test')">Test</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, defineComponent, toRef } from 'vue';
+import { reactive, ref, defineComponent, toRef, watch } from 'vue';
 import type { ElForm } from 'element-plus';
 import MethodUrl from '@/components/methodUrl.vue';
 import RequestData from '@/components/requestData.vue';
@@ -52,14 +52,11 @@ export default defineComponent({
       },
     },
   },
-  setup(props: any) {
-    const resetForm = (node: any) => {
-      console.log(node);
-    };
-    const submitForm = (node: any) => {
+  setup(props: any, context: any) {
+    const submitForm = (node: any, eventType?: string) => {
       node.validate((valid) => {
         if (valid) {
-          console.log(node.model);
+          context.emit('request-event', node.model, eventType);
         }
       });
     };
@@ -73,17 +70,11 @@ export default defineComponent({
         method: modelValue.value.method || '',
         url: modelValue.value.url || '',
       },
-      request: {
-        params: modelValue.value.params || [],
-        headers: modelValue.value.headers || [],
-        body: modelValue.value.body || {},
-        bodyType: modelValue.value.bodyType,
-      },
-      response: {},
+      request: modelValue.value.request || undefined,
+      response: modelValue.value.response,
     };
     console.log('defaultForm', defaultForm);
     const ruleForm = reactive(defaultForm);
-    console.log(ruleForm);
     const rules = reactive({
       name: [
         {
@@ -123,8 +114,10 @@ export default defineComponent({
         },
       ],
     });
+    watch(ruleFormRef, (val) => {
+      console.log(val);
+    });
     return {
-      resetForm,
       submitForm,
       formSize,
       ruleFormRef,

@@ -29,6 +29,42 @@ export default {
                 uuid: 'iofdsssel',
                 url: '/user/login',
                 method: 'post',
+                request: {
+                  headers: [
+                    {
+                      key: 'content-type',
+                      value: 'application/json'
+                    }
+                  ],
+                  paramsValid: [
+                    {
+                      type: 'string',
+                      required: true,
+                      name: 'user_name',
+                      value: 'zhangsan'
+                    },
+                    {
+                      type: 'string',
+                      required: true,
+                      name: 'password',
+                      value: '1234556'
+                    },
+                  ],
+                  params: [
+                    {
+                      key: 'user_name',
+                      value: 'gaga',
+                      type: 'string',
+                      required: true,
+                      checked: true,
+                    }
+                  ],
+                  body: {
+                    json: { name: 'jack' },
+                    list: []
+                  },
+                  bodyType: 'json',
+                },
                 headers: [
                   {
                     key: 'content-type',
@@ -58,7 +94,10 @@ export default {
                     checked: true,
                   }
                 ],
-                body: { name: 'jack' },
+                body: {
+                  json: { name: 'jack' },
+                  list: []
+                },
                 bodyType: 'json',
                 response: {
                   user_name: 'gagaga',
