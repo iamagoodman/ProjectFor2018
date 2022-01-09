@@ -1,16 +1,20 @@
 const Router = require('koa-router')
-const { register, login, modifyUser } = require('../controller/user.controller')
-const { userValidDator, verifyUser, crpyPassword, verifyLogin } = require('../middleware/user.middleware')
+const { save, getList, getItem, deleteItem } = require('../controller/mock.controller')
 const { userAuth } = require('../middleware/auth.middleware')
-const router = new Router({ prefix: '/user' })
+const router = new Router({ prefix: '/mock' })
 
-// 注册接口
-router.post('/register',crpyPassword,  userValidDator, verifyUser, register)
+// 保存mock项目
+router.post('/save',userAuth, save)
 
-// 登陆接口
-router.post('/login', userValidDator, verifyLogin, login)
+router.post('/delete',userAuth, deleteItem)
 
-// 修改密码
-router.post('/modify', userAuth, crpyPassword, modifyUser)
+// 查询mock项目列表
+router.get('/list', userAuth, getList)
+
+// 根据id查询具体项目
+router.get('/queryById', userAuth, getItem)
+
+// 根据id查询具体项目
+router.all('/test', save)
 
 module.exports = router 

@@ -20,11 +20,13 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/mock/detail',
     name: 'MockDetail',
+    props: true,
     component: () => import('@/views/mock/Detail.vue')
   },
   {
     path: '/mock/edit',
     name: 'MockEdit',
+    props: true,
     component: () => import('@/views/mock/Edit.vue')
   },
   {

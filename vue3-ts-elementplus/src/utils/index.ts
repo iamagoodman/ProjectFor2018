@@ -29,7 +29,7 @@ export function colourBlend(c1: string, c2: string, ratio: number | string): str
 }
 
 export function gotoLogin() {
-  location.href = location.origin;
+  location.href = location.origin + '/login';
 }
 
 export function isNotEmpty(str?: string | number): boolean {
@@ -83,6 +83,9 @@ export function findParentByUuid(list: any[], target: any) {
   const current = list.filter(item => JSON.stringify(item).indexOf(target.uuid))[0];
   let parent = undefined;
   let index = undefined;
+  // if (target.level === 1) {
+  //   return { parent: current, index: 0 };
+  // }
   current.children.forEach((item, index_) => {
     if (item.uuid === target.uuid) {
       parent = current;

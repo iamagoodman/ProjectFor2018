@@ -25,8 +25,9 @@ export default defineComponent({
 .my-card {
   border: var(--el-border-base);
   margin-bottom: 10px;
+  height: 180px;
   img {
-    width: 100%;
+    width: 70%;
   }
 }
 ::v-deep .el-card__body {

@@ -98,13 +98,13 @@ instance.interceptors.response.use(
       Loading.remove();
     }
     if (response?.config?.params?._redirect) {
-      return response;
+      return { success: true, ...response.data };
     }
     const successCode = [200, 10200, '200', '10200'];
     if (successCode.indexOf(response.data.code) === -1) {
-      return Promise.reject({ message: response.data.message || response.data.code });
+      return Promise.reject({ success: false, message: response.data.message || response.data.code });
     }
-    return response;
+    return { success: true, ...response.data };
   },
   (error: any) => {
     Loading.remove();

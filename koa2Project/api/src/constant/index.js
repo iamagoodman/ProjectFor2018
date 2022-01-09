@@ -1,4 +1,4 @@
-const whiteUrlList = ['/user/login', '/user/register', '/favicon.ico']
+const whiteUrlList = ['/user/login', '/user/register', '/favicon.ico', '/mock/test']
 
 
 module.exports = {

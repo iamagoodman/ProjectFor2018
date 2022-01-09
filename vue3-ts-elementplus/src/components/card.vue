@@ -3,7 +3,7 @@
            class="my-card">
     <template #header>
       <div class="card-header">
-        <span>{{project.name}}</span>
+        <span>{{project.project_name}}</span>
         <div>
           <el-tooltip effect="light"
                       content="查看"
@@ -42,12 +42,13 @@
     </div>
     <div class="card-item">
       更新时间：
-      <span class="active-font">{{project.updateAt}}</span>
+      <span class="active-font">{{formatTime(project.updatedAt)}}</span>
     </div>
   </el-card>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+import dayjs from 'dayjs';
 import { Delete, Edit, Reading } from '@element-plus/icons-vue';
 export default defineComponent({
   name: 'card',
@@ -62,8 +63,8 @@ export default defineComponent({
       default() {
         return {
           id: 1,
-          name: 'testProject',
-          updateAt: '2021/12/20 09:30:40',
+          project_name: 'testProject',
+          updatedAt: '2021/12/20 09:30:40',
           remarks: '这是备注，这是备注',
           author: 'quntta',
         };
@@ -74,6 +75,9 @@ export default defineComponent({
     cardHandler(handleType: string) {
       this.$emit('handleEvent', { handleType, id: this.project.id });
     },
+    formatTime(time: string) {
+      return dayjs(time).format('YYYY-MM-DD hh:mm:ss');
+    },
   },
 });
 </script>
@@ -81,6 +85,7 @@ export default defineComponent({
 .my-card {
   border: var(--el-border-base);
   margin-bottom: 10px;
+  height: 180px;
 }
 ::v-deep .el-card__body {
   padding: 10px 12px;
@@ -96,9 +101,10 @@ export default defineComponent({
 }
 .card-item {
   font-size: 13px;
-  height: 20px;
   line-height: 20px;
   text-align: left;
+  max-height: 80px;
+  overflow: hidden;
   .active-font {
     color: var(--el-color-black);
   }

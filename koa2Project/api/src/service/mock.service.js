@@ -1,30 +1,37 @@
-const User = require('../model/user.model')
+const Mock = require('../model/mock.model')
 
-class UserService {
-    async createUser(user) {
+class MockService {
+    async createMock(mockData) {
         // todo 写入数据库
-        // const req = { user_name, password }
-        const res = await User.create({ ...user })
-        return res.dataValues
+        const res = await Mock.create({ ...mockData })
+        return res ? res.dataValues : null
     }
-    async getUserInfo(user) {
-        const Opt = { ...user }
-        // const keys = Object.keys(user).map(key => (key))
-        // 不能用 灵活的key， id， user_name， password
-        const res = await User.findOne({
-            // attributes: keys,
-            attributes: ['id', 'user_name', 'password', 'is_admin'],
-            where: user
+    async getMockList(mockData) { // author_id -> 查询该author_id所有的项目
+        const res = await Mock.findAll({
+            where: mockData,
+            attributes: { exclude: ['project_detail'] }
+        })
+        return res ? res : null
+    }
+    async getMockItem(mockData) { // id 或 uuid
+        const res = await Mock.findOne({
+            where: mockData
+        })
+        return res ? JSON.parse(res.dataValues.project_detail) : null
+    }
+    async updateMock(mockData) {
+        const res = await Mock.update(mockData, {
+            where: {
+                id: mockData.id
+            }
         })
         return res ? res.dataValues : null
     }
-    async updateById({ id, ...userInfo }) {
-        const whereOpt = {id}
-        const res = await User.update(userInfo, {
-            where: whereOpt
+    async deleteMock(mockData) {
+        const res = await Mock.destroy({
+            where: mockData
         })
-        return res[0] > 0
     }
 }
 
-module.exports = new UserService()
+module.exports = new MockService()

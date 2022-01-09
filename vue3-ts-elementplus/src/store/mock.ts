@@ -1,3 +1,5 @@
+import { Server, Mock } from '@/server/server';
+import { uuid } from '@/utils';
 export default {
   namespaced: true,
   state: {
@@ -5,7 +7,7 @@ export default {
       {
         name: 'emptyProject',
         level: 1,
-        uuid: 'sssdddd'
+        uuid: uuid()
       }
     ],
     projectList: [
@@ -212,15 +214,63 @@ export default {
       return state.projectList[0].children.filter(item => item.level === 3);
     },
     detail: state => {
-      return state.projectDetail || state.projectList;
+      // return state.projectDetail || state.projectList;
       // return state.projectList;
-    }
+      return state.projectDetail || state.emptyProject;
+    },
+    list: state => state.projectList
   },
   mutations: {
     setDetail: (state: any, detail: any) => {
       state.projectDetail = detail;
+    },
+    setList: (state: any, list: any[]) => {
+      console.log('set list', list);
+      state.projectList = list;
     }
   },
   actions: {
-  }
+    asyncSaveProjectDetail({ commit }, projectDetail) {
+      return new Promise((resove, reject) => {
+        Server(Mock.save, projectDetail)
+          .then((res) => {
+            commit('setDetail', [JSON.parse(projectDetail.project_detail)]);
+            resove(res);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+    asyncQueryProjectList({ commit }) {
+      return new Promise((resove, reject) => {
+        Server(Mock.list)
+          .then(({ result = [], success }) => {
+            if (success) {
+              commit('setList', result);
+            }
+            resove({ success, result });
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+    asyncQueryProjectDetailByid({ commit }, params: any) {
+      return new Promise((resove, reject) => {
+        Server(Mock.queryById, params)
+          .then(({ result = {}, success }) => {
+            if (success) {
+              commit('setDetail', [result]);
+              console.log(success);
+            }
+            resove({ success, result });
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    }
+  },
+
 };

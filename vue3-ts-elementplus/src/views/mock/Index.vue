@@ -15,12 +15,11 @@
         <empty-card :noProject="false" />
       </el-col>
     </el-row>
-
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { mapState } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import Card from '@/components/card.vue';
 import EmptyCard from '@/components/emptyCard.vue';
 import { ElMessageBox, ElMessage } from 'element-plus';
@@ -31,21 +30,27 @@ export default defineComponent({
     EmptyCard,
   },
   computed: {
-    ...mapState({
-      projectList: (state: any) => state.mock.projectList,
-    }),
+    ...mapGetters('mock', { projectList: 'list' }),
   },
   mounted() {
-    // console.log(this.$store.state.mock.userData.name);
+    this.queryList()
+      .then((res) => {
+        console.log(res.result);
+        console.log('this.projectList', this.projectList);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   methods: {
+    ...mapActions('mock', { queryList: 'asyncQueryProjectList' }),
     cardHandler(value: any) {
       switch (value.handleType) {
         case 'read':
-          this.$router.push('/mock/detail');
+          this.$router.push(`/mock/detail?id=${value.id}`);
           break;
         case 'edit':
-          this.$router.push('/mock/edit');
+          this.$router.push(`/mock/edit?id=${value.id}`);
           break;
         default:
           this.handleDelete();

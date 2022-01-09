@@ -82,8 +82,8 @@ export default defineComponent({
     handleSignIn() {
       Server(User.login, this.user)
         .then((res) => {
-          sessionStorage.setItem('authorization', res.data.result.token);
-          console.log(res.data);
+          sessionStorage.setItem('authorization', res.result.token);
+          console.log(res);
           location.href = location.origin;
         })
         .catch((error) => {
@@ -97,8 +97,8 @@ export default defineComponent({
     handleSignUp() {
       Server(User.register, this.user)
         .then((res) => {
-          console.log(res.data);
-          sessionStorage.setItem('authorization', res.data.result.token);
+          console.log(res);
+          sessionStorage.setItem('authorization', res.result.token);
         })
         .catch((error) => {
           ElMessage({

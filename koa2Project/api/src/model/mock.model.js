@@ -2,38 +2,47 @@ const { DataTypes } = require('sequelize')
 
 const seq = require('../db/seq')
 
-// 创建模型 koa_user => koa_users
-const User = seq.define('koa_user', {
-    user_name: {
+// 创建模型 mock_project => mock_project
+const Mock = seq.define('mock_project', {
+    author: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        comment: '项目作者名'
+    },
+    author_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        comment: '项目创建者'
+    },
+    remarks: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        comment: '项目备注'
+    },
+    uuid: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        comment: '用户名，唯一'
+        comment: 'uuid 唯一键'
     },
-    password: {
-        type: DataTypes.CHAR(64),
-        allowNull: false,
-        comment: '密码'
-    },
-    sex: {
+    project_name: {
         type: DataTypes.STRING,
+        unique: true,
         allowNull: false,
-        defaultValue: 'F',
-        comment: '性别'
+        comment: '项目名称'
     },
-    email: {
+    project_detail: {
+        type: DataTypes.TEXT('medium'),
+        allowNull: false,
+        comment: '项目详情'
+    },
+    allow_auth_list: {
         type: DataTypes.STRING,
         allowNull: true,
-        comment: '邮箱'
-    },
-    is_admin: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: 0,
-        comment: '是否为管理员，0不是，1是'
+        comment: '有权限的人列表'
     }
 })
 // 强制同步数据库 没有表就创建表
-// User.sync({ force: true })
+// Mock.sync({ force: true })
 
-module.exports = User
+module.exports = Mock

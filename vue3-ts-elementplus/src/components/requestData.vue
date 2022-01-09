@@ -31,14 +31,12 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-// import KeyValue from '@/components/keyValue.vue';
 import KeyValueValid from '@/components/keyValueValid.vue';
 import JsonEditorVue from 'json-editor-vue3';
 import { BODY_TYPE } from '@/constant';
 export default defineComponent({
   name: 'requestData',
   components: {
-    // KeyValue,
     KeyValueValid,
     JsonEditorVue,
   },

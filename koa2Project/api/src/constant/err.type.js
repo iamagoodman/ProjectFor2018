@@ -58,7 +58,7 @@ module.exports = {
     tokenExpiredError: {
         status: 200,
         body: {
-            code: '10101',
+            code: '10100',
             message: 'token已过期',
             result: ''
         }
@@ -66,7 +66,7 @@ module.exports = {
     invalidToken: {
         status: 200,
         body: {
-            code: '10102',
+            code: '10100',
             message: '无效token',
             result: ''
         }
@@ -108,6 +108,14 @@ module.exports = {
         body: {
             code: '10008',
             message: '字段校验不通过',
+            result: ''
+        }
+    },
+    mockError: {
+        status: 200,
+        body: {
+            code: '10009',
+            message: 'mock模块未知错误',
             result: ''
         }
     }

@@ -46,7 +46,8 @@
       <div class="project-content">
         <base-form v-if="showBaseForm"
                    v-model="editorData"
-                   :key="editorData.uuid" />
+                   :key="editorData.uuid"
+                   @request-event="handleRequestEvent" />
         <request-form v-else
                       v-model="editorData"
                       :key="editorData.uuid"
@@ -57,7 +58,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { mapGetters, mapMutations } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import Back from '@/components/back.vue';
 import RequestForm from './requestForm.vue';
 import BaseForm from './baseForm.vue';
@@ -101,7 +102,15 @@ export default defineComponent({
       },
     };
   },
+  mounted() {
+    if (this.getQuery.id) {
+      this.asyncGetItem({ id: this.getQuery.id });
+    }
+  },
   computed: {
+    getQuery() {
+      return this.$route.query;
+    },
     ...mapGetters('mock', { treeData: 'detail' }),
     actionList() {
       let list: any[] = [
@@ -137,7 +146,13 @@ export default defineComponent({
     },
   },
   methods: {
-    ...mapMutations({ setDetail: 'mock/setDetail' }),
+    ...mapMutations({
+      setDetail: 'mock/setDetail',
+    }),
+    ...mapActions('mock', {
+      asyncSetDetail: 'asyncSaveProjectDetail',
+      asyncGetItem: 'asyncQueryProjectDetailByid',
+    }),
     handleAction(data: any, action: any) {
       switch (action.label) {
         case 'edit':
@@ -177,15 +192,36 @@ export default defineComponent({
       const current = {
         ...this.editorData,
         ...data,
-        method: data.methodUrl.method,
-        url: data.methodUrl.url,
+        method: data.methodUrl?.method,
+        url: data.methodUrl?.url,
       };
-      const cloneData = cloneDeep(this.treeData);
-      const { parent, index } = findParentByUuid(cloneData, current);
-      parent.children.splice(index, 1, current);
-      this.setDetail(cloneData);
-      console.log('cloneData', cloneData);
-      console.log('eventType', eventType);
+      if (current.level === 1) {
+        this.setDetail([current]);
+        this.createRequest(current);
+      } else {
+        const cloneData = cloneDeep(this.treeData);
+        const { parent, index } = findParentByUuid(cloneData, current);
+        parent.children.splice(index, 1, current);
+        this.setDetail(cloneData);
+        this.createRequest(cloneData[0]);
+      }
+    },
+    createRequest(projectDetail: any) {
+      const data = {
+        remarks: projectDetail.remarks,
+        project_name: projectDetail.name,
+        id: projectDetail?.id,
+        uuid: projectDetail.uuid,
+        project_detail: JSON.stringify(projectDetail),
+        dataType: 'json',
+      };
+      this.asyncSetDetail(data)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
   watch: {

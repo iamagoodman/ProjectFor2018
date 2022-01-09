@@ -6,7 +6,7 @@
              label-width="120px"
              class="demo-ruleForm"
              size="small">
-      <el-form-item label="接口名称"
+      <el-form-item :label="titleLabel"
                     prop="name">
         <el-input v-model="ruleForm.name"
                   style="width: 20%"></el-input>
@@ -21,31 +21,45 @@
         <el-input v-model="ruleForm.remarks"
                   style="width: 40%"></el-input>
       </el-form-item>
+      <el-form-item>
+        <el-button type="primary"
+                   @click="submitForm(ruleFormRef, 'save')">Save</el-button>
+      </el-form-item>
     </el-form>
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, defineComponent } from 'vue';
+import { reactive, ref, defineComponent, toRef, computed } from 'vue';
 import type { ElForm } from 'element-plus';
 export default defineComponent({
-  name: 'requestForm',
-  setup() {
-    const resetForm = (node: any) => {
-      console.log(node);
-    };
-    const submitForm = (node: any) => {
+  name: 'baseForm',
+  props: {
+    modelValue: {
+      type: Object,
+      default: () => {
+        return {};
+      },
+    },
+  },
+  setup(props: any, context: any) {
+    const submitForm = (node: any, eventType?: string) => {
       node.validate((valid) => {
         if (valid) {
-          console.log(node.model);
+          context.emit('request-event', node.model, eventType);
         }
       });
     };
     const formSize = ref('small');
     const ruleFormRef = ref<InstanceType<typeof ElForm>>();
+    const modelValue = toRef(props, 'modelValue');
+    console.log('modelValue', modelValue.value);
+    const titleLabel = computed(() =>
+      modelValue.value.level === 1 ? '项目名称' : '模块名称'
+    );
     const ruleForm = reactive({
-      name: '',
-      baseUrl: '',
-      remarks: '',
+      name: modelValue.value.name || '',
+      baseUrl: modelValue.value.baseUrl || '',
+      remarks: modelValue.value.remarks || '',
     });
 
     const rules = reactive({
@@ -67,7 +81,7 @@ export default defineComponent({
       ],
       remarks: [
         {
-          required: true,
+          required: false,
           type: 'string',
           message: 'Please input remarks value',
           trigger: 'blur',
@@ -75,12 +89,12 @@ export default defineComponent({
       ],
     });
     return {
-      resetForm,
       submitForm,
       formSize,
       ruleFormRef,
       ruleForm,
       rules,
+      titleLabel,
     };
   },
 });
