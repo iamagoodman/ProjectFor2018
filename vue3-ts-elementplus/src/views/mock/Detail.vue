@@ -30,7 +30,7 @@
       </div> -->
       <div v-if="requests.length">
         <request-item v-for="request in detail.requests"
-                      :key="request.requestName"
+                      :key="request.uuid"
                       :request="request" />
       </div>
     </div>
@@ -38,7 +38,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState, mapActions } from 'vuex';
 import RequestItem from '@/components/requestItem.vue';
 import Back from '@/components/back.vue';
 export default defineComponent({
@@ -56,18 +56,26 @@ export default defineComponent({
     };
   },
   mounted() {
-    console.log(this.detail);
+    if (this.getQuery.id) {
+      this.asyncGetItem({ id: this.getQuery.id, dataType: 'json' });
+    }
   },
   computed: {
-    ...mapState({
-      detail: (state: any) => state.mock.projectList[0],
-    }),
-    ...mapGetters('mock', {
-      folders: 'detail2Folders',
-      requests: 'detail2Requests',
-    }),
+    getQuery() {
+      return this.$route.query;
+    },
+    ...mapGetters('mock', { detail: 'readDetail' }),
+    folders() {
+      return this.detail.children?.filter((child) => child.level === 2) || [];
+    },
+    requests() {
+      return this.detail.children?.filter((child) => child.level === 3) || [];
+    },
   },
   methods: {
+    ...mapActions('mock', {
+      asyncGetItem: 'asyncQueryProjectDetailByid',
+    }),
     paramsDemo(paramsValid: any[]) {
       const params = {};
       paramsValid.forEach((item) => {

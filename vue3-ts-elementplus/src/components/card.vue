@@ -73,7 +73,11 @@ export default defineComponent({
   },
   methods: {
     cardHandler(handleType: string) {
-      this.$emit('handleEvent', { handleType, id: this.project.id });
+      this.$emit('handleEvent', {
+        handleType,
+        id: this.project.id,
+        project_name: this.project.project_name,
+      });
     },
     formatTime(time: string) {
       return dayjs(time).format('YYYY-MM-DD hh:mm:ss');

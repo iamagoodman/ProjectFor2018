@@ -6,217 +6,24 @@ export default {
     emptyProject: [
       {
         name: 'emptyProject',
-        level: 1,
-        uuid: uuid()
+        level: 1
       }
     ],
-    projectList: [
-      {
-        name: 'testproject',
-        level: 1,
-        updateAt: '2021/12/20 09:30:40',
-        remarks: '这是备注，这是备注11111',
-        author: 'quntta',
-        baseUrl: 'http://localhost:8000/',
-        uuid: 'fdas',
-        children: [
-          {
-            name: '用户模块',
-            level: 2,
-            uuid: 'fdsjj',
-            children: [
-              {
-                name: '登陆',
-                level: 3,
-                uuid: 'iofdsssel',
-                url: '/user/login',
-                method: 'post',
-                request: {
-                  headers: [
-                    {
-                      key: 'content-type',
-                      value: 'application/json'
-                    }
-                  ],
-                  paramsValid: [
-                    {
-                      type: 'string',
-                      required: true,
-                      name: 'user_name',
-                      value: 'zhangsan'
-                    },
-                    {
-                      type: 'string',
-                      required: true,
-                      name: 'password',
-                      value: '1234556'
-                    },
-                  ],
-                  params: [
-                    {
-                      key: 'user_name',
-                      value: 'gaga',
-                      type: 'string',
-                      required: true,
-                      checked: true,
-                    }
-                  ],
-                  body: {
-                    json: { name: 'jack' },
-                    list: []
-                  },
-                  bodyType: 'json',
-                },
-                headers: [
-                  {
-                    key: 'content-type',
-                    value: 'application/json'
-                  }
-                ],
-                paramsValid: [
-                  {
-                    type: 'string',
-                    required: true,
-                    name: 'user_name',
-                    value: 'zhangsan'
-                  },
-                  {
-                    type: 'string',
-                    required: true,
-                    name: 'password',
-                    value: '1234556'
-                  },
-                ],
-                params: [
-                  {
-                    key: 'user_name',
-                    value: 'gaga',
-                    type: 'string',
-                    required: true,
-                    checked: true,
-                  }
-                ],
-                body: {
-                  json: { name: 'jack' },
-                  list: []
-                },
-                bodyType: 'json',
-                response: {
-                  user_name: 'gagaga',
-                  sex: 1,
-                }
-              },
-              {
-                name: '注册',
-                level: 3,
-                uuid: 'iolpoopfd',
-                url: '/user/register',
-                method: 'post',
-                headers: [
-                  {
-                    key: 'content-type',
-                    value: 'application/json'
-                  }
-                ],
-                paramsValid: [
-                  {
-                    type: 'string',
-                    required: true,
-                    name: 'user_name',
-                    value: 'zhangsan'
-                  },
-                  {
-                    type: 'string',
-                    required: true,
-                    name: 'password',
-                    value: '1234556'
-                  },
-                ],
-                response: {
-                  user_name: 'gagaga',
-                  sex: 1,
-                }
-              }
-            ]
-          },
-          {
-            name: '登陆',
-            level: 3,
-            uuid: 'iol',
-            url: '/user/login',
-            method: 'post',
-            headers: [
-              {
-                key: 'content-type',
-                value: 'application/json'
-              }
-            ],
-            paramsValid: [
-              {
-                type: 'string',
-                required: true,
-                name: 'user_name',
-                value: 'zhangsan'
-              },
-              {
-                type: 'string',
-                required: true,
-                name: 'password',
-                value: '1234556'
-              },
-            ],
-            response: {
-              user_name: 'gagaga',
-              sex: 1,
-            }
-          },
-          {
-            name: '注册',
-            level: 3,
-            uuid: 'iolfd',
-            url: '/user/register',
-            method: 'post',
-            headers: [
-              {
-                key: 'content-type',
-                value: 'application/json'
-              }
-            ],
-            paramsValid: [
-              {
-                type: 'string',
-                required: true,
-                name: 'user_name',
-                value: 'zhangsan'
-              },
-              {
-                type: 'string',
-                required: true,
-                name: 'password',
-                value: '1234556'
-              },
-            ],
-            response: {
-              user_name: 'gagaga',
-              sex: 1,
-            }
-          }
-        ]
-      }
-    ],
+    projectList: [],
     projectDetail: undefined
   },
   getters: {
     detail2Folders: state => {
-      return state.projectList[0].children.filter(item => item.level === 2);
+      return state.state.projectDetail.children.filter(item => item.level === 2);
     },
     detail2Requests: state => {
-      return state.projectList[0].children.filter(item => item.level === 3);
+      return state.state.projectDetail.children.filter(item => item.level === 3);
     },
     detail: state => {
-      // return state.projectDetail || state.projectList;
-      // return state.projectList;
       return state.projectDetail || state.emptyProject;
+    },
+    readDetail: state => {
+      return state.projectDetail ? state.projectDetail[0] : state.emptyProject;
     },
     list: state => state.projectList
   },
@@ -248,6 +55,7 @@ export default {
           .then(({ result = [], success }) => {
             if (success) {
               commit('setList', result);
+              commit('setDetail', undefined);
             }
             resove({ success, result });
           })
@@ -262,6 +70,21 @@ export default {
           .then(({ result = {}, success }) => {
             if (success) {
               commit('setDetail', [result]);
+              console.log(success);
+            }
+            resove({ success, result });
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+    asyncDeleteProject({ commit, dispatch }, params: any) {
+      return new Promise((resove, reject) => {
+        Server(Mock.delete, params)
+          .then(({ result = {}, success }) => {
+            if (success) {
+              dispatch('asyncQueryProjectList');
               console.log(success);
             }
             resove({ success, result });

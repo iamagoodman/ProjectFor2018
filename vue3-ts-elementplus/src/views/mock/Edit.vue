@@ -48,10 +48,14 @@
                    v-model="editorData"
                    :key="editorData.uuid"
                    @request-event="handleRequestEvent" />
-        <request-form v-else
+        <request-form v-if="showRequestForm"
                       v-model="editorData"
                       :key="editorData.uuid"
                       @request-event="handleRequestEvent" />
+        <el-empty v-if="!editorData.level"
+                  :image-size="200"
+                  style="margin-top: 100px"
+                  description="请编辑或新增请求/模块"></el-empty>
       </div>
     </div>
   </div>
@@ -71,7 +75,7 @@ import {
   Edit,
 } from '@element-plus/icons-vue';
 import { cloneDeep } from 'lodash';
-import { createEmpty, findByUuid, findParentByUuid } from '@/utils';
+import { createEmpty, findByUuid, findParentByUuid, uuid } from '@/utils';
 export default defineComponent({
   name: 'MockEdit',
   components: {
@@ -104,7 +108,7 @@ export default defineComponent({
   },
   mounted() {
     if (this.getQuery.id) {
-      this.asyncGetItem({ id: this.getQuery.id });
+      this.asyncGetItem({ id: this.getQuery.id, dataType: 'json' });
     }
   },
   computed: {
@@ -120,14 +124,16 @@ export default defineComponent({
         },
       ];
       if (this.activeData.level === 1) {
-        list.unshift({
-          label: 'add request',
-          level: 3,
-        });
-        list.unshift({
-          label: 'add folder',
-          level: 1,
-        });
+        list = [
+          {
+            label: 'add request',
+            level: 3,
+          },
+          {
+            label: 'add folder',
+            level: 1,
+          },
+        ];
       }
       if (this.activeData.level === 2) {
         list.unshift({
@@ -142,7 +148,10 @@ export default defineComponent({
       return list;
     },
     showBaseForm() {
-      return this.editorData.level < 3;
+      return this.editorData.level && this.editorData.level < 3;
+    },
+    showRequestForm() {
+      return this.editorData.level && this.editorData.level === 3;
     },
   },
   methods: {
@@ -197,11 +206,13 @@ export default defineComponent({
       };
       if (current.level === 1) {
         this.setDetail([current]);
+        console.log('current', current);
         this.createRequest(current);
       } else {
         const cloneData = cloneDeep(this.treeData);
         const { parent, index } = findParentByUuid(cloneData, current);
         parent.children.splice(index, 1, current);
+        console.log('cloneData', cloneData);
         this.setDetail(cloneData);
         this.createRequest(cloneData[0]);
       }
@@ -211,7 +222,7 @@ export default defineComponent({
         remarks: projectDetail.remarks,
         project_name: projectDetail.name,
         id: projectDetail?.id,
-        uuid: projectDetail.uuid,
+        uuid: projectDetail?.uuid || uuid(),
         project_detail: JSON.stringify(projectDetail),
         dataType: 'json',
       };

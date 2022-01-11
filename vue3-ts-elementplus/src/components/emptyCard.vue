@@ -6,7 +6,7 @@
          v-if="!noProject">
     <img src="@/assets/img/noproject.jpg"
          alt="点我新增一个项目"
-         v-else>
+         v-if="noProject">
   </el-card>
 </template>
 <script lang="ts">
@@ -14,10 +14,10 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'emptyCard',
   props: {
-    noProject: {
-      type: Boolean,
-      default: false,
-    },
+    noProject: Boolean,
+  },
+  mounted() {
+    console.log(this.noProject);
   },
 });
 </script>

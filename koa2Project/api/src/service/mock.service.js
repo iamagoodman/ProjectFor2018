@@ -17,7 +17,7 @@ class MockService {
         const res = await Mock.findOne({
             where: mockData
         })
-        return res ? JSON.parse(res.dataValues.project_detail) : null
+        return res ? res.dataValues : null
     }
     async updateMock(mockData) {
         const res = await Mock.update(mockData, {

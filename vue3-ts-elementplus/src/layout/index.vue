@@ -79,8 +79,10 @@ export default defineComponent({
   position: fixed;
   top: 0;
   width: 100%;
-  background: var(--base-bg);
-  color: var(--el-color-primary);
+  width: 100%;
+  // background: var(--base-bg);
+  // background: var(--el-color-primary);
+  // color: var(--el-color-primary);
 }
 .el-main {
   padding: 0;
@@ -92,7 +94,8 @@ export default defineComponent({
 }
 .el-menu {
   height: calc(100vh - $baseHeaderHeight);
-  background: var(--base-bg);
+  // background: var(--base-bg);
+  // background: var(--el-color-primary);
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   min-height: 400px;

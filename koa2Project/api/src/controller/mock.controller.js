@@ -44,13 +44,15 @@ class MockController {
     async getItem(ctx, next) {
         try {
             const { id: author_id } = ctx.state.user
-            const mockData = ctx.request.body
-            const res = await getMockItem({ ...mockData, author_id })
+            const { id } = ctx.request.query
+            console.log('id', id)
+            const res = await getMockItem({ id, author_id })
             ctx.body = {
                 code: '10200',
                 message: 'success',
                 result: {
-                    ...res
+                    id: res.id,
+                    ...JSON.parse(res.project_detail)
                 }
             }
         }catch (e) {

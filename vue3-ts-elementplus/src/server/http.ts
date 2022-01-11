@@ -1,6 +1,5 @@
 import axios, { AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
-// import { store } from '@/index';
-// import { doChangeLoadingStatus } from '@/stores/actions';
+import { ElLoading } from 'element-plus';
 import { gotoLogin, isNotEmpty } from '@/utils';
 import paths from '@/utils/config';
 
@@ -22,8 +21,10 @@ const Loading = {
     }
   },
   dispatch(loading: boolean, type = 'GET'): void {
-    // store.dispatch(doChangeLoadingStatus(loading, type));
-    console.log(loading, type);
+    const loadingInstance = ElLoading.service();
+    if (!loading) {
+      loadingInstance.close();
+    }
   }
 };
 
