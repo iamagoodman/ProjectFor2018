@@ -18,4 +18,7 @@ function handleClick() {
     height: var(--el-header-height);
   }
 }
+test {
+  width: 100%;
+}
 </style>
