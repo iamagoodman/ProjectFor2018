@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function solution (s) {
+    //   // 在这⾥写代码
+    //   const strList = s.split(' ').map(item => item.toUpperCase());
+    //   var num = 0;
+    //   var result = [];
+    //   for (var i = 0; i < strList.length; i++) {
+    //     if (result.length == 0) {
+    //       result.push({
+    //         str: strList[i],
+    //         index: i,
+    //         hasSame: false
+    //       })
+    //     } else {
+    //       const findIndex = result.findIndex(item => item.str == strList[i] && item.index == i - 1);
+    //       if (findIndex >= 0) {
+    //         result[findIndex].index = i;
+    //         result[findIndex].hasSame = true;
+    //       } else {
+    //         result.push({
+    //           str: strList[i],
+    //           index: i,
+    //           hasSame: false
+    //         })
+    //       }
+    //     }
+    //   }
+    //   num = result.filter(item => item.hasSame);
+    //   return num.length;
+    // }
+    // var str = 'abc abc ABC aa bb BB cc dd DD ee';
+    // console.log(solution(str));
+    // function solution (height) {
+    //   if (height < 0 || height > 100) return '';
+
+    //   for (var i = 1; i < height + 1; i++) {
+    //     var space = '';
+    //     var star = '';
+    //     for (var j = 0; j < (i * 2) - 1; j++) {
+    //       star += '*';
+    //     }
+    //     for (var j = 0; j < (height - i); j++) {
+    //       space += ' ';
+    //     }
+    //     console.log(`${space}${star}${space}`)
+    //   }
+    // }
+    // solution(5);
+    var str = 'http://www.showmebug.com/item.html?a=1&b=2&c=&d=xxx';
+    function getparams (str) {
+      const result = {};
+      const paramstr = str.split('?')[1].split('&');
+      paramstr.forEach(item => {
+        result[item.split('=')[0]] = item.split('=')[1];
+      });
+      console.log(result);
+    }
+    getparams(str);
+
+    function getyuan (str) {
+      const yuanList = ['a', 'e', 'i', 'o', 'u'];
+      var num = 0;
+      for (var i = 0; i < str.length; i++) {
+        console.log(str[i]);
+        if (yuanList.indexOf(str[i]) > -1) {
+          num++;
+        }
+      }
+      console.log(num);
+    }
+    getyuan('abracadabra');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn {
+      background: blue;
+      border-radius: 5px;
+      outline: none;
+      color: #fff;
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>数字器</h1>
+    <input type="text" id="num" />
+    <button class="btn" onclick="add()">+</button>
+    <button class="btn" onclick="jian()">-</button>
+    <button class="btn" onclick="clear_()">清空</button>
+  </div>
+  <div id="app2">
+    字符串长度<input type="text" id="len"><button onclick="createUuid()">获取随机字符串</button>
+  </div>
+  <script>
+    function getInput () {
+      return document.getElementById('num').value;
+    }
+    function setInput (val) {
+      document.getElementById('num').value = val;
+    }
+    function add () {
+      const val = Number(getInput());
+      setInput(val + 1);
+    }
+    function jian () {
+      const val = Number(getInput());
+      setInput(val - 1);
+    }
+    function clear_ () {
+      document.getElementById('num').value = '';
+
+    }
+
+
+    function getUuid (n = 6) {
+      var str = 'fdskljkljfdshuAGJKSLIODLDIOKDIUJDwxyz0123456789';
+      var res = "";
+      for (var i = 0; i < n; i++) {
+        var id = Math.ceil(Math.random() * 35);
+        res += str[id];
+      }
+      console.log(res);
+      return res;
+    }
+    function createUuid () {
+      const len = Number(document.getElementById('len').value);
+      const uuid = getUuid(len);
+      console.log(uuid);
+    }
+    getUuid();
+  </script>
+  <script>
+//     import React, { useState, useMemo, useEffect } from 'react'
+// import ReactDOM from 'react-dom'
+
+// const NumberInput = (props) => {
+//   return (
+//     <>
+//       <div>写下你的代码</div>
+//     </>
+//   )
+// }
+
+// ReactDOM.render(<NumberInput />, document.getElementById('app'))
+  </script>
+</body>
+
+</html>

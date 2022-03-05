@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function sleep (time) {
+      return new Promise((resove) => {
+        setTimeout(() => {
+          resove();
+        }, time);
+      })
+    }
+    function changeColor (color, time) {
+      return new Promise((resove) => {
+        console.log(color);
+        sleep(time).then(resove);
+      })
+    }
+    function run () {
+      changeColor('red', 1000).then(() => {
+        changeColor('yellow', 1000).then(() => {
+          changeColor('green', 1000).then(() => {
+            run();
+          })
+        })
+      })
+    }
+    // run();
+
+    async function changeColor2 (color, time) {
+      console.log(color),
+        await sleep(time);
+    }
+    async function run2 () {
+      while (true) {
+        await changeColor2('red', 1000);
+        await changeColor2('yellow', 1000);
+        await changeColor2('green', 1000);
+      }
+    }
+    // run2();
+
+
+    var arr1 = [10, 8, 100, 2, 3, 1, 5, 9, 4];
+    // function sort (a, b) {
+    //   return a - b
+    // }
+    // console.log(arr1.sort(sort))
+    function px (arr) {
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = i + 1; j < arr.length; j++) {
+          const current = arr[j];
+          if (arr[i] > current) {
+            const save = arr[i];
+            arr[i] = current;
+            arr[j] = save;
+          }
+        }
+      }
+      console.log(arr);
+    }
+    px(arr1);
+    var arr2 = [2, 3, 4, 5, 6, 67, 78, 4, 5, 6, 7, 2, 1];
+    function qc (arr) {
+      var result = [];
+      for (var i = 0; i < arr.length; i++) {
+        if (result.indexOf(arr[i]) < 0) {
+          result.push(arr[i])
+        }
+      }
+      console.log(result);
+    }
+    qc(arr2);
+  </script>
+</body>
+
+</html>

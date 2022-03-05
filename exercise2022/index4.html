@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function solution (s) {
+      // 在这⾥写代码
+      const strList = s.split(' ').map(item => item.toUpperCase());
+      var num = 0;
+      var result = [];
+      for (var i = 0; i < strList.length; i++) {
+        if (result.length == 0) {
+          result.push({
+            str: strList[i],
+            index: i,
+            hasSame: false
+          })
+        } else {
+          const findIndex = result.findIndex(item => item.str == strList[i] && item.index == i - 1);
+          if (findIndex >= 0) {
+            result[findIndex].index = i;
+            result[findIndex].hasSame = true;
+          } else {
+            result.push({
+              str: strList[i],
+              index: i,
+              hasSame: false
+            })
+          }
+        }
+      }
+      num = result.filter(item => item.hasSame);
+      return num.length;
+    }
+    var str = 'abc abc ABC aa bb BB cc dd DD ee';
+    console.log(solution(str));
+  </script>
+</body>
+
+</html>

@@ -16,17 +16,20 @@ app.use(views(path.join(__dirname, '../views/'), { extension: 'html' }))
 app.use(cors())
 
 app.use(koaBody({
-    multipart: true,
-    formidable: {
-        uploadDir: path.join(__dirname, '../upload'),
-        keepExtensions: true
-    }
+  "formLimit": "5mb",
+  "jsonLimit": "5mb",
+  "textLimit": "5mb",
+  multipart: true,
+  formidable: {
+    uploadDir: path.join(__dirname, '../upload'),
+    keepExtensions: true
+  }
 }))
 app.use(KoaStatic(path.join(__dirname, '../upload/')))
 app.use(parameter(app))
 app.use(isLogin)
 Router.forEach(route => {
-    app.use(route.routes())
+  app.use(route.routes())
 })
 app.on('error', errHandle)
 module.exports = app
