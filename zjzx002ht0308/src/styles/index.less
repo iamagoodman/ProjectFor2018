@@ -1,0 +1,109 @@
+@import './popup.less';
+
+
+html, body {
+    height: 100%;
+    background-color: #f5f5f5;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  button {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    background-color: transparent;
+  }
+
+  .tr {
+    text-align: right;
+  }
+  .tc {
+    text-align: center;
+  }
+
+  .tl {
+    text-align: left;
+  }
+
+  
+.full-img {
+  width: 100%;
+  display: block;
+}
+  .part {
+    border-radius: 30px;
+    background-color: #fff;
+    margin-bottom: 25px;
+    padding: 22px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    .title {
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 22px;
+      display: flex;
+      flex: 0 0;
+      justify-content: center;
+      align-items: center;
+      height: 30px;
+      line-height: 30px;
+      font-weight: 500;
+      color: #282828;
+      span {
+        padding: 0 10px;
+      }
+      var {
+        background: url('../assets/arrow1.png') center center no-repeat;
+        background-size: 100%;
+        width: 17px;
+        height: 25px;
+       
+      }
+      i {
+        background: url('../assets/title_bg.png') center center no-repeat;
+        background-size: 100%;
+        width: 24px;
+        height: 24px;
+        &:nth-child(3) {
+          // transform: rotateY(180deg);
+          background: url('../assets/title_bg1.png') center center no-repeat;
+          background-size: 100%;
+        }
+      }
+
+    }
+    .no-bottom {
+      margin-bottom: 0;
+    }
+  }
+
+  .field-label {
+    // text-align-last: justify;
+    font-weight: 500;
+    // font-size: 14px !important;
+  }
+
+  .insure-info-wrapper {
+    padding: 0 12px;
+    
+    .van {
+      &-field {
+        border: 1px solid #ea7050;
+        border-radius: 100px;
+        background-color: #fff2f0;
+        font-size: 17px;
+        box-sizing: border-box;
+        padding: 10px 10px 10px 20px;
+        line-height: 27px;
+        margin-bottom: 14px;
+        &__label {
+          color: #282828;
+          font-size: 17px;
+          width: 60px;
+        }
+      }
+    }
+  }

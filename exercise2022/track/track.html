@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button onclick="jump1()">page jump1</button>
+        <button onclick="jump2()">page jump2</button>
+    </div>
+    <script>
+        function jump1() {
+            location.hash = '#index'
+        }
+        function jump2() {
+            location.hash = '#about'
+        }
+    </script>
+    <script type="module">
+        import QunttaTrack from './track.js'
+        QunttaTrack.init({
+            server_url: '',
+            user_id: '123',
+            enableWaitingTraker: true,
+            waitingTrackTimer: 4
+        })
+    </script>
+</body>
+
+</html>
