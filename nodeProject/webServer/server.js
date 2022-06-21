@@ -18,6 +18,7 @@ const insureroute = require('./route/insure/index');
 const partnerroute = require('./route/partner/index');
 const payroute = require('./route/pay/index');
 const toolsroute = require('./route/tools/index');
+const maidianroute = require('./route/maidian/index');
 
 var server = express();
 
@@ -48,7 +49,7 @@ server.use(
   cookieSession({
     name: 'sess',
     keys: keys,
-    maxAge: 60 * 3600 * 1000,
+    maxAge: 60 * 3600 * 1000
   })
 );
 
@@ -77,6 +78,8 @@ server.use('/partner', partnerroute());
 server.use('/pay', payroute());
 
 server.use('/tools', toolsroute());
+
+server.use('/maidian', maidianroute());
 
 // 默认 static
 server.use(static('./static'));

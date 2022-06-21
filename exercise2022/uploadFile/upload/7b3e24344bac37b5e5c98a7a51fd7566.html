@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+      <html>
+      <head>
+      <title>yyyyy</title>
+      <meta charset="utf-8" />
+      <style>@charset "UTF-8";
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* 外层轨道 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(255, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
+  font-size: 13px;
+  line-height: 25px;
+  color: #393838;
+  position: relative;
+}
+
+table {
+  margin: 10px 0 15px 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 3px 10px;
+}
+
+th {
+  padding: 5px 10px;
+}
+
+a, a:link, a:visited {
+  color: #34495e;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #59d69d;
+  text-decoration: none;
+}
+
+a img {
+  border: none;
+}
+
+p {
+  padding-left: 10px;
+  margin-bottom: 9px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #404040;
+  line-height: 36px;
+}
+
+h1 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-size: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  line-height: 50px;
+}
+
+h2 {
+  font-size: 28px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+h3 {
+  clear: both;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-left: 3px solid #59d69d;
+  padding-left: 8px;
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
+hr {
+  margin: 0 0 19px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+blockquote {
+  padding: 13px 13px 21px 15px;
+  margin-bottom: 18px;
+  font-family: georgia, serif;
+  font-style: italic;
+}
+
+blockquote:before {
+  font-size: 40px;
+  margin-left: -10px;
+  font-family: georgia, serif;
+  color: #eee;
+}
+
+blockquote p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 18px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+code,
+pre {
+  font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+
+code {
+  background-color: #fee9cc;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 1px 3px;
+  font-size: 12px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+pre {
+  display: block;
+  padding: 14px;
+  margin: 0 0 18px;
+  line-height: 16px;
+  font-size: 11px;
+  border: 1px solid #d9d9d9;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: #f6f6f6;
+}
+
+pre code {
+  background-color: #f6f6f6;
+  color: #737373;
+  font-size: 11px;
+  padding: 0;
+}
+
+sup {
+  font-size: 0.83em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+* {
+  -webkit-print-color-adjust: exact;
+}
+
+@media print {
+  body,
+  code,
+  pre code,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black;
+  }
+
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+}
+html,
+body {
+  height: 100%;
+}
+
+.table-of-contents {
+  position: fixed;
+  top: 61px;
+  left: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 260px;
+}
+
+.table-of-contents > ul > li > a {
+  font-size: 20px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.table-of-contents ul {
+  overflow: auto;
+  margin: 0px;
+  height: 100%;
+  padding: 0px 0px;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+.table-of-contents ul li {
+  padding-left: 20px;
+}
+
+.table-of-contents a {
+  padding: 2px 0px;
+  display: block;
+  text-decoration: none;
+}
+
+.content-right {
+  max-width: 700px;
+  margin-left: 290px;
+  padding-left: 70px;
+  flex-grow: 1;
+}
+.content-right h2:target {
+  padding-top: 80px;
+}
+
+body > p {
+  margin-left: 30px;
+}
+
+body > table {
+  margin-left: 30px;
+}
+
+body > pre {
+  margin-left: 30px;
+}
+
+.curProject {
+  position: fixed;
+  top: 20px;
+  font-size: 25px;
+  color: black;
+  margin-left: -240px;
+  width: 240px;
+  padding: 5px;
+  line-height: 25px;
+  box-sizing: border-box;
+}
+
+.g-doc {
+  margin-top: 56px;
+  padding-top: 24px;
+  display: flex;
+}
+
+.curproject-name {
+  font-size: 42px;
+}
+
+.m-header {
+  background: #32363a;
+  height: 56px;
+  line-height: 56px;
+  padding-left: 60px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.m-header .title {
+  font-size: 22px;
+  color: #fff;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  margin-left: 16px;
+  padding: 0;
+  line-height: 56px;
+  border: none;
+}
+.m-header .nav {
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  right: 32px;
+  top: 0;
+}
+.m-header .nav a {
+  color: #fff;
+  margin-left: 16px;
+  padding: 8px;
+  transition: color .2s;
+}
+.m-header .nav a:hover {
+  color: #59d69d;
+}
+
+.m-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/*# sourceMappingURL=defaultTheme.css.map */
+</style>
+      </head>
+      <body>
+        <div class="m-header">
+          <a href="#" style="display: inherit;"><svg class="svg" width="32px" height="32px" viewBox="0 0 64 64" version="1.1"><title>Icon</title><desc>Created with Sketch.</desc><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1"><stop stop-color="#FFFFFF" offset="0%"></stop><stop stop-color="#F2F2F2" offset="100%"></stop></linearGradient><circle id="path-2" cx="31.9988602" cy="31.9988602" r="2.92886048"></circle><filter x="-85.4%" y="-68.3%" width="270.7%" height="270.7%" filterUnits="objectBoundingBox" id="filter-3"><feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur><feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.159703351 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix></filter></defs><g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="大屏幕"><g id="Icon"><circle id="Oval-1" fill="url(#linearGradient-1)" cx="32" cy="32" r="32"></circle><path d="M36.7078009,31.8054514 L36.7078009,51.7110548 C36.7078009,54.2844537 34.6258634,56.3695395 32.0579205,56.3695395 C29.4899777,56.3695395 27.4099998,54.0704461 27.4099998,51.7941246 L27.4099998,31.8061972 C27.4099998,29.528395 29.4909575,27.218453 32.0589004,27.230043 C34.6268432,27.241633 36.7078009,29.528395 36.7078009,31.8054514 Z" id="blue" fill="#2359F1" fill-rule="nonzero"></path><path d="M45.2586091,17.1026914 C45.2586091,17.1026914 45.5657231,34.0524383 45.2345291,37.01141 C44.9033351,39.9703817 43.1767091,41.6667796 40.6088126,41.6667796 C38.040916,41.6667796 35.9609757,39.3676862 35.9609757,37.0913646 L35.9609757,17.1034372 C35.9609757,14.825635 38.0418959,12.515693 40.6097924,12.527283 C43.177689,12.538873 45.2586091,14.825635 45.2586091,17.1026914 Z" id="green" fill="#57CF27" fill-rule="nonzero" transform="translate(40.674608, 27.097010) rotate(60.000000) translate(-40.674608, -27.097010) "></path><path d="M28.0410158,17.0465598 L28.0410158,36.9521632 C28.0410158,39.525562 25.9591158,41.6106479 23.3912193,41.6106479 C20.8233227,41.6106479 18.7433824,39.3115545 18.7433824,37.035233 L18.7433824,17.0473055 C18.7433824,14.7695034 20.8243026,12.4595614 23.3921991,12.4711513 C25.9600956,12.4827413 28.0410158,14.7695034 28.0410158,17.0465598 Z" id="red" fill="#FF561B" fill-rule="nonzero" transform="translate(23.392199, 27.040878) rotate(-60.000000) translate(-23.392199, -27.040878) "></path><g id="inner-round"><use fill="black" fill-opacity="1" filter="url(#filter-3)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#path-2"></use><use fill="#F7F7F7" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#path-2"></use></g></g></g></g></svg></a>
+          <a href="#"><h1 class="title">YAPI 接口文档</h1></a>
+          <div class="nav">
+            <a href="https://yapi.ymfe.org/">YApi</a>
+          </div>
+        </div>
+        <div class="g-doc">
+          <div class="table-of-contents"><ul><li><a href="#u767bu5f55">登录</a><ul><li><a href="#u53d1u9001u77edu4fe1u9a8cu8bc1u78010a3ca20id3du53d1u9001u77edu4fe1u9a8cu8bc1u78013e203ca3e">发送短信验证码
+<a id=发送短信验证码> </a></a></li><li><a href="#u767bu5f55oru6ce8u518c0a3ca20id3du767bu5f55oru6ce8u518c3e203ca3e">登录or注册
+<a id=登录or注册> </a></a></li><li><a href="#u83b7u53d6u9a8cu8bc1u78010a3ca20id3du83b7u53d6u9a8cu8bc1u78013e203ca3e">获取验证码
+<a id=获取验证码> </a></a></li></ul></li><li><a href="#u7528u6237u7ba1u7406">用户管理</a><ul><li><a href="#u66f4u65b0u7528u6237u4fe1u606fuff08u66f4u6362u5934u50cfu3001u4feeu6539u6635u79f0u3001u5b9eu540du8ba4u8bc1uff090a3ca20id3du66f4u65b0u7528u6237u4fe1u606fuff08u66f4u6362u5934u50cfu3001u4feeu6539u6635u79f0u3001u5b9eu540du8ba4u8bc1uff093e203ca3e">更新用户信息（更换头像、修改昵称、实名认证）
+<a id=更新用户信息（更换头像、修改昵称、实名认证）> </a></a></li><li><a href="#u83b7u53d6u7528u6237u4fe1u606f0a3ca20id3du83b7u53d6u7528u6237u4fe1u606f3e203ca3e">获取用户信息
+<a id=获取用户信息> </a></a></li></ul></li><li><a href="#u5546u54c1u7ba1u7406">商品管理</a><ul><li><a href="#u83b7u53d6banenru5217u88680a3ca20id3du83b7u53d6banenru5217u88683e203ca3e">获取banenr列表
+<a id=获取banenr列表> </a></a></li><li><a href="#u83b7u53d6u6570u5b57u5546u54c1u5217u88680a3ca20id3du83b7u53d6u6570u5b57u5546u54c1u5217u88683e203ca3e">获取数字商品列表
+<a id=获取数字商品列表> </a></a></li><li><a href="#u83b7u53d6u53d1u552eu65e5u5386u5217u88680a3ca20id3du83b7u53d6u53d1u552eu65e5u5386u5217u88683e203ca3e">获取发售日历列表
+<a id=获取发售日历列表> </a></a></li><li><a href="#u83b7u53d6u5546u54c1u8be6u60c50a3ca20id3du83b7u53d6u5546u54c1u8be6u60c53e203ca3e">获取商品详情
+<a id=获取商品详情> </a></a></li><li><a href="#u83b7u53d6u4f5cu8005u4fe1u606f0a3ca20id3du83b7u53d6u4f5cu8005u4fe1u606f3e203ca3e">获取作者信息
+<a id=获取作者信息> </a></a></li><li><a href="#u83b7u53d6u65b0u95fbu4fe1u606fu5217u88680a3ca20id3du83b7u53d6u65b0u95fbu4fe1u606fu5217u88683e203ca3e">获取新闻信息列表
+<a id=获取新闻信息列表> </a></a></li></ul></li></ul></div>
+          <div id="right" class="content-right">
+           <h1 class="curproject-name"> yyyyy </h1> 
+<h1 id="u767bu5f55">登录</h1>
+<p></p>
+<h2 id="u53d1u9001u77edu4fe1u9a8cu8bc1u78010a3ca20id3du53d1u9001u77edu4fe1u9a8cu8bc1u78013e203ca3e">发送短信验证码
+<a id=发送短信验证码> </a></h2>
+<p></p>
+<h3 id="">基本信息</h3>
+<p><strong>Path：</strong> /obtainSmsVerificationCode</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/obtainSmsVerificationCode</p>
+<p>请求示例</p>
+<pre><code>{
+&nbsp;&nbsp;&nbsp; "sid":"sLskCxBLDhRcYzZpXCtpaVnrGrLsUftHQjPxWMLfHUaddBrNhLhONccLHPhsKDNbhiCDftFXOcQRYVtyiSVJdAydVloDUBNDeKOgaIrEUpNqRaRKzHqEhRPZBwXicjak",
+&nbsp;&nbsp;&nbsp; "inputImgCode":"k70i",
+&nbsp;&nbsp;&nbsp; "phoneNumber":"18236592118"
+}
+</code></pre>
+<p>返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": {
+&nbsp;&nbsp;&nbsp; "smsSerialNumber": "995539",
+&nbsp;&nbsp;&nbsp; "smsCode": "070217"
+&nbsp; }
+}
+</code></pre>
+<h3 id="-2">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> sid</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">安全码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> inputImgCode</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">图形验证码</span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> phoneNumber</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">手机号</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h3 id="-3">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> smsSerialNumber</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">短信编码</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> smsCode</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">短信验证码。后期通过短信发送</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u767bu5f55oru6ce8u518c0a3ca20id3du767bu5f55oru6ce8u518c3e203ca3e">登录or注册
+<a id=登录or注册> </a></h2>
+<p></p>
+<h3 id="-4">基本信息</h3>
+<p><strong>Path：</strong> /smsLogin</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/obtainSmsVerificationCode</p>
+<p>请求示例</p>
+<pre><code>{
+&nbsp;&nbsp;&nbsp; "sid":"AkLKjozuaBaFSSojbYUPJoFBKTpOSltfXWSwEQJaEaUUcBydBrcjfWSFaVuQXVxZdVBuwavShYvNxQvDKRFgzwecXVxduCLAhvSFgdpkuMPrPIlFlsLZXhWhSnBpdNAC",
+&nbsp;&nbsp;&nbsp; "inputImgCode":"dqhz",
+&nbsp;&nbsp;&nbsp; "phoneNumber":"18236592118"
+}
+</code></pre>
+<p>返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": {
+&nbsp;&nbsp;&nbsp; "accountId": 1007,
+&nbsp;&nbsp;&nbsp; "avatarUrl": null,
+&nbsp;&nbsp;&nbsp; "nickName": "user934292",
+&nbsp;&nbsp;&nbsp; "phoneNumber": "18236592118",
+&nbsp;&nbsp;&nbsp; "accountStatus": 0,
+&nbsp;&nbsp;&nbsp; "tokenInfo": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyVHlwZSI6MSwiZXhwIjoxNjQ5Mzg5MzEwLCJ0b2tlblR5cGUiOiJhY2Nlc3NUb2tlbiIsImlhdCI6MTY0OTMwMjkxMCwidXNlcklkIjoxMDA3fQ.3t5Qpsh2qLf9MMOXZH7Kgos6txAnk23E87L1Cwbaipo",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "refreshToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyVHlwZSI6MSwiZXhwIjoxNjQ5OTA3NzEwLCJ0b2tlblR5cGUiOiJyZWRyZXNoVG9rZW4iLCJpYXQiOjE2NDkzMDI5MTAsInVzZXJJZCI6MTAwN30.7sRTECY3cAF2Wb01xdW9rR-j_Qud4_3l64XokrpPATs"
+&nbsp;&nbsp;&nbsp; }
+&nbsp; }
+}
+</code></pre>
+<h3 id="-5">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> phoneNumber</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户手机号</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> userType</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户类型，1表示安卓，2表示iOS</span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> smsSerialNumber</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">短信编码</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> inputVerificationCode</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">短信的验证码</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h3 id="-6">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> accountId</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户Id</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> avatarUrl</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户头像</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> nickName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">昵称</span></td><td key=5></td></tr><tr key=0-2-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> phoneNumber</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">手机号</span></td><td key=5></td></tr><tr key=0-2-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> accountStatus</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">账号状态。0：未认证，1：已认证，-1：认证不通过</span></td><td key=5></td></tr><tr key=0-2-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> tokenInfo</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户token信息。</span></td><td key=5></td></tr><tr key=0-2-5-0><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> accessToken</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">鉴权token</span></td><td key=5></td></tr><tr key=0-2-5-1><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> refreshToken</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">刷新token</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u83b7u53d6u9a8cu8bc1u78010a3ca20id3du83b7u53d6u9a8cu8bc1u78013e203ca3e">获取验证码
+<a id=获取验证码> </a></h2>
+<p></p>
+<h3 id="-7">基本信息</h3>
+<p><strong>Path：</strong> /obtainCaptchaCode</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8081/open-art/api/obtainCaptchaCode</p>
+<p>返回示例</p>
+<pre><code>&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": {
+&nbsp;&nbsp;&nbsp; "sid": "wzLQRlvAwnBPHWDaJhtJxXCphDxfZhemBpTHCGpGsUOPEUehFGdeTCqBaJevgDGMjXkAriUVYwCvWkXqcIdIPHMEOmbZHCdDKlwgilqjiHZbCfPhSeNvguHJpZxWIMeq",
+&nbsp;&nbsp;&nbsp; "base64Img": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAyCAYAAAC+jCIaAAAGwklEQVR4Xu2bW2wUVRjHie/GxAffTHwwYozR+OCDDyQ+mWCMUWJQJAhYUIKKUSQ8GNQYBGOMUUtbKK1QLttub5QWWtptuy2w7bZQLmVbLu1a6I1e2O72st2d3Z353DOwON+Z7V7PbHd2zy/5Hpj9z0DaH+d8c87ZFcDhaMAK+gKHwwIuFkcT0kKsVc++oyqOvklbsbhc+iYtxOJkHlwsjiZkvVibn9wbtTjxk5VixStNvHlOlonFQg4Wz8gG4hLL75JgLG8RbO+5oHvlA+h4ZhouPjWFKl1hLQPr52UaMYs11+2TZaJFoisd0UoCrZ7LAs+8F2ymAajbZ4YTX9fCoY1GOLjBCCVf1EDdfjNcq78Frvtz9G3MiEksv0OEruejS8XFSg/6Wweh6NNKyPvIELW0Iiaxhn9zI3kuv+YAp1mAwIJER9MSrQTQ6rnJYDl+RSVPpNKKmMS6/pYTieVsFehI2sNaAtbPY8H1htsqcSq+b4SBznuw4FgEMSCCd0GAiTvT0F3RC4bvztKPYEZMYlmfw026XkYqGhZvdCyeoQVu5yIUbipHUpkLu4IyLc/vKiaxLE+nfx8VDyE5YhUk3vxy0F58CUlVuadp2aQixCSWHhr0RFFKs1SlO2SKK9qCm/XRvkk6llJUYtESxVta8P4LjQkXa4SzBvCc+Otx+W2X6EhY/Nc60H1CfSkdSZh7V8eRVIZvz9CRlMPFipPArWtIEG9tCR1RIwWb5qoidF9g4AadSpiuYCOuFOtCSQ8dSTlcrDiRBA94DAeQJOLUGB1DBIYHUd5jLAgOYT46ljD1v59HYt2x3KUjKUclVjhSIU+y/LGzVyVVwQ99dIwJvvP1SBRfp4mOIISWGpzvaqUjSWHYeQaJNWl3yNdnRlzQnN8pr7wf3FAG/3xWDdU/maCnpg8ENzuxw5ERYlkaJlRSfbX6IggekY4yQRy7i0egsvwlRyBpYRY8J//GI9wM25/hkW2nkFhulwduXxiCgvWl6LqyirdUwXDvffpRzNC9WDNTXtjweiuSau3LJhi6qd0+GEgSeKuLkSyBwfCjo6ppbyijI0lDr18N9YxC3jq1THQVrC+D8Zva/D51L9bPOT2q0aruqPY9hkqYxnI68qhpP0wJaKNTSZO/Do9MZGokm86Xq20wOzkPol+UF1DJHuKRbdUoe3xHrSbrXboWq8EwrJKKiCax/zmpkOZdSBhS0qwTZbRu2kMc+sSIZMn/uHTJdSxyoqFwcwXKky0f1uhWrPG7blj3ajOSatMbZnBOp24fU2iqROL4r1rw5y2n0Oe+bjP6nBWkX1KKYj7cTUcQXcbrKG860EFHkkaXYpGhe/daK5JqzcpG6GmfpqOaErD3I3HIWlVouJTmZ9Uj2ow2/75jX55Gooz1hx+tQkwOOlBeiwVVXYpVnmdXTYHFe2/SMe3x++XpTSmPODr08KPg6KW8Lpwz4nsZUv2jCYnidUcetclSgzJflFNJR5JGd2LZbbPwwUtNSKpv3u0An6DN0kI0fNZmPN21B//3i+Ga9vBvjSxoKbAiUSQxcpNJRnxlnixLsEZXYvm8Iux424Kk+vAVE4wMLtDRlCFOj+Mpz5ALgTu9+JrctPvpW5lx5XRfciPWliwfsYp/uaWaAs8F3wyXG2/dcUouvOXju9RG38IUstKuFCXeHqt0F/sDf7oR64bVITfoSql+3X6Vji0L/r4eLBZVkvMBfQtbgjPfkc//X59qK4rvrTDaW2Qi6EIs95wftr7ZjqTKWdUGc072a0KJIHnc4DmZqxKKlBYr7eFQnnAgPdNSK+quiXnVOpYWWzu6EOvPXTeQVGtebILezocbremC0FankooUy+MxkSB9lfKwX+HGcnmzeW5qQT4I6HZ6oN9sV628V+1poh/FBF2IRfdV8VSqEEfsKqk8ZXnBN47IjTRLRm0T8v6fUpxIVby1ShZPC7hYrCD7gpWFSCyfJYV//yPItFayvUYlEV3G3Q3ytKgVXCxGSIIXPKV5SCxxYoSOpQRh0Qe25gGo3dcqr8qTb0CTExBkw7kp1wL2rmG54deSmMTiREd1ZLnmKB3JKrhYjPDWHkNixfoli0yFi8UAcfRf3LQbcuUliGyGi5UskqT6SpjvYgOdynikHAsqLlYSkIN9vvNn8WhFmnZH5C2VTCIkkpK+J1ZzsRKBFgmNVtYWOp6x0EKF4GIlCC1TqATz6eDrYYCOZySRpCJwsRJAKZO3olA+okxOk2YTGSmWdf/Kx8VZHjJOLFom+s+c1JBRYi0l0VLXOdoSTi7diRVNnmifc7SBXm4IifUfykZZiuLKi6AAAAAASUVORK5CYII="
+&nbsp; }
+}
+</code></pre>
+<h3 id="-8">请求参数</h3>
+<h3 id="-9">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> sid</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">安全码</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> base64Img</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">图形验证码。Base64编码格式</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h1 id="u7528u6237u7ba1u7406">用户管理</h1>
+<p></p>
+<h2 id="u66f4u65b0u7528u6237u4fe1u606fuff08u66f4u6362u5934u50cfu3001u4feeu6539u6635u79f0u3001u5b9eu540du8ba4u8bc1uff090a3ca20id3du66f4u65b0u7528u6237u4fe1u606fuff08u66f4u6362u5934u50cfu3001u4feeu6539u6635u79f0u3001u5b9eu540du8ba4u8bc1uff093e203ca3e">更新用户信息（更换头像、修改昵称、实名认证）
+<a id=更新用户信息（更换头像、修改昵称、实名认证）> </a></h2>
+<p></p>
+<h3 id="-10">基本信息</h3>
+<p><strong>Path：</strong> /updateUserProfile</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/getUserProfile</p>
+<p>返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": {
+&nbsp;&nbsp;&nbsp; "accountId": 1001,
+&nbsp;&nbsp;&nbsp; "phoneNumber": "18236592118",
+&nbsp;&nbsp;&nbsp; "membershipPoint": null,
+&nbsp;&nbsp;&nbsp; "avatarUrl": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/42c38abb-692c-41d7-a18f-34881e8fa1be.png",
+&nbsp;&nbsp;&nbsp; "nickName": "12344",
+&nbsp;&nbsp;&nbsp; "realName": null,
+&nbsp;&nbsp;&nbsp; "credentialsType": null,
+&nbsp;&nbsp;&nbsp; "credentialsNumber": null,
+&nbsp;&nbsp;&nbsp; "accountStatus": 0,
+&nbsp;&nbsp;&nbsp; "registTime": 1649301502444
+&nbsp; }
+}
+</code></pre>
+<h3 id="-11">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Access-Token</td>
+<td>用户token</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERID</td>
+<td>用户Id。accountId</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERTYPE</td>
+<td>用户类型。1表示安卓，2表示iOS</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> nickName</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户昵称</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> realName</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户真实姓名</span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> credentialsNumber</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户身份证号</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h3 id="-12">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> accountId</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户ID</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> avatarUrl</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户头像</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> nickName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户昵称</span></td><td key=5></td></tr><tr key=0-2-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> phoneNumber</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户手机号</span></td><td key=5></td></tr><tr key=0-2-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> accountStatus</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">账号状态。0：未认证，1：已认证，-1：认证不通过</span></td><td key=5></td></tr><tr key=0-2-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> membershipPoint</span></td><td key=1><span>integer</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">积分</span></td><td key=5></td></tr><tr key=0-2-6><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> realName</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户真实姓名</span></td><td key=5></td></tr><tr key=0-2-7><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> credentialsNumber</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户身份证号</span></td><td key=5></td></tr><tr key=0-2-8><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> registTime</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户注册时间。毫秒级</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u83b7u53d6u7528u6237u4fe1u606f0a3ca20id3du83b7u53d6u7528u6237u4fe1u606f3e203ca3e">获取用户信息
+<a id=获取用户信息> </a></h2>
+<p></p>
+<h3 id="-13">基本信息</h3>
+<p><strong>Path：</strong> /getUserProfile</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/getUserProfile</p>
+<p>返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": {
+&nbsp;&nbsp;&nbsp; "accountId": 1001,
+&nbsp;&nbsp;&nbsp; "phoneNumber": "18236592118",
+&nbsp;&nbsp;&nbsp; "membershipPoint": null,
+&nbsp;&nbsp;&nbsp; "avatarUrl": null,
+&nbsp;&nbsp;&nbsp; "nickName": "user333",
+&nbsp;&nbsp;&nbsp; "realName": null,
+&nbsp;&nbsp;&nbsp; "credentialsType": null,
+&nbsp;&nbsp;&nbsp; "credentialsNumber": null,
+&nbsp;&nbsp;&nbsp; "accountStatus": 0,
+&nbsp;&nbsp;&nbsp; "registTime": 1649301502444
+&nbsp; }
+}
+</code></pre>
+<h3 id="-14">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Access-Token</td>
+<td>用户token</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERID</td>
+<td>用户Id。accountId</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERTYPE</td>
+<td>用户类型。1表示安卓，2表示iOS</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody">
+               </tbody>
+              </table>
+<h3 id="-15">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> accountId</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户ID</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> avatarUrl</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户头像</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> nickName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户昵称</span></td><td key=5></td></tr><tr key=0-2-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> phoneNumber</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户手机号</span></td><td key=5></td></tr><tr key=0-2-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> accountStatus</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">账号状态。0：未认证，1：已认证，-1：认证不通过</span></td><td key=5></td></tr><tr key=0-2-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> membershipPoint</span></td><td key=1><span>integer</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">积分</span></td><td key=5></td></tr><tr key=0-2-6><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> realName</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户真实姓名</span></td><td key=5></td></tr><tr key=0-2-7><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> credentialsNumber</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户身份证号</span></td><td key=5></td></tr><tr key=0-2-8><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> registTime</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户注册时间。毫秒级</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h1 id="u5546u54c1u7ba1u7406">商品管理</h1>
+<p></p>
+<h2 id="u83b7u53d6banenru5217u88680a3ca20id3du83b7u53d6banenru5217u88683e203ca3e">获取banenr列表
+<a id=获取banenr列表> </a></h2>
+<p></p>
+<h3 id="-16">基本信息</h3>
+<p><strong>Path：</strong> /banners</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/banners<br>
+返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": {
+&nbsp;&nbsp;&nbsp; "code": 200,
+&nbsp;&nbsp;&nbsp; "msg": "success",
+&nbsp;&nbsp;&nbsp; "data": [
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "bannerName": "banner_035007",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "bannerUrl": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/c021158a-b98e-4a0b-918d-60f87ce6de0b.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "displayOrder": null
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "bannerName": "banner_419386",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "bannerUrl": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/a5a8153f-a549-4307-b1bf-fa24c6ecac87.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "displayOrder": null
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 6,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "bannerName": "banner_838168",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "bannerUrl": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/ef662872-9c10-49cf-8358-36c94d8b9d1d.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "displayOrder": null
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 7,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "bannerName": "banner_435313",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "bannerUrl": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/b3df087b-ebe8-42c8-9374-16690f24ec0b.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "displayOrder": null
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; ]
+&nbsp; }
+}
+</code></pre>
+<h3 id="-17">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Access-Token</td>
+<td>用户token</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERID</td>
+<td>用户Id。accountId</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERTYPE</td>
+<td>用户类型。1表示安卓，2表示iOS</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody">
+               </tbody>
+              </table>
+<h3 id="-18">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> id</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">id</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> bannerName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">banner名称</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> bannerUrl</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">banner图片地址</span></td><td key=5></td></tr><tr key=0-2-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> displayOrder</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">索引</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u83b7u53d6u6570u5b57u5546u54c1u5217u88680a3ca20id3du83b7u53d6u6570u5b57u5546u54c1u5217u88683e203ca3e">获取数字商品列表
+<a id=获取数字商品列表> </a></h2>
+<p></p>
+<h3 id="-19">基本信息</h3>
+<p><strong>Path：</strong> /getDigitalist</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/getDigitalist</p>
+<p>返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": [
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsId": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistId": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "createTime": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsTitle": "进击的小腿",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsDescription": "http://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/333b244a-40b2-4d3f-9db7-38b6d51c848e.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "price": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsPics": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/8b38891c-17b7-41e7-94d4-6f06176276c9.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsStatus": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "isSales": false,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesCount": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesTime": "2022.03.21 07:00:37",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsType": "水彩",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "certificationType": "艺术家认证",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistInfo": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistName": "张雷 ",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artTag": "景德镇雕塑大师"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; },
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsId": 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistId": 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "createTime": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsTitle": "一切延伸皆是无痛截肢",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsDescription": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/88d4149a-0c46-4eb3-9147-e453c03216b2.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "price": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsPics": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/9a8eb99b-3aac-4dff-b4a2-891e00a8a00e.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsStatus": 0,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "isSales": true,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesCount": 100000,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesTime": "2022.03.21 05:30:37",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsType": "水墨",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "certificationType": "艺术家认证",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistInfo": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistName": "潘子申",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "&nbsp; ",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artTag": "著名当代青年艺术家"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; },
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsId": 3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistId": 3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "createTime": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsTitle": "松果在你的眼睛，海水马在你心",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsDescription": "http://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/333b244a-40b2-4d3f-9db7-38b6d51c848e.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "price": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsPics": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/15413bf6-d05d-49b8-82c5-5f0c44c285da.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsStatus": 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "isSales": true,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesCount": 20000,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesTime": "2022.03.15 07:00:37",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsType": "油画",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "certificationType": "艺术家认证",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistInfo": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistName": "朱志远",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artTag": "著名当代青年艺术家"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+&nbsp; ]
+}
+</code></pre>
+<h3 id="-20">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Access-Token</td>
+<td>用户token</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERID</td>
+<td>用户Id。accountId</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERTYPE</td>
+<td>用户类型。1表示安卓，2表示iOS</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody">
+               </tbody>
+              </table>
+<h3 id="-21">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsId</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品的id</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> artistId</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者Id</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> createTime</span></td><td key=1><span>number</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">创建时间</span></td><td key=5></td></tr><tr key=0-2-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsTitle</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品标题</span></td><td key=5></td></tr><tr key=0-2-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsDescription</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品描述url</span></td><td key=5></td></tr><tr key=0-2-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> price</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">价格。保留两位小数</span></td><td key=5></td></tr><tr key=0-2-6><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsPics</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品图片url</span></td><td key=5></td></tr><tr key=0-2-7><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsStatus</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品状态。0：待预售，1：售卖中，2：售罄</span></td><td key=5></td></tr><tr key=0-2-8><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> is_sales</span></td><td key=1><span>boolean</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">是否限售</span></td><td key=5></td></tr><tr key=0-2-9><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> salesCount</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">限售数量</span></td><td key=5></td></tr><tr key=0-2-10><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> salesTime</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">发售时间</span></td><td key=5></td></tr><tr key=0-2-11><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsType</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品类型。水墨；水彩；油画</span></td><td key=5></td></tr><tr key=0-2-12><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> certificationType</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品认证特征</span></td><td key=5></td></tr><tr key=0-2-13><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> artistInfo</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者信息</span></td><td key=5></td></tr><tr key=0-2-13-0><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> id</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者Id</span></td><td key=5></td></tr><tr key=0-2-13-1><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> artistName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者名称</span></td><td key=5></td></tr><tr key=0-2-13-2><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> description</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者描述</span></td><td key=5></td></tr><tr key=0-2-13-3><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> artTag</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者标签</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u83b7u53d6u53d1u552eu65e5u5386u5217u88680a3ca20id3du83b7u53d6u53d1u552eu65e5u5386u5217u88683e203ca3e">获取发售日历列表
+<a id=获取发售日历列表> </a></h2>
+<p></p>
+<h3 id="-22">基本信息</h3>
+<p><strong>Path：</strong> /getDigitalist_1650250781512</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/getDigitalist</p>
+<p>返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": [
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesDate": "2022.03.21",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goods": [
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "time": "07:00",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "calendarGoods": [
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsId": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistId": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "createTime": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsTitle": "进击的小腿",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsDescription": "http://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/333b244a-40b2-4d3f-9db7-38b6d51c848e.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "price": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsPics": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/8b38891c-17b7-41e7-94d4-6f06176276c9.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsStatus": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "isSales": false,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesCount": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesDate": "2022.03.21",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "time": "07:00",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsType": "水彩",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "certificationType": "艺术家认证",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistInfo": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistName": "张雷 ",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artTag": "景德镇雕塑大师"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "time": "05:30",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "calendarGoods": [
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsId": 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistId": 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "createTime": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsTitle": "一切延伸皆是无痛截肢",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsDescription": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/88d4149a-0c46-4eb3-9147-e453c03216b2.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "price": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsPics": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/9a8eb99b-3aac-4dff-b4a2-891e00a8a00e.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsStatus": 0,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "isSales": true,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesCount": 100000,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesDate": "2022.03.21",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "time": "05:30",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsType": "水墨",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "certificationType": "艺术家认证",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistInfo": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistName": "潘子申",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "&nbsp; ",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artTag": "著名当代青年艺术家"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]
+&nbsp;&nbsp;&nbsp; },
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesDate": "2022.03.15",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goods": [
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "time": "07:00",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "calendarGoods": [
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsId": 3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistId": 3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "createTime": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsTitle": "松果在你的眼睛，海水马在你心",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsDescription": "http://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/333b244a-40b2-4d3f-9db7-38b6d51c848e.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "price": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsPics": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/15413bf6-d05d-49b8-82c5-5f0c44c285da.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsStatus": 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "isSales": true,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesCount": 20000,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesDate": "2022.03.15",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "time": "07:00",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsType": "油画",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "certificationType": "艺术家认证",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistInfo": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistName": "朱志远",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artTag": "著名当代青年艺术家"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]
+&nbsp;&nbsp;&nbsp; }
+&nbsp; ]
+}
+</code></pre>
+<h3 id="-23">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Access-Token</td>
+<td>用户token</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERID</td>
+<td>用户Id。accountId</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERTYPE</td>
+<td>用户类型。1表示安卓，2表示iOS</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody">
+               </tbody>
+              </table>
+<h3 id="-24">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> salesDate</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">发售日期。年.月.日</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goods</span></td><td key=1><span>array []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>array</span></p></td></tr><tr key=array-192><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> </span></td><td key=1><span></span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-1-0><td key=0><span style="padding-left: 60px"><span style="color: #8c8a8a">├─</span> time</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">发售时间。时:分</span></td><td key=5></td></tr><tr key=0-2-1-1><td key=0><span style="padding-left: 60px"><span style="color: #8c8a8a">├─</span> calendarGoods</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">日历商品</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-2-1-1-0><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> goodsId</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品id</span></td><td key=5></td></tr><tr key=0-2-1-1-1><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> artistId</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者idd</span></td><td key=5></td></tr><tr key=0-2-1-1-2><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> createTime</span></td><td key=1><span>number</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品时间</span></td><td key=5></td></tr><tr key=0-2-1-1-3><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> goodsTitle</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品标题</span></td><td key=5></td></tr><tr key=0-2-1-1-4><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> goodsDescription</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品描述url</span></td><td key=5></td></tr><tr key=0-2-1-1-5><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> price</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品价格</span></td><td key=5></td></tr><tr key=0-2-1-1-6><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> goodsPics</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品图片url</span></td><td key=5></td></tr><tr key=0-2-1-1-7><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> goodsStatus</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品状态</span></td><td key=5></td></tr><tr key=0-2-1-1-8><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> isSales</span></td><td key=1><span>boolean</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">是否限售</span></td><td key=5></td></tr><tr key=0-2-1-1-9><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> salesCount</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">限售数量</span></td><td key=5></td></tr><tr key=0-2-1-1-10><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> time</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品发售时间</span></td><td key=5></td></tr><tr key=0-2-1-1-11><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> goodsType</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品类型</span></td><td key=5></td></tr><tr key=0-2-1-1-12><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> certificationType</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品认证特征</span></td><td key=5></td></tr><tr key=0-2-1-1-13><td key=0><span style="padding-left: 80px"><span style="color: #8c8a8a">├─</span> artistInfo</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-1-1-13-0><td key=0><span style="padding-left: 100px"><span style="color: #8c8a8a">├─</span> id</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者id</span></td><td key=5></td></tr><tr key=0-2-1-1-13-1><td key=0><span style="padding-left: 100px"><span style="color: #8c8a8a">├─</span> artistName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者名称</span></td><td key=5></td></tr><tr key=0-2-1-1-13-2><td key=0><span style="padding-left: 100px"><span style="color: #8c8a8a">├─</span> description</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-1-1-13-3><td key=0><span style="padding-left: 100px"><span style="color: #8c8a8a">├─</span> artTag</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者标签</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u83b7u53d6u5546u54c1u8be6u60c50a3ca20id3du83b7u53d6u5546u54c1u8be6u60c53e203ca3e">获取商品详情
+<a id=获取商品详情> </a></h2>
+<p></p>
+<h3 id="-25">基本信息</h3>
+<p><strong>Path：</strong> /goods/{id}</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/getDigitalist</p>
+<p>返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": [
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsId": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistId": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "createTime": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsTitle": "进击的小腿",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsDescription": "http://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/333b244a-40b2-4d3f-9db7-38b6d51c848e.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "price": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsPics": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_art_avatars/8b38891c-17b7-41e7-94d4-6f06176276c9.png",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsStatus": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "isSales": false,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesCount": null,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "salesTime": "2022.03.21 07:00:37",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "goodsType": "水彩",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "certificationType": "艺术家认证",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistInfo": {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artistName": "张雷 ",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "artTag": "景德镇雕塑大师"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+&nbsp; ]
+}
+</code></pre>
+<h3 id="-26">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Access-Token</td>
+<td>用户token</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERID</td>
+<td>用户Id。accountId</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERTYPE</td>
+<td>用户类型。1表示安卓，2表示iOS</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>路径参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>1</td>
+<td>商品Id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody">
+               </tbody>
+              </table>
+<h3 id="-27">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsId</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品的id</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> artistId</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者Id</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> createTime</span></td><td key=1><span>number</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">创建时间</span></td><td key=5></td></tr><tr key=0-2-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsTitle</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品标题</span></td><td key=5></td></tr><tr key=0-2-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsDescription</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品描述url</span></td><td key=5></td></tr><tr key=0-2-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> price</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">价格。保留两位小数</span></td><td key=5></td></tr><tr key=0-2-6><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsPics</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品图片url</span></td><td key=5></td></tr><tr key=0-2-7><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsStatus</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品状态。0：待预售，1：售卖中，2：售罄</span></td><td key=5></td></tr><tr key=0-2-8><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> is_sales</span></td><td key=1><span>boolean</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">是否限售</span></td><td key=5></td></tr><tr key=0-2-9><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> salesCount</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">限售数量</span></td><td key=5></td></tr><tr key=0-2-10><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> salesTime</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">发售时间</span></td><td key=5></td></tr><tr key=0-2-11><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> goodsType</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品类型。水墨；水彩；油画</span></td><td key=5></td></tr><tr key=0-2-12><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> certificationType</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">商品认证特征</span></td><td key=5></td></tr><tr key=0-2-13><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> artistInfo</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者信息</span></td><td key=5></td></tr><tr key=0-2-13-0><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> id</span></td><td key=1><span>integer</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者Id</span></td><td key=5></td></tr><tr key=0-2-13-1><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> artistName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者名称</span></td><td key=5></td></tr><tr key=0-2-13-2><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> description</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者描述</span></td><td key=5></td></tr><tr key=0-2-13-3><td key=0><span style="padding-left: 40px"><span style="color: #8c8a8a">├─</span> artTag</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者标签</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u83b7u53d6u4f5cu8005u4fe1u606f0a3ca20id3du83b7u53d6u4f5cu8005u4fe1u606f3e203ca3e">获取作者信息
+<a id=获取作者信息> </a></h2>
+<p></p>
+<h3 id="-28">基本信息</h3>
+<p><strong>Path：</strong> /getArtist/{artistId}</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/getArtist/1</p>
+<p>返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": {
+&nbsp;&nbsp;&nbsp; "id": 1,
+&nbsp;&nbsp;&nbsp; "artistName": "潘子申",
+&nbsp;&nbsp;&nbsp; "description": "&nbsp; ",
+&nbsp;&nbsp;&nbsp; "artTag": "著名当代青年艺术家"
+&nbsp; }
+}
+</code></pre>
+<h3 id="-29">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Access-Token</td>
+<td>用户token</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERID</td>
+<td>用户Id。accountId</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERTYPE</td>
+<td>用户类型。1表示安卓，2表示iOS</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>路径参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>artistId</td>
+<td>1</td>
+<td>作者Id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody">
+               </tbody>
+              </table>
+<h3 id="-30">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> id</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者id</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> artistName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者名称</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> description</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者描述</span></td><td key=5></td></tr><tr key=0-2-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> artTag</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">作者标签</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u83b7u53d6u65b0u95fbu4fe1u606fu5217u88680a3ca20id3du83b7u53d6u65b0u95fbu4fe1u606fu5217u88683e203ca3e">获取新闻信息列表
+<a id=获取新闻信息列表> </a></h2>
+<p></p>
+<h3 id="-31">基本信息</h3>
+<p><strong>Path：</strong> /getNewsList</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color:rgb(57, 56, 56)"><strong>接口描述：</strong></span><br>
+<span class="colour" style="color:rgb(34, 34, 34)">测试环境url:&nbsp;</span>xzddns.f3322.net:8080/open-art/api/getNewsList<br>
+返回示例</p>
+<pre><code>{
+&nbsp; "code": 200,
+&nbsp; "msg": "success",
+&nbsp; "data": [
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "newsUrl": "https://fotile-iotcloud-test.oss-cn-hangzhou.aliyuncs.com/open_avatars/b3d9b315-d127-4ef6-8943-26254148e111.jpg",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "机器人"
+&nbsp;&nbsp;&nbsp; },
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "newsUrl": "http://fotile-image.oss-cn-hangzhou.aliyuncs.com/å®é²ä¼ æ.jpg",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "安防"
+&nbsp;&nbsp;&nbsp; },
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "id": 3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "newsUrl": "http://fotile-image.oss-cn-hangzhou.aliyuncs.com/å¶ä».jpg",
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "description": "其他"
+&nbsp;&nbsp;&nbsp; }
+&nbsp; ]
+}
+</code></pre>
+<h3 id="-32">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Access-Token</td>
+<td>用户token</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERID</td>
+<td>用户Id。accountId</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>X-USERTYPE</td>
+<td>用户类型。1表示安卓，2表示iOS</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody">
+               </tbody>
+              </table>
+<h3 id="-33">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> data</span></td><td key=1><span>object</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> id</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">新闻id</span></td><td key=5></td></tr><tr key=0-2-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> artistName</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">新闻url</span></td><td key=5></td></tr><tr key=0-2-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> description</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">新闻描述</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+
+            <footer class="m-footer">
+              <p>Build by <a href="https://ymfe.org/">YMFE</a>.</p>
+            </footer>
+          </div>
+        </div>
+      </body>
+      </html>
+      

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = `书币礼包，就等你了！
+
+            < a href = 'weixin://kefumenu?kefumenucontent=签到&kefumenuid=0' >📱📱安卓手机点我领取</ >
+
+                <a href='weixin://bizmsgmenu?msgmenucontent=签到&msgmenuid= '>🍎🍎苹果手机点我领取</a >
+
+┈┈┈ 💥重磅提醒💥┈┈┈
+
+❌若点击失败，回复“签到”领取书币~
+
+            <a href='https://sl.mbookcn.com/cty/73228854-20220531114557990' > 继续阅读</a >
+
+👆点击蓝字继续阅读书币礼包，就等你了！
+
+< a href = 'weixin://kefumenu?kefumenucontent=签到&kefumenuid=0' >📱📱安卓手机点我领取</ >
+
+    <a href='weixin://bizmsgmenu?msgmenucontent=签到&msgmenuid= '>🍎🍎苹果手机点我领取</a >
+
+┈┈┈ 💥重磅提醒💥┈┈┈
+
+❌若点击失败，回复“签到”领取书币~
+
+<a href='https://sl.mbookcn.com/cty/73228854-208798473274329' > 继续阅读</a >
+
+👆点击蓝字继续阅读书币礼包，就等你了！
+
+< a href = 'weixin://kefumenu?kefumenucontent=签到&kefumenuid=0' >📱📱安卓手机点我领取</ >
+
+    <a href='weixin://bizmsgmenu?msgmenucontent=签到&msgmenuid= '>🍎🍎苹果手机点我领取</a >
+
+┈┈┈ 💥重磅提醒💥┈┈┈
+
+❌若点击失败，回复“签到”领取书币~
+
+<a href='https://sl.mbookcn.com/cty/73228854-2083273827832' > 继续阅读</a >
+
+👆点击蓝字继续阅读`
+        console.log(str)
+        var reg = /https:\/*[a-z0-9\.\/-]*/g
+        var reg2 = /[0-9]*-[0-9]*/g
+        var urlList = str.match(reg)
+        var result = []
+        for (var i = 0; i < urlList.length; i++) {
+            var sld = urlList[i].match(reg2)
+            sld = sld && sld.length ? sld[0] : undefined
+            if (sld) {
+                result.push(sld)
+            }
+        }
+        console.log(result)
+    </script>
+</body>
+
+</html>

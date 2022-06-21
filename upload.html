@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div>
+        选择上传格式：<select id="sel1">
+            <option value="file">file 文件</option>
+            <option value="base64">base 64</option>
+        </select>
+        <input type="file" accept=".jpg, .jpeg, .png, .gif" id="file1" multiple="multiple">
+        <button type="button" id="btn">上传</button>
+    </div>
+    <script>
+        var form = new FormData()
+        function upload(options) {
+            axios({
+                url: 'http://localhost:8090/upload',
+                method: 'post',
+                ...options,
+                success: function (res) {
+                    console.log(res)
+                }
+            })
+        }
+        document.getElementById('file1').addEventListener('change', function (e) {
+            var fileType = document.getElementById('sel1').value
+            var file = e.target.files[0]
+            form.append('file', file)
+            if (fileType == 'file') {
+                upload({
+                    data: form,
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                return
+            }
+            var r = new FileReader();
+            r.onload = function () {
+                upload({
+                    url: 'http://localhost:8090/uploadBase64',
+                    data: {
+                        fileName: 'testFileName',
+                        fileBase64: r.result
+                    },
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    }
+                })
+            }
+            r.readAsDataURL(file);
+        })
+    </script>
+</body>
+
+</html>
