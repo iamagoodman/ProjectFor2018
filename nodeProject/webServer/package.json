@@ -14,7 +14,7 @@
     "consolidate": "^0.16.0",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^1.4.0",
-    "ejs": "^3.1.6",
+    "ejs": "^3.1.7",
     "express": "^4.17.1",
     "express-route": "^0.1.4",
     "express-static": "^1.2.6",
