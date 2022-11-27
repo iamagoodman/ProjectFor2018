@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>回溯</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="https://portal-static.tongdun.cn/static-public/tonginsur/sdk/1.0.1/memory.css">
+</head>
+<body>
+
+</body>
+
+<script src="https://portal-static.tongdun.cn/static-public/tonginsur/sdk/1.0.1/memory.js"></script>
+<script>
+
+    function parseLocationSearch(search) {
+        const param = {};
+        search.replace(/([^?&]+)=([^?&]+)/g, function(s, v, k) {
+            param[v] = decodeURIComponent(k);
+            return k + '=' + v;
+        });
+        return param;
+    }
+
+    function ajax(options) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', options.url, true);
+        xhr.send(null);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    options.success(JSON.parse(xhr.responseText));
+                } else {
+                    options.fail({});
+                }
+            }
+        }
+
+    }
+    const params = parseLocationSearch(location.search || '?');
+    if (params.proposalNo) {
+        ajax({
+            url: '/policy/get-recall?proposalNo='+ params.proposalNo,
+            success: function(data) {
+                if (data.reasonCode === 10200) {
+                    new memory.Player({
+                        target: document.body,
+                        events: JSON.parse(data.data.resource)
+                    })
+                } else {
+                    document.write(data.reasonDesc || '请求失败');
+                }
+
+
+            },
+            fail: function(data) {
+                document.write(data.reasonDesc || '请求失败');
+            }
+        })
+    }
+    var data = JSON.parse(sessionStorage.merroryArray);
+    console.log(data);
+    new memory.Player({
+      target: document.body,
+      events: data
+    })
+
+
+
+</script>
+
+</html>

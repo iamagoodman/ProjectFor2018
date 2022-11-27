@@ -22,7 +22,7 @@ const maidianroute = require('./route/maidian/index');
 
 var server = express();
 
-server.listen(8090);
+server.listen(8989);
 server.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   if (req.url.indexOf('favicon.ico') != -1) return;
