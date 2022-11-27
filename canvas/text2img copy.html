@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            max-height: 100vh;
+            max-width: 100vw;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #can1 {
+            display: none;
+        }
+
+        p {
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="can1"></canvas>
+    <p>fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+    </p>
+    <img src="" id="show">
+    <p>
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+        fdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsakfdslajklfdslkfjsaklfjlsak
+
+    </p>
+    <script>
+        function canvasWrapText(options) {
+            var settings = {
+                canvas: document.getElementsByTagName("canvas")[0], //canvas对象，必填，不填写默认找到页面中的第一个canvas
+                canvasWidth: 480, //canvas的宽度
+                drawStartX: 10, //绘制字符串起始x坐标
+                drawStartY: 30, //绘制字符串起始y坐标
+                lineHeight: 50, //文字的行高
+                font: "36px 'Helvetica Neue,Helvetica,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif'",
+                text: options.text, //需要绘制的文本
+                drawWidth: 460, //文字显示的宽度
+                color: "#000000", //文字的颜色
+                backgroundColor: "#ffffff"//背景颜色
+            };
+
+            //将传入的配置覆盖掉默认配置
+            if (!!options && typeof options === "object") {
+                for (var i in options) {
+                    settings[i] = options[i];
+                }
+            }
+
+            //获取2d的上线文开始设置相关属性
+            var canvas = settings.canvas;
+            canvas.width = settings.canvasWidth;
+            var ctx = canvas.getContext("2d");
+
+            //绘制背景色
+            ctx.fillStyle = settings.backgroundColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            //绘制文字
+            ctx.font = settings.font;
+            ctx.fillStyle = settings.color;
+            var lineWidth = 0; //当前行的绘制的宽度
+            var lastTextIndex = 0; //已经绘制上canvas最后的一个字符的下标
+            //由于改变canvas 的高度会导致绘制的纹理被清空，所以，不预先绘制，先放入到一个数组当中
+            var arr = [];
+            //换行拆分
+            var multiText = settings.text.split("\n");
+            //循环每一行内容
+            $.each(multiText, function (rowIndex, rowText) {
+                //当前行的绘制的宽度
+                lineWidth = 0; //当前行的绘制的宽度
+                lastTextIndex = 0; //已经绘制上canvas最后的一个字符的下标
+                for (var i = 0; i < rowText.length; i++) {
+                    var currentText = rowText.substr(lastTextIndex, i - lastTextIndex);
+                    //获取当前的截取的字符串的宽度
+                    lineWidth = ctx.measureText(currentText).width;
+
+                    if (lineWidth > settings.drawWidth) {
+                        //判断最后一位是否是标点符号
+                        if (judgePunctuationMarks(rowText[i - 1])) {
+                            arr.push(rowText.substr(lastTextIndex, i - lastTextIndex));
+                            lastTextIndex = i;
+                        } else {
+                            arr.push(rowText.substr(lastTextIndex, i - lastTextIndex - 1));
+                            lastTextIndex = i - 1;
+                        }
+                    }
+                    //将最后多余的一部分添加到数组
+                    if (i === rowText.length - 1) {
+                        arr.push(rowText.substr(lastTextIndex, i - lastTextIndex + 1));
+                    }
+                }
+            });
+            //根据arr的长度设置canvas的高度
+            canvas.height = arr.length * settings.lineHeight + settings.drawStartY;
+            ctx.font = settings.font;
+            ctx.fillStyle = settings.color;
+            for (var i = 0; i < arr.length; i++) {
+                ctx.fillText(arr[i], settings.drawStartX, settings.drawStartY + i * settings.lineHeight);
+            }
+            //判断是否是需要避开的标签符号
+            function judgePunctuationMarks(value) {
+                var arr = [".", ",", ";", "?", "!", ":", "\"", "，", "。", "？", "！", "；", "：", "、"];
+                for (var i = 0; i < arr.length; i++) {
+                    if (value === arr[i]) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            return canvas.toDataURL();
+        }
+        var text = `“梁健，我要被调离了，上面决定，让我担任区体育局局长。”
+  十面镇镇委书记黄少华吐着烟圈，神色间有些落寞。
+突如其来的消息让梁健有些措手不及，急声问道：“黄书记，好好的你怎么要被调到体育局了？”
+虽然说，从镇里到县里，表面上看算是升迁。
+但一个实权乡镇领导，一个县区清冷部门领导，两者哪有什么可比性。
+黄少华看了眼自己的这位秘书，叹了口气，摇头不语。
+梁健也沉默了下来，陪着黄少华一起吞云吐雾，沉思了好一会后，才开口道：“黄书记您对我有知遇之恩，不管黄书记走到哪里，您永远都是我的领导。”
+黄少华笑笑，拍了拍梁健的肩膀，道：“好好干，就算我去了区里，你以后有什么难处依然可以来找我。”
+“多谢黄书记。”梁健点点头，心中叹息了一声。
+本还期望黄少华能把他一起带到县区部门，现在看来也是没希望了。`
+        canvasWrapText({ text });
+        var novel = '<p>第一章为青儿报仇！</p><p></p><p>九州大陆，划分九州。</p><p>其中当属青州最为贫瘠，然境内依旧是宗门林立。</p><p>青龙宗境内，一处破旧不堪的院落内，少年倚靠着院内的一块巨石旁。</p><p>浓眉秀目，五官俊朗，唯独神色带有几分惆怅和颓丧。</p><p>“五年了，今年已是最后的机会，若是再不过……”</p><p>少年握紧了拳头，目光陡然变得十分坚定。</p><p>少年名叫楚枫，十岁入青龙宗，如今时隔五年，却依旧还是个不入流的外门弟子。</p><p>只因他这五年来一直停留于灵武二重，而只有达到灵武三重方才有望通过青龙宗内门弟子的考核。</p><p>修武一途，境界划分灵武、元武、玄武、天武，每个境界又划分九重。</p><p>按着青龙宗的考核门规，一个外门弟子若是五年都未能通过考核进入内门的话，那便会被驱逐出宗门。</p><p>若真被逐出宗门……颜面扫地！哪怕是家族和义父都将不会接纳自己！</p><p>所以，他绝不能低头认输！</p><p>他闭目养神，尝试修炼，可院门外突兀间响起了一阵不和谐之声。</p><p>“你说你跟着楚枫那个废物有什么用？这都已经五年了，他不依旧还是个停留在灵武二重的外门弟子？”</p><p>“废物终究是废物，我看呐，等今年宗门内门弟子考核一结束，他这个废物就等着被逐出青龙宗吧！”</p><p>“青儿小美人，你跟着这废物是没有前途的，不如就跟了我！放心，我现在已是灵武三重，待得我通过宗门内门弟子考核，必然不会亏待于你！”</p><p>站立于门口戏谑调侃的是一名高大魁梧的少年，十五六岁年纪。</p><p>“枫少爷他不是废物！他一定会通过考核成为内门弟子的！”旁边那名十三四岁的少女倔强地反驳，随即便不予理会地转身离去。</p><p>少女虽穿得粗制简朴，但生的却是极美的，肌肤白皙无暇，俏脸清秀精致，一双桃花杏眼瞪圆，透露着几分娇气。</p><p>可这魁梧的身影一下阻拦在她的面前，发出一声冷哼：“哼！不识抬举！”</p><p>说罢，这魁梧少年已伸手向着青儿抓去。</p><p>“啊……”</p><p>青儿避闪不及，细嫩的胳膊被那只硕大的手掌扣住。</p><p>想要挣脱，可是她一个没有修为的弱女子怎可敌得过一名灵武三重的修武者呢？</p><p>唰！</p><p>一甩。</p><p>青儿整个人娇躯跌倒于地，连同衣衫也被‘嗤啦’地扯破了一大片，原本置于腰间的粉色锦囊掉了出来。</p><p>粉色锦囊散发出一阵逼人的灵气，隐约间显现出晶莹剔透的光亮。</p><p>“这是……仙灵草？”魁梧少年瞪大眼眸，丝毫不掩饰贪婪之色，随即张狂大笑：“哈哈哈，想不到啊，你居然为了那个废物寻得了仙灵草，不过对于那废物来说毫无用途，不如就……嘿嘿……”</p><p>仙灵草，乃是修武圣药，极其珍贵，对灵武境以内的修武者，皆有无尽的功效。</p><p>“不！不要！”</p><p>青儿娇躯艰难地扑了过去，一下子便护住了那粉色锦囊，苦苦哀求道：“求求你，求求你不要拿仙灵草，这仙灵草是我好不容易弄来给枫少爷的……”</p><p>“给我拿来！你给那个废物有什么用！”魁梧少年怒声喝着，根本不顾怜香惜玉，伸手蛮横地抢夺。</p><p>唰！</p><p>突然有一道身影阻挡在了他的面前。</p><p>紧接着，一道冷冽的声音响起：“堂堂一个宗门弟子竟欺凌一个手无缚鸡之力的婢女，真是该死！”</p><p>说话之人正是楚枫，眼前这个魁梧少年，他认得，正是与他同为青龙宗外门弟子的齐淮。</p><p>这个家伙打着青儿的主意早已不是一日两日了，楚枫因修为停滞不前，所以才每每忍气吞声，却不曾想反倒助长了对方的嚣张气焰，如今更是变本加厉欺凌到自己头上了。</p><p>见着地面苦苦哀求的青儿，楚枫心中一阵抽痛，握紧了拳头。</p><p>青儿，都怪我没有实力才保护不了你！</p><p>“枫少爷，呜呜呜……”</p><p>青儿见到楚枫，伸手抹着眼角的泪痕，顿时一阵喜极，连忙趁机抽身，躲到了楚枫的身后。</p><p>“哦，我当是谁呢，原来是你这个废物啊。”</p><p>齐淮微微眯起眼睛，一脸不屑地道：“本以为你会躲在里头当缩头乌龟呢，倒是没想到还敢出来！不过也好，既然你出来了，那就乖乖地交出你的婢女和仙灵草，然后跪下给小爷我磕几个响头，我就不为难你了！”</p><p>听到‘仙灵草’三个字，楚枫微感诧异，目光望向身后的青儿，青儿则是怯怯地低着头不发声。</p><p>青儿这丫头竟为自己弄来了仙灵草……想到此，楚枫鼻尖一酸，心中久久难以平复。</p><p>此时此刻，他只想保护好青儿。</p><p>哪怕现今实力不济，他也要誓死保护。</p><p>因为懦弱，只能愈发的遭受欺凌！</p><p>“滚！”</p><p>楚枫双目爆睁，面向齐淮，发出一阵厉声。</p><p>这一次，面对灵武三重的修武者，他并没有选择怯退。</p><p>“你一个在灵武二重停留五年的废物居然让我滚？”</p><p>齐淮愣了愣，以为自己耳朵出了问题，随即大怒：“你真是找死！”</p><p>说话间，他已然抽出腰间的三尺利剑向着楚枫劈砍而去，剑势凶猛，猝不及防。</p><p>楚枫瞳孔一缩，身子往后一侧，本以为已是躲过，奈何对方见势突然变招，化劈为刺，锋利的剑尖直逼楚枫的面门……这剑实在是太快了！</p><p>啪！</p><p>突然间，楚枫的身子被推耸了一下，一道娇小的身影阻挡在了他的身前。</p><p>剑意袭来！</p><p>利剑刺入身体，一剑贯穿心脏！</p><p>瞬间，鲜血飙射，少女的俏脸一片苍白，身躯如风中残枝，摇曳着倒下。</p><p>“青儿……青儿……”</p><p>“不，青儿……”</p><p>楚枫站在原地傻了片刻，才反应过来，这剑虽然没有插在自己身上，但他的胸口同样感到剧烈疼痛，整个人连同呼吸都变得十分困难。</p><p>他想保护好青儿！</p><p>可是到头来却是青儿保护了自己！</p><p>楚枫死死地抱住青儿的娇躯，双目血红，嘶声道：“明明该死的人是我，你为什么要替我挡剑？为什么？青儿你为何如此傻……”</p><p>“咳咳……枫少爷，青儿的命都是你救的，若是没有你，我早就……”青儿咳出了两口鲜血，奄奄一息道：“这算是以命换命了，只要枫少爷无事，青儿就心安了……”</p><p>她手臂微微抬高，颤抖的手掌松开，将那个沾染了血迹的粉色锦囊递出，道：“枫少爷，这……这仙灵草是我先前用你送我的翡翠玉钗换来的，兴许对你提升灵武三重有所帮助，你……你定会通过考核成为内门弟子的……”</p><p>仙灵草！</p><p>哪怕此时此刻，青儿还在为自己着想！</p><p>想到此，楚枫心头如撕心裂肺一般，他握紧了那粉色锦囊，伤痛欲绝地捂向青儿的胸口，急喊道：“对不起，青儿你别说了，别说了，你一定很痛吧……我给你止血，没事的，一定会没事的，你一定不会死的……”</p><p>“枫少爷，跑，你快跑……”</p><p>青儿苍白如纸的脸颊挤出了一丝笑容，她伸手，欲触碰楚枫的脸颊，可是手伸到一半，便垂直落下了。</p><p>缓缓闭目，她再也听不见看不到了。</p><p>“不！”</p><p>楚枫双目血红，仰天狂吼。</p><p>这一刻，起风了，天空变得阴沉，似在为青儿的无辜之死默哀着。</p><p>“我要你为青儿偿命！！”</p><p></p>'
+        var reg = /^<p>[\w\W]*<\/p>$/
+        console.log(novel.match(reg))
+        document.getElementById("show").src = canvasWrapText({ text })
+        // console.log(canvasWrapText({ text }))
+    </script>
+</body>
+
+</html>

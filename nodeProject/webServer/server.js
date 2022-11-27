@@ -26,12 +26,16 @@ server.listen(8090);
 server.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   if (req.url.indexOf('favicon.ico') != -1) return;
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-  res.header('Access-Control-Allow-Headers', 'content-type');
+  // res.header(
+  //   'Access-Control-Allow-Headers',
+  //   'X-Requested-With,Authorization,content-type,isAllow,app'
+  // );
+  res.header('Access-Control-Allow-Headers', '*');
   res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
   res.header('X-Powered-By', '3.2.1');
   res.header('Content-Type', 'application/json;charset=utf-8');
   res.header('allowCredentials', true);
+  console.log('req', req);
   next();
 });
 // 获取请求
