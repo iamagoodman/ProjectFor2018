@@ -23,7 +23,7 @@
     "koa2-cors": "^2.0.6",
     "mysql2": "^2.3.3",
     "path": "^0.12.7",
-    "sequelize": "^6.12.0-alpha.1"
+    "sequelize": "^7.0.0-alpha.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
