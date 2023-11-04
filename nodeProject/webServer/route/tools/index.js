@@ -3,21 +3,21 @@ const common = require('../../libs/common');
 const fs = require('fs');
 const path = require('path');
 module.exports = function () {
-    const router = express.Router();
-    router.get('/test',function (req,res) {
-        res.type('html');
-        res.render('./tools/freegive.html',{});
-    });
-  router.get('/word2html',function (req,res) {
+  const router = express.Router();
+  router.get('/test', function (req, res) {
+    res.type('html');
+    res.render('./tools/freegive.html', {});
+  });
+  router.get('/word2html', function (req, res) {
     console.log('aaaaaaaa');
     res.type('html');
-    res.render('./tools/word2html.html',{});
+    res.render('./tools/word2html.html', {});
   });
-  router.get('/music',function (req,res) {
+  router.get('/music', function (req, res) {
     console.log(__dirname);
     console.log(path);
-    const fileName = path.join(__dirname,'iAmYou.mp3');
-    fs.readFile(fileName,function (err,data) {
+    const fileName = path.join(__dirname, 'iAmYou.mp3');
+    fs.readFile(fileName, function (err, data) {
       if (!err) {
         // console.log(data);
         // console.log(res.readAsDataURL(''));
@@ -26,32 +26,49 @@ module.exports = function () {
         console.log(err);
       }
     });
-  })
-
-
-
-
-
-
-  router.get('/luzhi',function (req,res) {
-    res.type('html');
-    res.render('./tools/rrwebtest2.html',{});
   });
-  router.post('/save',function (req,res) {
-      var modalName = req.body.modalName;
-      var fileName = req.body.fileName;
-      var htmlstr = req.body.htmlstr;
-      fs.writeFile(`template/tools/htmlstr/${fileName}.js`,`export const ${modalName} = '${htmlstr}'`, function (err) {
+  router.get('/luzhi', function (req, res) {
+    res.type('html');
+    res.render('./tools/rrwebtest2.html', {});
+  });
+  router.post('/save', function (req, res) {
+    var modalName = req.body.modalName;
+    var fileName = req.body.fileName;
+    var htmlstr = req.body.htmlstr;
+    fs.writeFile(
+      `template/tools/htmlstr/${fileName}.js`,
+      `export const ${modalName} = '${htmlstr}'`,
+      function (err) {
         if (err) {
-          console.log(err)
+          console.log(err);
         } else {
-          console.log('success')
+          console.log('success');
         }
-      })
-      console.log(modalName);
-      console.log(fileName);
-      console.log(htmlstr);
-      res.send('ok');
-  })
-    return router
-}
+      }
+    );
+    console.log(modalName);
+    console.log(fileName);
+    console.log(htmlstr);
+    res.send('ok');
+  });
+  router.post('/upload', function (req, res) {
+    console.log('body', req.body);
+
+    setTimeout(() => {
+      if (req.body.filename === '狐妃2-4.jpg') {
+        res.sendStatus(500);
+      } else {
+        res.send('ok');
+      }
+    }, 500);
+
+    // res.sendStatus(500)
+  });
+  // router.get('/upload', function (req, res) {
+  //   console.log('req', req);
+  //   setTimeout(() => {
+  //     res.send('ok');
+  //   }, 500);
+  // });
+  return router;
+};

@@ -3,7 +3,7 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 // const webpack = require('webpack')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir);
 }
 module.exports = {
@@ -20,12 +20,11 @@ module.exports = {
     },
     loaderOptions: {
       postcss: {
-        plugins: [
-          autoprefixer()
-        ]
+        plugins: [autoprefixer()]
       },
       scss: {
-        additionalData: '@import "./src/styles/reset.scss";@import "./src/styles/global.scss";'
+        additionalData:
+          '@import "./src/styles/reset.scss";@import "./src/styles/global.scss";'
       }
     }
   },
@@ -82,14 +81,14 @@ module.exports = {
   devServer: {
     port: 8080,
     // proxy: 'http://localhost:8000/'
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://localhost:8000/',
-    //     changeorigin: true,
-    //     pathRewrite: {
-    //       ['^' + '/api']: '' // 将'/my_test_proxy' 重写为''
-    //     }
-    //   }
-    // }
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8090/',
+        changeorigin: true,
+        pathRewrite: {
+          ['^' + '/api']: '' // 将'/my_test_proxy' 重写为''
+        }
+      }
+    }
   }
 };

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wheel {
+      /* height: 200px; */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slice {
+      /* width: 200px;
+      height: 100%; */
+      /* background: red; */
+
+      display: inline-block;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid red;
+      border-left: 50px solid transparent;
+    }
+
+
+    .slice-1 {
+      transform: rotate(180deg);
+    }
+
+    .slice-2 {
+      transform: rotate(60deg);
+      border-bottom: 100px solid green;
+    }
+
+    .slice-3 {
+      /* transform: rotate(120deg); */
+      border-bottom: 100px solid yellow;
+    }
+
+    .slice-4 {
+      /* transform: rotate(180deg); */
+      border-bottom: 100px solid blue;
+    }
+
+    .slice-5 {
+      /* transform: rotate(240deg); */
+      border-bottom: 100px solid purple;
+    }
+
+    .slice-6 {
+      /* transform: rotate(300deg); */
+      border-bottom: 100px solid orange;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .wheel:hover .slice {
+      transition: transform 4s ease-in-out;
+      transform: rotate(720deg);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wheel">
+    <div class="slice slice-1">
+      <!-- <img src="prize1.jpg" alt="Prize 1"> -->
+      <!-- <p>Prize 1</p> -->
+    </div>
+    <div class="slice slice-2">
+      <!-- <img src="prize2.jpg" alt="Prize 2"> -->
+      <!-- <p>Prize 2</p> -->
+    </div>
+    <div class="slice slice-3">
+      <!-- <img src="prize3.jpg" alt="Prize 3"> -->
+      <!-- <p>Prize 3</p> -->
+    </div>
+    <div class="slice slice-4">
+      <!-- <img src="prize4.jpg" alt="Prize 4"> -->
+      <!-- <p>Prize 4</p> -->
+    </div>
+    <div class="slice slice-5">
+      <!-- <img src="prize5.jpg" alt="Prize 5"> -->
+      <!-- <p>Prize 5</p> -->
+    </div>
+    <div class="slice slice-6">
+      <!-- <img src="prize6.jpg" alt="Prize 6"> -->
+      <!-- <p>Prize 6</p> -->
+    </div>
+  </div>
+</body>
+
+</html>

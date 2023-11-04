@@ -1,4 +1,4 @@
 export default {
-  baseEnvUrl: 'http://localhost:8000/',
-  baseUrl: '/'
+  baseEnvUrl: '/api',
+  baseUrl: '/api'
 };

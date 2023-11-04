@@ -35,7 +35,6 @@ server.all('*', function (req, res, next) {
   res.header('X-Powered-By', '3.2.1');
   res.header('Content-Type', 'application/json;charset=utf-8');
   res.header('allowCredentials', true);
-  console.log('req', req);
   next();
 });
 // 获取请求
